@@ -37,7 +37,7 @@
     .tab-btn.active { background: #0f766e; color: #fff; border-color: #0f766e; }
 
     /* Slide Deck Formatting */
-    .slide-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 25px; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+    .slide-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 25px; min-height: 440px; display: flex; flex-direction: column; justify-content: space-between; }
     .slide { display: none; }
     .slide.active { display: block; }
     
@@ -60,7 +60,7 @@
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
     label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9em; }
     input[type="text"], input[type="date"], textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
-    textarea { height: 100px; resize: vertical; }
+    textarea { height: 110px; resize: vertical; }
 
     .req { color: #dc2626; font-weight: bold; }
     .standard-sec { margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
@@ -94,9 +94,9 @@
     </div>
   </div>
 
-  <!-- Interactive Navigation Buttons -->
+  <!-- Navigation Tabs -->
   <div class="nav-tabs">
-    <button type="button" class="tab-btn active" id="deck-tab" onclick="switchTab('deck')">📖 Unit Overview & Literary Timeline</button>
+    <button type="button" class="tab-btn active" id="deck-tab" onclick="switchTab('deck')">📖 Unit 1 Curriculum Deck (12 Slides)</button>
     <button type="button" class="tab-btn" id="form-tab" onclick="switchTab('form')">✍️ Textual Response & Discussion Form</button>
   </div>
 
@@ -104,7 +104,7 @@
   <div id="deck-view" class="form-card view-content active">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
       <h2 style="margin: 0; font-size: 1.2em; color: #0f172a;">American Literature Foundations</h2>
-      <span id="slide-num" style="font-weight: bold; color: #0f766e; background: #ccfbf1; padding: 6px 14px; border-radius: 20px; border: 1px solid #99f6e4; font-size: 0.85em;">Slide 1 of 4</span>
+      <span id="slide-num" style="font-weight: bold; color: #0f766e; background: #ccfbf1; padding: 6px 14px; border-radius: 20px; border: 1px solid #99f6e4; font-size: 0.85em;">Slide 1 of 12</span>
     </div>
 
     <!-- Slide Container -->
@@ -112,81 +112,317 @@
       <!-- SLIDE 1 -->
       <div class="slide active">
         <div class="slide-header">
-          <h3 class="slide-title">1. Literary Movements & Epoch Timeline</h3>
+          <h3 class="slide-title">1. Course Orientation & The O.T.I.S. Framework</h3>
           <span class="std-badge">ELA Standard 11.01</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
               <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
-              <!-- Fixed: Replaced LaTeX syntax with clean Unicode arrows -->
-              <li><strong>Chronological Epochs:</strong> Tracking literature from Native Orality (Pre-1600) → Colonial/Puritan (1620–1750) → Revolutionary/Enlightenment (1750–1800) → Transcendentalism (1830–1865) → Realism → Modernism.</li>
-              <li><strong>Core Lens:</strong> Examining how cultural context shapes authorial intent, narrative structure, and societal values across centuries.</li>
+              <li><strong>Education:</strong> Calvin University B.A. 🏰 Go Knights! (2020) | University of Oregon M.S. 🦆 Go Ducks! (2026).</li>
+              <li><strong>Classroom Mascot Otis:</strong> Guiding our literary analysis through the <strong>O.T.I.S. Framework</strong>: <strong>O</strong>bservational Patience, <strong>T</strong>extual Evidence, <strong>I</strong>ntellectual Honesty, and <strong>S</strong>ympathetic Engagement.</li>
+              <li><strong>Goal:</strong> Read texts deeply, analyze historical contexts, and articulate evidence-backed arguments.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80" alt="Classic Open Book" />
+            <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Station Mascot Otis" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80'" />
           </div>
+        </div>
+        <div style="margin-top: 18px; background: #f0fdf4; border-left: 4px solid #0f766e; padding: 12px 16px; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="color: #0f766e; font-size: 0.9em;">✍️ Daily Literary Bellringer Prompt Generator</strong>
+            <button type="button" onclick="generatePrompt()" style="background: #0f766e; color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 0.78em; font-weight: bold; cursor: pointer;">Generate New Prompt 🔄</button>
+          </div>
+          <p id="prompt-display" style="margin: 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "Bellringer: What is the difference between reading for plot and reading for theme? Write one sentence explaining how an author's cultural context shapes their story's message."
+          </p>
         </div>
       </div>
 
       <!-- SLIDE 2 -->
       <div class="slide">
         <div class="slide-header">
-          <h3 class="slide-title">2. Native Oral Tradition & Creation Myths</h3>
-          <span class="std-badge">ELA Standard 11.03</span>
+          <h3 class="slide-title">2. American Literary Epochs & Timeline Movement</h3>
+          <span class="std-badge">ELA Standard 11.02</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
-              <li><strong>Oral Tradition Dynamics:</strong> Storytelling as a living narrative mechanism for passing history, moral frameworks, and ecological knowledge.</li>
-              <li><strong>Focus Text:</strong> <em>"Manabozho and the Muskrat"</em> (Ojibwe Creation Narrative).</li>
-              <li><strong>Key Themes:</strong> Earth-Diver motifs, communal sacrifice, humility, and the interconnectedness of all living beings.</li>
+              <li><strong>Chronological Progression:</strong> Native Orality (Pre-1600) → Colonial / Puritan (1620–1750) → Revolutionary / Enlightenment (1750–1800) → Transcendentalism (1830–1865) → Realism → Modernism.</li>
+              <li><strong>Historical Shifts:</strong> Literature reflects changing cultural values, technology, political struggles, and changing views of nature.</li>
+              <li><strong>Continuity & Change:</strong> Early creation themes evolve into later national identity debates across each era.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Literary Writing" />
+            <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80" alt="Classic Books" />
           </div>
+        </div>
+        <div style="margin-top: 18px; background: #ecfeff; border-left: 4px solid #0891b2; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #0e7490; font-size: 0.9em;">📍 Historical Context Spotlight</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "We do not study literary periods in isolation. Every era reacts against the ideas of the period that came before it!"
+          </p>
         </div>
       </div>
 
       <!-- SLIDE 3 -->
       <div class="slide">
         <div class="slide-header">
-          <h3 class="slide-title">3. Structural Analysis & Archetype Mapping</h3>
-          <span class="std-badge">ELA Standard 11.04</span>
+          <h3 class="slide-title">3. The Art of "Slow Looking" with Bob Ross</h3>
+          <span class="std-badge">ELA Standard 11.03</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
-              <li><strong>Trickster Archetype:</strong> Analyzing Manabozho as both creator and learner through environmental challenges.</li>
-              <li><strong>Comparative Analysis:</strong> How Ojibwe cosmological views contrast with Western linear narrative conventions.</li>
-              <li><strong>Symbolism:</strong> The role of water, earth, and animal resilience in foundational mythology.</li>
+              <li><strong>Observational Methodology:</strong> Before analyzing complex text, practice patient observation using visual art.</li>
+              <li><strong>The Bob Ross Exercise:</strong> Spend 3 minutes silently observing a painting or passage without judging or interpreting immediately.</li>
+              <li><strong>Key Questions:</strong> What small details do you notice first? How do color, tone, and layering build a complete atmosphere?</li>
+              <li><strong>Textual Application:</strong> Apply "Slow Looking" to complex sentences—notice word choices, cadence, and subtle imagery.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Journal and Pen" />
+            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="Artistic Landscape Painting" />
           </div>
+        </div>
+        <div style="margin-top: 18px; background: #fffbe3; border-left: 4px solid #d97706; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #b45309; font-size: 0.9em;">🎨 "Happy Accidents" in Close Reading</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "In literature, as in painting, small background details are placed intentionally. Slow down and look closely before forming your thesis!"
+          </p>
         </div>
       </div>
 
       <!-- SLIDE 4 -->
       <div class="slide">
         <div class="slide-header">
-          <h3 class="slide-title">4. Critical Response & Discussion Prep</h3>
+          <h3 class="slide-title">4. Native American Oral Tradition & Cosmology</h3>
+          <span class="std-badge">ELA Standard 11.03</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Living Narratives:</strong> Storytelling is an active social and spiritual institution, preserving history, ethics, and ecological wisdom.</li>
+              <li><strong>Environmental Cosmology:</strong> Humans are viewed as part of a sacred web of nature, rather than masters over creation.</li>
+              <li><strong>Oral Mechanics:</strong> Repetition, rhythm, and audience participation reinforce communal memory across generations.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Campfire Storytelling" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #f0fdf4; border-left: 4px solid #16a34a; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #15803d; font-size: 0.9em;">🌿 Key Concept: Orality vs. Literacy</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "Oral literature is dynamic and performative, meant to adapt to the community's needs while maintaining sacred truths."
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">5. Creation Myths & The Earth-Diver Motif</h3>
+          <span class="std-badge">ELA Standard 11.04</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Universal Motifs:</strong> The "Earth-Diver" story type features a flood, a creator figure, and brave animals diving deep into primeval waters.</li>
+              <li><strong>Sacrifice & Community:</strong> Small, humble creatures often succeed where larger, stronger animals fail.</li>
+              <li><strong>Ecological Balance:</strong> Creation is framed as a collaborative act between spirit figures and the natural world.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Nature and Water" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #fdf4ff; border-left: 4px solid #c026d3; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #86198f; font-size: 0.9em;">💡 Motif Analysis</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "Pay attention to which animal brings up the mud from the deep—their small size emphasizes perseverance over brute strength."
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 6 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">6. Deep Analysis: "Manabozho and the Muskrat"</h3>
+          <span class="std-badge">ELA Standard 11.04</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Focus Text:</strong> Ojibwe Creation Story featuring Manabozho (the cultural hero/trickster) and the Muskrat (Waizhask).</li>
+              <li><strong>Narrative Arc:</strong> After a great flood, larger animals attempt to dive for earth and collapse exhausted. The humble muskrat steps forward.</li>
+              <li><strong>Textual Moment:</strong> The muskrat risks its life to bring back a small grain of sand under its claws, enabling the restoration of the earth.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" alt="River Landscape" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #eff6ff; border-left: 4px solid #2563eb; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #1d4ed8; font-size: 0.9em;">📖 Textual Passage Excerpt</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "'I will try,' said the humble muskrat. He dived deep into the dark waters... when he floated up, in his tiny paw was the grain of earth that renewed the world."
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 7 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">7. The Trickster Archetype & Moral Instruction</h3>
+          <span class="std-badge">ELA Standard 11.05</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Character Dynamics:</strong> Trickster figures like Manabozho are complex—simultaneously wise, foolish, helpful, and impulse-driven.</li>
+              <li><strong>Pedagogical Purpose:</strong> Stories use tricksters to teach community boundaries, humor, and respect for natural limits.</li>
+              <li><strong>Symbolic Function:</strong> The trickster disrupts rigid orders to allow new creation and learning to emerge.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Journal and Notes" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #faf5ff; border-left: 4px solid #9333ea; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #7e22ce; font-size: 0.9em;">🎭 Archetype Breakdown</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "Tricksters are never pure villains or pure heroes—they reflect human imperfection and adaptability."
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 8 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">8. Comparative Worldviews: Indigenous vs. Colonial</h3>
+          <span class="std-badge">ELA Standard 11.06</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Indigenous Worldview:</strong> Circular time, relational ecology, shared stewardship, oral preservation.</li>
+              <li><strong>Early European Colonial Worldview:</strong> Linear time, wilderness to be subdued, individual ownership, written doctrine.</li>
+              <li><strong>Analytical Goal:</strong> Contrast how these differing perspectives shape early American literary themes and conflicts.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1447069387593-a5de0862481e?auto=format&fit=crop&w=600&q=80" alt="Vintage Map and Compass" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #fff7ed; border-left: 4px solid #ea580c; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #c2410c; font-size: 0.9em;">⚖️ Contrast Analysis</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "Notice how land is described in each story: as a living relative to be respected, or as a wilderness to be cultivated."
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 9 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">9. Close Reading Strategies & Annotation</h3>
           <span class="std-badge">ELA Standard 11.07</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
-              <li><strong>Task Guidance:</strong> Navigate to the <strong>"Textual Response & Discussion Form"</strong> tab.</li>
-              <li><strong>Evidence Requirement:</strong> Support all analytical claims with direct textual citations from assigned readings.</li>
-              <li><strong>Synthesis Goal:</strong> Be prepared to present your response during our seminar circle.</li>
+              <li><strong>Step 1: First Pass:</strong> Read for general narrative flow and initial impressions (Slow Looking).</li>
+              <li><strong>Step 2: Second Pass:</strong> Highlight recurring motifs, word choices, figurative language, and structural shifts.</li>
+              <li><strong>Step 3: Marginal Notes:</strong> Write explicit questions and connection points directly in the margins or digital notes.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="Classroom Discussion" />
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Studying Literature" />
           </div>
+        </div>
+        <div style="margin-top: 18px; background: #f0fdf4; border-left: 4px solid #059669; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #047857; font-size: 0.9em;">📝 Annotation Standard</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "Highlighting without writing notes in the margin is incomplete! Always write WHY a phrase matters."
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 10 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">10. Crafting Evidence-Based Thesis Statements</h3>
+          <span class="std-badge">ELA Standard 11.08</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Formula:</strong> Specific Textual Claim + Analytical Reason + Broader Cultural Significance.</li>
+              <li><strong>Avoid Summarizing:</strong> A thesis is an arguable claim, not a plot recap of what happens in the text.</li>
+              <li><strong>Integrating Quotes:</strong> Embed short direct quotes seamlessly into your analytical sentences with accurate citations.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="Writing Essay" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #fef2f2; border-left: 4px solid #dc2626; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #b91c1c; font-size: 0.9em;">🎯 Strong vs. Weak Thesis Check</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "Weak: 'Muskrat dives for mud in the story.' | Strong: 'By elevating the humble muskrat over stronger creatures, the Ojibwe creation narrative establishes humility as a vital ecological virtue.'"
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 11 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">11. Seminar Circle & Discussion Ethics</h3>
+          <span class="std-badge">ELA Standard 11.09</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Active Listening:</strong> Build directly upon peer observations before offering counterpoints.</li>
+              <li><strong>Evidence Anchor:</strong> Refer back to specific line numbers and page passages during discussion.</li>
+              <li><strong>Sympathetic Engagement:</strong> Respect diverse cultural traditions and approach historic texts with curiosity.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="Seminar Discussion Circle" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #f8fafc; border-left: 4px solid #475569; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #334155; font-size: 0.9em;">💬 Seminar Rule of Thumb</strong>
+          <p style="margin: 4px 0 0 0; color: #475569; font-size: 0.88em; font-style: italic;">
+            "Always state: 'On page X, the author writes...' before offering your interpretation."
+          </p>
+        </div>
+      </div>
+
+      <!-- SLIDE 12 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">12. Unit Assessment & Final Submission</h3>
+          <span class="std-badge">Course Completion Requirement</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Next Step:</strong> Click the <strong>"Textual Response & Discussion Form"</strong> tab at the top of the page.</li>
+              <li><strong>Required Input:</strong> Complete all student details, review the pre-filled focus text, and answer both critical reflection prompts with textual evidence.</li>
+              <li><strong>Submission:</strong> Submit your response notes to complete your Unit 1 seminar qualification.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Final Submission" />
+          </div>
+        </div>
+        <div style="margin-top: 18px; background: #f0fdf4; border-left: 4px solid #059669; padding: 12px 16px; border-radius: 6px;">
+          <strong style="color: #047857; font-size: 0.9em;">🎓 Complete Your Unit 1 Submission!</strong>
+          <p style="margin: 4px 0 0 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "You have reviewed all 12 curriculum slides. Switch tabs above to craft and finalize your discussion notes!"
+          </p>
         </div>
       </div>
     </div>
@@ -200,10 +436,10 @@
 
   <!-- VIEW 2: Student Discussion Form -->
   <div id="form-view" class="form-card view-content">
-    <h2>Textual Analysis Submission</h2>
-    <p style="color: #64748b; font-size: 0.9em;">Submit your initial textual reflections and seminar preparation notes below.</p>
+    <h2>Textual Analysis Submission & Seminar Notes</h2>
+    <p style="color: #64748b; font-size: 0.9em;">Submit your initial textual reflections, thesis statements, and seminar notes below.</p>
 
-    <form onsubmit="event.preventDefault(); alert('Response Saved Successfully!');">
+    <form onsubmit="event.preventDefault(); alert('Discussion Notes Submitted Successfully!');">
       <div class="form-grid">
         <div class="form-group">
           <label>Student Full Name <span class="req">*</span></label>
@@ -217,25 +453,30 @@
 
       <div class="form-group">
         <label>Primary Focus Text <span class="req">*</span></label>
-        <!-- Fixed: Replaced raw URL encoded filename with clean formatted title -->
         <input type="text" value='"Manabozho and the Muskrat" & Literary Time Periods Overview' required />
       </div>
 
       <div class="standard-sec">
-        <h3>Critical Reflection & Thesis Statement</h3>
+        <h3>Critical Reflection & Thesis Construction</h3>
         <div class="form-group">
-          <label>1. How does the narrative structure of "Manabozho and the Muskrat" reflect Ojibwe worldview and cultural values regarding the natural environment? <span class="req">*</span></label>
-          <textarea placeholder="Identify key motives, animal symbolism, and core moral lessons supported by evidence..." required></textarea>
+          <label>1. Apply "Slow Looking" to "Manabozho and the Muskrat": How does the narrative structure reflect Ojibwe environmental cosmology? <span class="req">*</span></label>
+          <textarea placeholder="Identify key motifs, animal symbolism, and core moral lessons supported by direct quotes or textual moments..." required></textarea>
         </div>
 
         <div class="form-group">
-          <label>2. Compare a key element of Native oral creation stories with another literary epoch on our timeline. <span class="req">*</span></label>
-          <textarea placeholder="Focus on archetypes, creation themes, or narrative tone..." required></textarea>
+          <label>2. Compare a key element of Native oral creation stories with another literary epoch on our timeline (e.g., Puritan or Revolutionary). <span class="req">*</span></label>
+          <textarea placeholder="Focus on contrasting views of nature, archetypes, creation themes, or narrative tone..." required></textarea>
         </div>
       </div>
 
+      <!-- Student Digital Signature -->
+      <div class="form-group" style="margin-top: 25px;">
+        <label>Student Digital Signature (Type Legal Full Name) <span class="req">*</span></label>
+        <input type="text" placeholder="Type full name to digitally sign" required style="font-family: 'Courier New', monospace; font-size: 1.1em; font-weight: bold;" />
+      </div>
+
       <!-- Submit Button -->
-      <button type="submit" class="submit-btn">Submit Discussion Notes</button>
+      <button type="submit" class="submit-btn">Submit Discussion Notes for Seminar Circle</button>
     </form>
   </div>
 </div>
@@ -243,6 +484,19 @@
 <script>
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
+
+  const literaryPrompts = [
+    '"Bellringer: What is the difference between reading for plot and reading for theme? Write one sentence explaining how an author\'s cultural context shapes their story\'s message."',
+    '"Slow Looking Challenge: Re-read the muskrat\'s dive scene. What specific verbs and sensory details heighten the physical toll of his sacrifice?"',
+    '"Archetype Check: Why are Trickster figures like Manabozho essential to oral teaching traditions across different cultures?"',
+    '"Timeline Reflection: How does the Native American view of human-nature unity contrast with later Puritan views of the wilderness?"',
+    '"Thesis Workout: Draft a one-sentence thesis statement arguing why the smallest creature holds the pivotal role in Ojibwe creation cosmology."'
+  ];
+
+  function generatePrompt() {
+    const randomIdx = Math.floor(Math.random() * literaryPrompts.length);
+    document.getElementById('prompt-display').innerText = literaryPrompts[randomIdx];
+  }
 
   function updateSlideDisplay() {
     slides.forEach((slide, index) => {
