@@ -80,33 +80,31 @@
             margin-top: 3px;
         }
 
-        /* Green Stamp Badge with Boehm Photo */
-        .green-stamp {
-            width: 68px;
-            height: 68px;
-            border-radius: 50%;
-            border: 3px solid var(--stamp-green);
-            padding: 2px;
+        /* CONCENTRIC GREEN STAMP WITH BOEHM PHOTO CENTERED */
+        .stamp-container {
             position: relative;
+            width: 82px;
+            height: 82px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #ecfdf5;
             flex-shrink: 0;
         }
 
-        .green-stamp img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .stamp-text-svg {
+        .stamp-svg {
             position: absolute;
             width: 100%;
             height: 100%;
             pointer-events: none;
+        }
+
+        .stamp-photo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--stamp-green);
+            z-index: 1;
         }
 
         /* TOP NAVIGATION TABS */
@@ -398,15 +396,25 @@
             background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 16px;
+            padding: 18px;
             margin-bottom: 16px;
         }
 
         .ws-question-title {
-            font-size: 0.92rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+        }
+
+        .mc-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            font-size: 0.88rem;
+            color: #334155;
+            cursor: pointer;
         }
 
         .submit-btn-banner {
@@ -421,6 +429,10 @@
             cursor: pointer;
             margin-top: 10px;
             transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .submit-btn-banner:hover {
@@ -464,11 +476,37 @@
         .res-card {
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 16px;
+            padding: 18px;
             background: #ffffff;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+
+        /* PRINT STYLES - FOR PRINT/SAVE TO PDF */
+        @media print {
+            body {
+                background: #ffffff;
+                padding: 0;
+            }
+            .header-card, .tab-nav, .slide-controls, .submit-btn-banner, #slides-view, #resources-view {
+                display: none !important;
+            }
+            #worksheet-view {
+                display: block !important;
+            }
+            .content-card {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+            }
+            .form-input, .form-textarea {
+                border: 1px solid #94a3b8;
+                background: #ffffff;
+            }
+            .ws-question-block {
+                break-inside: avoid;
+            }
         }
     </style>
 </head>
@@ -479,7 +517,7 @@
     <!-- TOP HEADER CARD -->
     <header class="header-card">
         <div class="header-left">
-            <!-- Chisholm Bluestreaks Official Logo Image -->
+            <!-- Chisholm Bluestreaks Logo -->
             <img src="Chisholmlogo.png" alt="Chisholm High School Logo" class="chisholm-logo-img">
             
             <div class="header-titles">
@@ -488,15 +526,20 @@
             </div>
         </div>
 
-        <!-- Boehm Classroom Stamp with boehm_photo.jpg -->
-        <div class="green-stamp" title="The Boehm Classroom • Chisholm High School">
-            <img src="boehm_photo.jpg" alt="Mr. Brady Edward Boehm">
-            <svg class="stamp-text-svg" viewBox="0 0 100 100">
-                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
-                <text font-size="8.2" font-weight="bold" fill="#059669" letter-spacing="0.8">
-                    <textPath href="#circlePath" startOffset="0%">• THE BOEHM CLASSROOM •</textPath>
+        <!-- GREEN STAMP WITH BOEHM PHOTO IN CENTER RING -->
+        <div class="stamp-container" title="The Boehm Classroom • Chisholm High School">
+            <svg class="stamp-svg" viewBox="0 0 100 100">
+                <!-- Concentric Green Rings -->
+                <circle cx="50" cy="50" r="47" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="3,2.5"/>
+                <circle cx="50" cy="50" r="42" fill="none" stroke="#059669" stroke-width="1.2"/>
+                <circle cx="50" cy="50" r="32" fill="none" stroke="#059669" stroke-width="1.2"/>
+                <!-- Curved Text Path -->
+                <path id="circlePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+                <text font-size="7.2" font-weight="800" fill="#059669" letter-spacing="0.8">
+                    <textPath href="#circlePath" startOffset="0%">• THE BOEHM CLASSROOM • CHISHOLM HS •</textPath>
                 </text>
             </svg>
+            <img src="boehm_photo.jpg" alt="Mr. Brady Edward Boehm" class="stamp-photo">
         </div>
     </header>
 
@@ -555,10 +598,10 @@
         <!-- VIEW 2: ELECTRONIC STUDENT WORKSHEET -->
         <div id="worksheet-view" class="view-panel">
             <div>
-                <h2 class="worksheet-title">Week 1 Academic Assessment & OTIS Hermeneutics</h2>
-                <p class="worksheet-sub">Complete and submit this electronic worksheet following today's lecture and primary text analysis.</p>
+                <h2 class="worksheet-title">Week 1 Academic Assessment: "Manabozho and the Muskrat"</h2>
+                <p class="worksheet-sub">Complete this electronic worksheet using today's oral story reading and lecture. You can print or save as PDF upon completion.</p>
 
-                <form onsubmit="event.preventDefault(); alert('Worksheet submitted successfully! Saved to student portal.');">
+                <form id="studentWorksheetForm" onsubmit="event.preventDefault(); window.print();">
                     <div class="form-grid-3">
                         <div class="form-group">
                             <label>Student Full Name <span>*</span></label>
@@ -574,33 +617,69 @@
                         </div>
                     </div>
 
-                    <!-- Question 1 -->
+                    <!-- Question 1: Multiple Choice -->
                     <div class="ws-question-block">
-                        <div class="ws-question-title">1. Cosmogony & Earth-Diver Archetypes (MN ELA 11.1.6.1)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">Define "Earth-Diver" creation narrative and explain how it differs from <em>creation ex nihilo</em> based on today's slides.</p>
-                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Type your response here..." required></textarea>
+                        <div class="ws-question-title">1. Multiple Choice: Cultural Importance (1 pt)</div>
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">Why is the muskrat a very important animal to the Ojibwe people?</p>
+                        <label class="mc-option">
+                            <input type="radio" name="q1" value="A" required> A) The muskrat helped the Ojibwe people by being a spiritual leader.
+                        </label>
+                        <label class="mc-option">
+                            <input type="radio" name="q1" value="B"> B) The muskrat helped the Ojibwe people by running through the land to see how big the Earth was.
+                        </label>
+                        <label class="mc-option">
+                            <input type="radio" name="q1" value="C"> C) The muskrat helped the Ojibwe people by choosing which animals would survive the flood.
+                        </label>
+                        <label class="mc-option">
+                            <input type="radio" name="q1" value="D"> D) The muskrat helped the Ojibwe people by helping them survive a great flood.
+                        </label>
                     </div>
 
-                    <!-- Question 2 -->
+                    <!-- Question 2: Special Ability -->
                     <div class="ws-question-block">
-                        <div class="ws-question-title">2. Textual Analysis: "Manabozho and the Muskrat" (MN ELA 11.1.3.1)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">Why do the Loon and Beaver fail while the humble Muskrat succeeds? What cultural value does this order emphasize?</p>
-                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Type your response here..." required></textarea>
+                        <div class="ws-question-title">2. Textual Recall: Manabozho's Character Trait (1 pt)</div>
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">What is Manabozho’s special ability in the story?</p>
+                        <input type="text" class="form-input" style="width: 100%;" placeholder="Type your answer here..." required>
                     </div>
 
-                    <!-- Question 3 -->
+                    <!-- Question 3: Flood Myth Universality -->
                     <div class="ws-question-block">
-                        <div class="ws-question-title">3. The OTIS Hermeneutic Breakdown</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">Break down the <strong>OTIS</strong> acronym as applied to the Muskrat text: <strong>O</strong>rigin, <strong>T</strong>ransformation, <strong>I</strong>nterdependence, <strong>S</strong>acrifice.</p>
-                        <textarea class="form-textarea" rows="3" style="width:100%" placeholder="O: ...&#10;T: ...&#10;I: ...&#10;S: ..." required></textarea>
+                        <div class="ws-question-title">3. Universal Archetypes: Global Flood Stories (1 pt)</div>
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">A flood myth is repeated in over 200 cultures across the world. Why do you think flood myths are so universally prevalent?</p>
+                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Reflect on why human cultures share flood stories..." required></textarea>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 12px;">
+                    <!-- Question 4: Antiquated Language & Oral Tradition -->
+                    <div class="ws-question-block">
+                        <div class="ws-question-title">4. Lecture Concept: Antiquated Language & Oral Traditions (2 pts)</div>
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">What does it mean for something to be "antiquated"? How has "Manabozho and the Muskrat" stood the test of time despite only recently being written down?</p>
+                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Explain how oral stories survive over thousands of years..." required></textarea>
+                    </div>
+
+                    <!-- Question 5: Time Frame Analysis -->
+                    <div class="ws-question-block">
+                        <div class="ws-question-title">5. Story Timeframe Analysis (1 pt)</div>
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">What do you think is the overall time frame covered in the story? Consider the tree stretching four times and the tests with the fox and wolf.</p>
+                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Describe the duration of time represented in the myth..." required></textarea>
+                    </div>
+
+                    <!-- Section 2: Personal Origin Story -->
+                    <div class="ws-question-block" style="border-left: 4px solid var(--primary-blue);">
+                        <div class="ws-question-title" style="color: #1e3a8a;">6. Creative Writing Prompt: Your Own Origin Story (14 pts)</div>
+                        <p style="font-size: 0.85rem; color: #334155; margin-bottom: 10px; line-height: 1.4;">
+                            Write an origin story about yourself in the style of a Indigenous creation narrative. You may create characters that are animals, spirits, or natural elements. Embed a situation that harbors wisdom, and conclude with what you learned about yourself through the experience.
+                        </p>
+                        <textarea class="form-textarea" rows="6" style="width:100%" placeholder="Once upon a time..." required></textarea>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 16px;">
                         <label>Student Digital Signature <span>*</span></label>
                         <input type="text" class="form-input" placeholder="Type your full legal name to sign" required>
                     </div>
 
-                    <button type="submit" class="submit-btn-banner">Submit Worksheet & Generate Official Record</button>
+                    <button type="submit" class="submit-btn-banner">
+                        🖨️ Print / Save Completed Worksheet as PDF
+                    </button>
                 </form>
             </div>
         </div>
@@ -626,11 +705,11 @@
                     <div class="res-card">
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Literary Time Periods Reference Chart</h4>
-                            <p style="font-size: 0.82rem; color: var(--text-muted);">Mr. Boehm's handy handout covering British and American eras from the Native Era through Postmodernism.</p>
+                            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Mr. Boehm's handy handout covering British and American eras from the Native Era through Postmodernism.</p>
                         </div>
-                        <div style="margin-top: 12px; display: flex; gap: 8px;">
-                            <a href="Literary+Time+Periods_2.pdf" target="_blank" class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;">👁️ View PDF</a>
-                            <a href="Literary+Time+Periods_2.pdf" download class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem; background: #475569;">📥 Download</a>
+                        <div style="margin-top: 16px; display: flex; gap: 8px;">
+                            <a href="Literary+Time+Periods_2.pdf" target="_blank" class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem;">👁️ View PDF</a>
+                            <a href="Literary+Time+Periods_2.pdf" download class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem; background: #475569;">📥 Download</a>
                         </div>
                     </div>
 
@@ -638,22 +717,11 @@
                     <div class="res-card">
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">"Manabozho and the Muskrat" Primary Text</h4>
-                            <p style="font-size: 0.82rem; color: var(--text-muted);">Full Ojibwe oral myth reading detailing the great flood, animal divers, and world reconstruction.</p>
+                            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Full Ojibwe oral myth reading detailing the great flood, animal divers, and world reconstruction.</p>
                         </div>
-                        <div style="margin-top: 12px; display: flex; gap: 8px;">
-                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" target="_blank" class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;">📖 Read Text</a>
-                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" download class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem; background: #475569;">📥 Download</a>
-                        </div>
-                    </div>
-
-                    <!-- Resource Card 3 -->
-                    <div class="res-card" style="grid-column: span 2; margin-top: 12px;">
-                        <div>
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Day 1 Orientation & Netiquette Slides PDF</h4>
-                            <p style="font-size: 0.82rem; color: var(--text-muted);">Includes Mr. Boehm's background, Calvin University roots, swim coaching history, and online community guidelines.</p>
-                        </div>
-                        <div style="margin-top: 12px; display: flex; gap: 8px;">
-                            <a href="Day1.pdf" target="_blank" class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;">📄 Day 1 Slides PDF</a>
+                        <div style="margin-top: 16px; display: flex; gap: 8px;">
+                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" target="_blank" class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem;">📖 Read Text</a>
+                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" download class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem; background: #475569;">📥 Download</a>
                         </div>
                     </div>
                 </div>
@@ -669,12 +737,13 @@
         {
             title: "1. Course Orientation & Teacher Introduction",
             std: "MN ELA 11.1.6.1",
-            img: "boehm_photo.jpg",
+            img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Chisholm High School Alum 2015, Calvin University 2020 B.A., 5th year teaching).</li>
+                    <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Chisholm High School Alum 2015).</li>
+                    <li><strong>Education:</strong> Calvin University B.A. (2020) | University of Oregon M.S. 🦆 <em>Go Ducks!</em> (5th year teaching).</li>
                     <li><strong>Class Mascot:</strong> Meet Otis! My faithful beagle rescue dog who inspires our analytical framework.</li>
-                    <li><strong>Course Goal:</strong> Explore American Literature across continents, genres, and oral traditions.</li>
+                    <li><strong>Course Goal:</strong> Explore American Literature across eras, oral traditions, and media analysis.</li>
                 </ul>`,
             callout: `
                 <div class="prompt-callout-box">
@@ -685,7 +754,7 @@
         {
             title: "2. Academic Standards & Course Benchmarks",
             std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80",
+            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
                     <li><strong>MN ELA 11.1.6.1:</strong> Evaluate foundational American texts, cosmogonic myths, and cultural perspectives.</li>
@@ -870,7 +939,7 @@
             img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Quick-Write Task:</strong> Synthesize today's reading using OTIS in 5–7 sentences. Explain how the Muskrat's sacrifice challenges anthropocentric (human-centered) views.</li>
+                    <li><strong>Quick-Write Task:</strong> Synthesize today's reading using OTIS in 5–7 sentences. Explain how the Muskrat's sacrifice challenges human-centered views.</li>
                     <li><strong>Citations Required:</strong> Include two direct citations/references from the story.</li>
                     <li><strong>Submission:</strong> Complete and submit on **Tab 2: Electronic Student Worksheet**.</li>
                 </ul>`,
