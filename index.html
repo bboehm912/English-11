@@ -35,10 +35,8 @@
       max-width: 1100px;
       margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
     }
 
     .brand-section {
@@ -76,22 +74,6 @@
       font-weight: 600;
     }
 
-    /* TEACHER STAMP & CREDENTIALS */
-    .teacher-stamp {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px dashed var(--chisholm-gold);
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      text-align: right;
-    }
-
-    .teacher-stamp strong {
-      display: block;
-      color: #ffffff;
-      font-size: 0.95rem;
-    }
-
     /* MAIN CONTENT */
     .container {
       max-width: 1100px;
@@ -115,7 +97,7 @@
       margin-top: 0;
     }
 
-    /* OTIS CLASSROOM COMPANION SPOTLIGHT */
+    /* OTIS PERSONAL PET SPOTLIGHT */
     .otis-card {
       display: flex;
       align-items: center;
@@ -127,18 +109,23 @@
       margin-bottom: 2rem;
     }
 
-    .otis-avatar {
-      width: 90px;
-      height: 90px;
+    .otis-photo-frame {
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: #e2e8f0;
       border: 3px solid var(--chisholm-blue);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
       flex-shrink: 0;
       overflow: hidden;
+    }
+
+    .otis-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .otis-info h3 {
@@ -196,7 +183,21 @@
       margin-bottom: 0.5rem;
     }
 
-    /* SLIDE PRESENTATION CONTAINER (14 SLIDES) */
+    /* SLIDE PRESENTATION & TEACHER STAMP GRID */
+    .slide-section-grid {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .slide-section-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .slide-embed-container {
       position: relative;
       width: 100%;
@@ -204,7 +205,6 @@
       background: #1a1a1a;
       border-radius: 8px;
       overflow: hidden;
-      margin: 1.5rem 0;
     }
 
     .slide-placeholder {
@@ -221,6 +221,42 @@
       text-align: center;
       padding: 2rem;
       box-sizing: border-box;
+    }
+
+    .teacher-stamp-card {
+      background: #f8f9fa;
+      border: 2px dashed var(--chisholm-gold);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stamp-img-container {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 0.75rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .stamp-img-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .teacher-stamp-card h4 {
+      margin: 0 0 0.25rem 0;
+      color: var(--chisholm-blue);
+      font-size: 1rem;
+    }
+
+    .teacher-stamp-card p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #6b7280;
     }
 
     /* BUTTONS */
@@ -277,12 +313,11 @@
 </head>
 <body>
 
-  <!-- HEADER WITH CHISHOLM LOGO & TEACHER CREDENTIALS -->
+  <!-- HEADER WITH CHISHOLM LOGO -->
   <header>
     <div class="header-container">
       <div class="brand-section">
         <div class="logo-placeholder">
-          <!-- Replace image source with your actual logo file in assets/images/ -->
           <img src="assets/images/chisholm-logo.png" alt="Chisholm Logo" onerror="this.style.display='none'; this.parentNode.innerText='CHS';">
         </div>
         <div class="header-titles">
@@ -290,41 +325,34 @@
           <p>Chisholm High School • Day One Master Lesson</p>
         </div>
       </div>
-
-      <!-- TEACHER STAMP & CREDENTIALS -->
-      <div class="teacher-stamp">
-        <strong>M.A. in Teaching / English Education</strong>
-        <span>Calvin University Pedagogy Influence</span><br>
-        <small>Journalism & Literary Analysis Lens</small>
-      </div>
     </div>
   </header>
 
   <div class="container">
 
-    <!-- OTIS CLASSROOM COMPANION SPOTLIGHT -->
+    <!-- OTIS PERSONAL PET SPOTLIGHT -->
     <div class="otis-card">
-      <div class="otis-avatar">
-        <!-- Optional: Replace emoji with <img src="assets/images/otis.jpg" alt="Otis"> -->
-        🐶
+      <div class="otis-photo-frame">
+        <!-- Save your photo in repository as assets/images/me-and-otis.jpg -->
+        <img src="assets/images/me-and-otis.jpg" alt="Me and Otis" onerror="this.style.display='none'; this.parentNode.innerText='🐶';">
       </div>
       <div class="otis-info">
         <h3>Meet Otis!</h3>
-        <p>Our official classroom mascot and Chief Morale Officer. Otis reminds us to stay patient, remain curious, and take our time when approaching complex ideas and texts.</p>
+        <p>Otis is my pet dog at home—while you won't get to meet him in person, his patient and observant nature inspired our course's signature observational method. Whenever we need to slow down and carefully analyze a text or image, we channel Otis!</p>
       </div>
     </div>
 
     <!-- DAY 1 LESSON OVERVIEW -->
     <div class="card">
-      <h2>Day 1: The Genesis of American Letters (Sept 1)</h2>
-      <p>Welcome to English 11! Today we merge journalistic observation with literary analysis to deconstruct how origin narratives construct cultural identity and collective memory[cite: 5].</p>
+      <h2>Day 1: Journalistic Lens & Observational Analysis</h2>
+      <p>Welcome to English 11! Today we merge journalistic observation with literary analysis, establishing our analytical toolkit for examining texts, primary sources, and cultural narratives.</p>
       
       <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
         <div style="flex: 1; min-width: 250px; background: #eef2f7; padding: 1rem; border-radius: 6px;">
-          <strong>Primary Focus:</strong> Constructing a conceptual framework for "American Identity" through indigenous oral narratives[cite: 5].
+          <strong>Primary Focus:</strong> Developing a disciplined observational habit to analyze texts and artifacts before jumping to conclusions.
         </div>
         <div style="flex: 1; min-width: 250px; background: #eef2f7; padding: 1rem; border-radius: 6px;">
-          <strong>Core Objective:</strong> Evaluating cosmogonic myths to extract communal ethics using a critical journalistic eye[cite: 5].
+          <strong>Core Objective:</strong> Master the OTIS Slow-Looking Framework through interactive media exercises.
         </div>
       </div>
     </div>
@@ -332,7 +360,7 @@
     <!-- THE OTIS SLOW-LOOKING FRAMEWORK -->
     <div class="card">
       <h2>The OTIS Slow-Looking Framework</h2>
-      <p class="framework-attribution">Named in honor of our classroom mascot, Otis • Adapted from Dr. Jennifer Holberg's (Calvin University) slow-looking pedagogy.</p>
+      <p class="framework-attribution">Named in honor of my dog, Otis • Adapted from Dr. Jennifer Holberg's slow-looking pedagogy.</p>
 
       <div class="framework-box">
         <p>Before jumping to quick conclusions, we use the <strong>OTIS Framework</strong> to slow down, resist snap judgments, and thoroughly examine literary and visual media through a journalistic lens.</p>
@@ -356,23 +384,36 @@
           <div class="otis-step">
             <span class="otis-letter">S</span>
             <strong>Synthesize</strong>
-            <p><em>Fetch the Big Picture:</em> How does this work shape our understanding of "American Identity" and culture?</p>
+            <p><em>Fetch the Big Picture:</em> How does this work shape our understanding of broader themes and culture?</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 14-SLIDE PRESENTATION EMBED -->
+    <!-- 14-SLIDE PRESENTATION EMBED & TEACHER STAMP -->
     <div class="card">
       <h2>Day 1 Interactive Slide Deck (14 Slides)</h2>
-      <p>Use the viewer below to follow along with today's introductory lecture and media analysis breakdown.</p>
+      <p>Follow along with today's presentation introducing the OTIS Slow-Looking method and journalistic observation principles.</p>
       
-      <div class="slide-embed-container">
-        <!-- REPLACE THIS FRAME WITH YOUR GOOGLE SLIDES OR CANVA EMBED CODE -->
-        <div class="slide-placeholder">
-          <h3>📊 Day 1 Slide Presentation (14 Slides)</h3>
-          <p><em>[Slide Embed Area]</em></p>
-          <small>Insert your Canva or Google Slides <code>&lt;iframe&gt;</code> code inside this frame in <code>index.html</code>.</small>
+      <div class="slide-section-grid">
+        <!-- 14 Slides Viewer -->
+        <div class="slide-embed-container">
+          <!-- REPLACE THIS FRAME WITH YOUR GOOGLE SLIDES OR CANVA EMBED CODE -->
+          <div class="slide-placeholder">
+            <h3>📊 Day 1 Presentation (14 Slides)</h3>
+            <p><em>Focus: OTIS Slow-Looking Framework & Journalistic Analysis</em></p>
+            <small>Insert your Canva or Google Slides <code>&lt;iframe&gt;</code> code inside this frame in <code>index.html</code>.</small>
+          </div>
+        </div>
+
+        <!-- Teacher Stamp Placement -->
+        <div class="teacher-stamp-card">
+          <div class="stamp-img-container">
+            <!-- Save your teacher stamp image as assets/images/teacher-stamp.png -->
+            <img src="assets/images/teacher-stamp.png" alt="Teacher Stamp" onerror="this.style.display='none'; this.parentNode.innerText='🏷️ Stamp';">
+          </div>
+          <h4>Approved Syllabus Material</h4>
+          <p>English 11 & Journalism Crossover</p>
         </div>
       </div>
     </div>
