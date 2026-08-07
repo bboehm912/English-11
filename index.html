@@ -17,7 +17,6 @@
             --stamp-green: #059669;
             --badge-bg: #eff6ff;
             --badge-text: #1d4ed8;
-            --accent-yellow: #fef3c7;
         }
 
         * {
@@ -47,7 +46,7 @@
         .header-card {
             background: var(--card-bg);
             border-radius: 12px;
-            padding: 20px 24px;
+            padding: 18px 24px;
             border: 1px solid var(--border-color);
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
             display: flex;
@@ -61,17 +60,10 @@
             gap: 16px;
         }
 
-        /* Chisholm Logo SVG Placeholder */
-        .chisholm-logo {
+        .chisholm-logo-img {
             width: 52px;
             height: 52px;
-            border-radius: 50%;
-            background: #ffffff;
-            border: 2px solid #e2e8f0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            object-fit: contain;
             flex-shrink: 0;
         }
 
@@ -88,7 +80,7 @@
             margin-top: 3px;
         }
 
-        /* Green Stamp Badge */
+        /* Green Stamp Badge with Boehm Photo */
         .green-stamp {
             width: 68px;
             height: 68px;
@@ -267,7 +259,7 @@
 
         .slide-img-box {
             width: 100%;
-            height: 180px;
+            height: 190px;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border-color);
@@ -279,6 +271,7 @@
             object-fit: cover;
         }
 
+        /* CALLOUT BOXES */
         .prompt-callout-box {
             background: #f0f9ff;
             border-left: 4px solid var(--primary-blue);
@@ -294,7 +287,17 @@
         .prompt-callout-box p {
             font-size: 0.85rem;
             color: #0369a1;
-            font-style: italic;
+        }
+
+        .info-callout-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--stamp-green);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 16px;
+            font-size: 0.88rem;
+            color: #1e293b;
+            line-height: 1.4;
         }
 
         .btn-prompt {
@@ -326,6 +329,10 @@
             font-size: 0.9rem;
             cursor: pointer;
             transition: background 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .nav-btn:hover:not(:disabled) {
@@ -472,26 +479,21 @@
     <!-- TOP HEADER CARD -->
     <header class="header-card">
         <div class="header-left">
-            <!-- Chisholm Bluestreaks C Logo SVG -->
-            <div class="chisholm-logo" title="Chisholm High School">
-                <svg width="34" height="34" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#dc2626" stroke-width="8"/>
-                    <path d="M 65 25 C 35 25, 25 35, 25 50 C 25 65, 35 75, 65 75" fill="none" stroke="#2563eb" stroke-width="12" stroke-linecap="round"/>
-                    <polygon points="52,15 32,52 48,52 40,85 70,42 52,42" fill="#dc2626" stroke="#ffffff" stroke-width="2"/>
-                </svg>
-            </div>
+            <!-- Chisholm Bluestreaks Official Logo Image -->
+            <img src="Chisholmlogo.png" alt="Chisholm High School Logo" class="chisholm-logo-img">
+            
             <div class="header-titles">
                 <h1>American Literature: Media & Cultural Analysis</h1>
                 <p>Week 1 Foundations: Indigenous Oral Traditions, Cosmogony & The OTIS Framework</p>
             </div>
         </div>
 
-        <!-- Green Boehm Classroom Stamp -->
+        <!-- Boehm Classroom Stamp with boehm_photo.jpg -->
         <div class="green-stamp" title="The Boehm Classroom • Chisholm High School">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Mr. Boehm">
+            <img src="boehm_photo.jpg" alt="Mr. Brady Edward Boehm">
             <svg class="stamp-text-svg" viewBox="0 0 100 100">
                 <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
-                <text font-size="8.5" font-weight="bold" fill="#059669" letter-spacing="1">
+                <text font-size="8.2" font-weight="bold" fill="#059669" letter-spacing="0.8">
                     <textPath href="#circlePath" startOffset="0%">• THE BOEHM CLASSROOM •</textPath>
                 </text>
             </svg>
@@ -524,22 +526,22 @@
 
                 <div class="slide-inner-box">
                     <div class="slide-header-line">
-                        <h2 id="slideTitle">1. Course Orientation & Studio Objectives</h2>
+                        <h2 id="slideTitle">Loading...</h2>
                         <span class="std-badge" id="slideStandard">MN ELA 11.1.6.1</span>
                     </div>
 
                     <div class="slide-body-grid">
                         <div class="slide-text-content" id="slideContent">
-                            <!-- Injected by JavaScript -->
+                            <!-- Injected dynamically by JavaScript -->
                         </div>
                         <div class="slide-img-box">
-                            <img id="slideImage" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Slide Graphic">
+                            <img id="slideImage" src="" alt="Slide Graphic">
                         </div>
                     </div>
 
-                    <div class="prompt-callout-box">
-                        <p id="promptText">✍️ <strong>Random Daily Literature Prompt:</strong> "How do origin stories reflect a culture's ethical relationship with nature?"</p>
-                        <button class="btn-prompt" onclick="generatePrompt()">Generate New Prompt 🔄</button>
+                    <!-- Dynamic Callout Container -->
+                    <div id="slideCallout">
+                        <!-- Injected by JavaScript -->
                     </div>
                 </div>
             </div>
@@ -554,9 +556,9 @@
         <div id="worksheet-view" class="view-panel">
             <div>
                 <h2 class="worksheet-title">Week 1 Academic Assessment & OTIS Hermeneutics</h2>
-                <p class="worksheet-sub">Complete and submit this electronic worksheet following today's lecture and text analysis.</p>
+                <p class="worksheet-sub">Complete and submit this electronic worksheet following today's lecture and primary text analysis.</p>
 
-                <form onsubmit="event.preventDefault(); alert('Worksheet successfully submitted! Saved to student portal.');">
+                <form onsubmit="event.preventDefault(); alert('Worksheet submitted successfully! Saved to student portal.');">
                     <div class="form-grid-3">
                         <div class="form-group">
                             <label>Student Full Name <span>*</span></label>
@@ -575,7 +577,7 @@
                     <!-- Question 1 -->
                     <div class="ws-question-block">
                         <div class="ws-question-title">1. Cosmogony & Earth-Diver Archetypes (MN ELA 11.1.6.1)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">Define "Earth-Diver" creation narrative and explain how it differs from <em>creation ex nihilo</em>.</p>
+                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">Define "Earth-Diver" creation narrative and explain how it differs from <em>creation ex nihilo</em> based on today's slides.</p>
                         <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Type your response here..." required></textarea>
                     </div>
 
@@ -608,37 +610,50 @@
             <div>
                 <h2 class="resource-section-title">Course Reference Materials & Mascot Spotlight</h2>
 
-                <!-- OTIS Dog Profile -->
+                <!-- OTIS Dog Profile with otis-and-boehm.jpg -->
                 <div class="otis-profile-card">
-                    <img class="otis-img" src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=400&q=80" alt="Otis the Dog">
+                    <img class="otis-img" src="otis-and-boehm.jpg" alt="Mr. Boehm and Otis">
                     <div>
                         <h3 style="font-size: 1.1rem; color: #9a3412;">Meet Otis & The OTIS Analytical Framework</h3>
                         <p style="font-size: 0.85rem; color: #431407; margin-top: 4px; line-height: 1.4;">
-                            Named after Mr. Boehm's faithful rescue dog, the <strong>OTIS Framework</strong> is our classroom's official hermeneutic lens for literary analysis: <strong>O</strong>rigin, <strong>T</strong>ransformation, <strong>I</strong>nterdependence, and <strong>S</strong>acrifice.
+                            Named after Mr. Boehm's rescue dog, the <strong>OTIS Framework</strong> serves as our classroom's official analytical lens for examining literature: <strong>O</strong>rigin, <strong>T</strong>ransformation, <strong>I</strong>nterdependence, and <strong>S</strong>acrifice.
                         </p>
                     </div>
                 </div>
 
                 <div class="res-grid">
+                    <!-- Resource Card 1 -->
                     <div class="res-card">
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Literary Time Periods Reference Chart</h4>
-                            <p style="font-size: 0.82rem; color: var(--text-muted);">Chronological roadmap covering Indigenous Orality, Puritans, Enlightenment, & Romanticism.</p>
+                            <p style="font-size: 0.82rem; color: var(--text-muted);">Mr. Boehm's handy handout covering British and American eras from the Native Era through Postmodernism.</p>
                         </div>
                         <div style="margin-top: 12px; display: flex; gap: 8px;">
-                            <button class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;" onclick="alert('Opening Literary Time Periods PDF...')">👁️ View PDF</button>
-                            <button class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem; background: #475569;" onclick="alert('Downloading PDF...')">📥 Download</button>
+                            <a href="Literary+Time+Periods_2.pdf" target="_blank" class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;">👁️ View PDF</a>
+                            <a href="Literary+Time+Periods_2.pdf" download class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem; background: #475569;">📥 Download</a>
                         </div>
                     </div>
 
+                    <!-- Resource Card 2 -->
                     <div class="res-card">
                         <div>
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">"Manabozho and the Muskrat" Primary Text</h4>
-                            <p style="font-size: 0.82rem; color: var(--text-muted);">Full Anishinaabe creation myth reading with annotated vocabulary notes.</p>
+                            <p style="font-size: 0.82rem; color: var(--text-muted);">Full Ojibwe oral myth reading detailing the great flood, animal divers, and world reconstruction.</p>
                         </div>
                         <div style="margin-top: 12px; display: flex; gap: 8px;">
-                            <button class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;" onclick="alert('Opening Manabozho Story PDF...')">📖 Read Text</button>
-                            <button class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem; background: #475569;" onclick="alert('Downloading Text...')">📥 Download</button>
+                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" target="_blank" class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;">📖 Read Text</a>
+                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" download class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem; background: #475569;">📥 Download</a>
+                        </div>
+                    </div>
+
+                    <!-- Resource Card 3 -->
+                    <div class="res-card" style="grid-column: span 2; margin-top: 12px;">
+                        <div>
+                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Day 1 Orientation & Netiquette Slides PDF</h4>
+                            <p style="font-size: 0.82rem; color: var(--text-muted);">Includes Mr. Boehm's background, Calvin University roots, swim coaching history, and online community guidelines.</p>
+                        </div>
+                        <div style="margin-top: 12px; display: flex; gap: 8px;">
+                            <a href="Day1.pdf" target="_blank" class="nav-btn" style="padding: 6px 12px; font-size: 0.8rem;">📄 Day 1 Slides PDF</a>
                         </div>
                     </div>
                 </div>
@@ -649,163 +664,220 @@
 </div>
 
 <script>
-    // SLIDE DATA REPOSITORY (14 Full Slides)
+    // 14 FULL ROBUST SLIDES WITH UNIQUE CALLOUTS
     const slideData = [
         {
-            title: "1. Course Orientation & The OTIS Framework",
+            title: "1. Course Orientation & Teacher Introduction",
             std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
+            img: "boehm_photo.jpg",
             content: `
                 <ul>
-                    <li><strong>Mission:</strong> Explore early American literature through critical lenses and cultural hermeneutics.</li>
-                    <li><strong>Meet Otis:</strong> Our mascot inspires the OTIS framework: Origin, Transformation, Interdependence, Sacrifice.</li>
-                    <li><strong>Day 1 Goal:</strong> Establish course expectations and analyze early Indigenous creation myths.</li>
-                </ul>`
+                    <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Chisholm High School Alum 2015, Calvin University 2020 B.A., 5th year teaching).</li>
+                    <li><strong>Class Mascot:</strong> Meet Otis! My faithful beagle rescue dog who inspires our analytical framework.</li>
+                    <li><strong>Course Goal:</strong> Explore American Literature across continents, genres, and oral traditions.</li>
+                </ul>`,
+            callout: `
+                <div class="prompt-callout-box">
+                    <p id="promptText">✍️ <strong>Random Daily Literature Prompt:</strong> "How do origin stories reflect a culture's ethical relationship with nature?"</p>
+                    <button class="btn-prompt" onclick="generatePrompt()">Generate New Prompt 🔄</button>
+                </div>`
         },
         {
-            title: "2. Standards & Academic Benchmarks",
+            title: "2. Academic Standards & Course Benchmarks",
             std: "MN ELA 11.1.3.1",
             img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>MN ELA 11.1.6.1:</strong> Evaluate cosmogonic myths to extract communal ethics and environmental values.</li>
-                    <li><strong>MN ELA 11.1.3.1:</strong> Analyze authorial/cultural intent within oral traditions and allegorical motifs.</li>
-                    <li><strong>Assessment:</strong> Application of the OTIS framework on weekly primary texts.</li>
-                </ul>`
+                    <li><strong>MN ELA 11.1.6.1:</strong> Evaluate foundational American texts, cosmogonic myths, and cultural perspectives.</li>
+                    <li><strong>MN ELA 11.1.3.1:</strong> Analyze complex character interactions, allegorical motifs, and authorial intent.</li>
+                    <li><strong>Mastery Metric:</strong> Demonstrate textual evidence and critical synthesis through the OTIS lens.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    💡 <strong>Standard Alignment:</strong> High school ELA standards require evaluating how oral traditions preserve communal ethics.
+                </div>`
         },
         {
-            title: "3. Day 1 Classroom Ethos & Expectations",
+            title: "3. Classroom Ethos & Netiquette Guidelines",
             std: "MN ELA 11.1.6.1",
             img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Active Engagement:</strong> Dialogue and critical inquiry over passive memorization.</li>
-                    <li><strong>Respectful Hermeneutics:</strong> Approaching sacred oral literature with academic rigor and honor.</li>
-                    <li><strong>Deadlines & Preparedness:</strong> Always bring your primary text and notebook to lab discussions.</li>
-                </ul>`
+                    <li><strong>Participate & Be Persistent:</strong> Active presence required; ask questions immediately when stuck.</li>
+                    <li><strong>Think Before Sending:</strong> Online tone can easily be misunderstood; practice courtesy and respect.</li>
+                    <li><strong>Academic Integrity:</strong> Zero tolerance for plagiarism under the Chisholm Code of Conduct.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    📜 <strong>Netiquette Rule:</strong> "Practices of courtesy and respect that apply in the physical classroom require even greater attention online."
+                </div>`
         },
         {
-            title: "4. The Power & Nature of Oral Traditions",
+            title: "4. The Native Literary Era (Before 1620 CE)",
             std: "MN ELA 11.1.3.1",
             img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Living Documents:</strong> Oral stories serve as history, law, ecology, and religion combined.</li>
-                    <li><strong>Mnemonic Devices:</strong> Repetition, rhythm, and animal archetypes preserve accuracy across generations.</li>
-                    <li><strong>Communal Experience:</strong> Stories are performance-based and tied to communal gathering.</li>
-                </ul>`
+                    <li><strong>Historical Context:</strong> Pre-dates European contact (Native Era in Mr. Boehm's time periods chart).</li>
+                    <li><strong>Orality vs. Literacy:</strong> Stories are living, performance-based history, law, and ecological science.</li>
+                    <li><strong>Mnemonic Devices:</strong> Repetition, symbolic numbers (e.g., 4), and animal personification.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    ⏳ <strong>Timeline Note:</strong> Indigenous oral traditions represent the true foundational era of North American literary expression.
+                </div>`
         },
         {
-            title: "5. Cosmogonic Mythologies Defined",
+            title: "5. Cosmogony & Creation Archetypes Defined",
             std: "MN ELA 11.1.6.1",
             img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Cosmogony:</strong> Explanatory narratives detailing the creation or order of the universe.</li>
-                    <li><strong>Creation Ex Nihilo:</strong> Creation out of nothing by divine command.</li>
-                    <li><strong>Earth-Diver Archetype:</strong> A hero or animal dives into primordial water to bring up soil.</li>
-                </ul>`
+                    <li><strong>Cosmogony:</strong> Universal narratives explaining how the world was formed and humanity's place in it.</li>
+                    <li><strong>Creation Ex Nihilo:</strong> Creation out of nothing by divine fiat.</li>
+                    <li><strong>Earth-Diver Archetype:</strong> A creature dives into primordial waters to recover mud to build land.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    🌍 <strong>Key Concept:</strong> Earth-Diver myths portray creation as a physical, cooperative effort requiring humility and sacrifice.
+                </div>`
         },
         {
-            title: "6. Cultural Context: Anishinaabe / Ojibwe Worldview",
+            title: "6. Anishinaabe Worldview & Manabozho",
             std: "MN ELA 11.1.3.1",
             img: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Manabozho:</strong> The trickster hero and teacher who embodies human potential and flaws.</li>
-                    <li><strong>The Great Flood:</strong> Recounts cosmic renewal requiring inter-species cooperation.</li>
-                    <li><strong>Kinship Model:</strong> Humans are the younger siblings of creation, dependent on nature.</li>
-                </ul>`
+                    <li><strong>Manabozho Figure:</strong> Sacred hero, trickster, and teacher in Ojibwe oral tradition.</li>
+                    <li><strong>Kinship with Nature:</strong> Humans are considered "younger siblings" who must learn from animals.</li>
+                    <li><strong>Reciprocity:</strong> Maintaining balance through gratitude, respect, and non-exploitative relationships.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    🐺 <strong>Cultural Lens:</strong> Animals possess high moral wisdom; humanity depends on them for survival.
+                </div>`
         },
         {
-            title: "7. Primary Text Reading: 'Manabozho and the Muskrat'",
+            title: "7. Primary Text: 'Manabozho and the Muskrat'",
             std: "MN ELA 11.1.3.1",
             img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Setting:</strong> Manabozho sits atop a floating tree after the deluge.</li>
-                    <li><strong>The Divers:</strong> The Loon and Beaver try and fail to dive to the bottom of the deep water.</li>
-                    <li><strong>The Entry of Wazhashk:</strong> The humble muskrat steps forward despite doubt.</li>
-                </ul>`
+                    <li><strong>The Great Flood:</strong> Rising waters force Manabozho to seek refuge on a high hill.</li>
+                    <li><strong>The Four Stretching Commands:</strong> Manabozho asks the tree to grow four times, yet waters rise.</li>
+                    <li><strong>The Call for Unity:</strong> <em>"We must work together. If we don't, there will be no more earth!"</em></li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    📖 <strong>Textual Motif:</strong> The repetition of the number four reflects sacred balance and the four directions in Ojibwe culture.
+                </div>`
         },
         {
-            title: "8. Ecological Stewardship & Human Decentering",
+            title: "8. The Sacrificial Dive of the Animal Brothers",
             std: "MN ELA 11.1.6.1",
             img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Agency of Animals:</strong> Animals act with high moral intelligence and sacrifice.</li>
-                    <li><strong>Inverting Power:</strong> Physical prowess (Beaver) fails; humility and determination win.</li>
-                    <li><strong>Ecology:</strong> Humans do not own creation; they inhabit what animals built.</li>
-                </ul>`
+                    <li><strong>Failed Attempts:</strong> Duck, Beaver, and others dive into the deep water but drown in the attempt.</li>
+                    <li><strong>Enter Wazhashk (The Muskrat):</strong> Small and humble, the muskrat willingly offers to dive down.</li>
+                    <li><strong>The Deep Descent:</strong> The muskrat stays under for a long duration until his body floats up.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    💧 <strong>Critical Inversion:</strong> Physical strength (Beaver) fails, while humble determination (Muskrat) achieves the goal.
+                </div>`
         },
         {
-            title: "9. Symbolic Motifs: Tree, Soil, & Paw",
+            title: "9. Resurrection, Soil & World Rebuilding",
             std: "MN ELA 11.1.3.1",
             img: "https://images.unsplash.com/photo-1511497584788-8767611136f6?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>The Expanding Raft/Tree:</strong> Refuge and hope amidst total upheaval.</li>
-                    <li><strong>The Paw-Full of Soil:</strong> A tiny, fragile contribution that rebuilds a whole world.</li>
-                    <li><strong>The Sacrifice:</strong> Giving one's life force to ensure the community's future.</li>
-                </ul>`
+                    <li><strong>Breath of Life:</strong> Manabozho pulls the muskrat out and gently blows on him until he revives.</li>
+                    <li><strong>Grains of Sand:</strong> Unclasping the muskrat's paw reveals a few precious grains of earth.</li>
+                    <li><strong>Expanding the Earth:</strong> Manabozho scatters the sand over the water, expanding it into vast land.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    🐾 <strong>Symbolic Detail:</strong> A single handful of earth, gained through total sacrifice, regenerates the cosmos.
+                </div>`
         },
         {
-            title: "10. Worldview Paradigm Shift",
+            title: "10. Verification: The Fox & Wolf Trail",
             std: "MN ELA 11.1.6.1",
             img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Western Anthropocentrism:</strong> Humanity as conqueror and ruler of nature.</li>
-                    <li><strong>Indigenous Kinship:</strong> Humanity as a small member of a extended cosmic family.</li>
-                    <li><strong>Ethical Consequence:</strong> Exploitation vs. Reciprocity and Gratitude.</li>
-                </ul>`
+                    <li><strong>The Fox Test:</strong> A young fox is sent to run around the earth; he returns as an old fox!</li>
+                    <li><strong>The Wolf Test:</strong> A young wolf is sent to verify; he too returns as an old wolf.</li>
+                    <li><strong>Confirmation:</strong> Manabozho knows for certain the restored earth is vast and sustainable.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    🦊 <strong>Time & Scale:</strong> Restoration requires verification through time, proving the new earth's permanence.
+                </div>`
         },
         {
-            title: "11. Deep Dive: The OTIS Analytical Tool",
+            title: "11. The OTIS Analytical Framework",
             std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=600&q=80",
+            img: "otis-and-boehm.jpg",
             content: `
                 <ul>
-                    <li><strong>O - Origin:</strong> Where does life, power, or authority spring from?</li>
-                    <li><strong>T - Transformation:</strong> How does the hero or world change through trial?</li>
-                    <li><strong>I - Interdependence:</strong> Who relies on whom to survive?</li>
-                    <li><strong>S - Sacrifice:</strong> What is given up for the greater good?</li>
-                </ul>`
+                    <li><strong>O - Origin:</strong> What is the source of life, crisis, or authority in the text?</li>
+                    <li><strong>T - Transformation:</strong> How do characters or environments evolve through trial?</li>
+                    <li><strong>I - Interdependence:</strong> How do entities rely upon one another for survival?</li>
+                    <li><strong>S - Sacrifice:</strong> What must be surrendered for the collective good?</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    🐶 <strong>Hermeneutic Tool:</strong> Designed by Mr. Boehm to give students a structured lens for literary analysis.
+                </div>`
         },
         {
-            title: "12. OTIS Applied to 'Manabozho'",
+            title: "12. OTIS Applied to Ojibwe Creation Myth",
             std: "MN ELA 11.1.6.1",
             img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Origin:</strong> Primordial mud beneath the flood waters.</li>
-                    <li><strong>Transformation:</strong> Sand grain expands across turtle shell into North America.</li>
-                    <li><strong>Interdependence:</strong> Manabozho cannot survive without the animals' aid.</li>
-                    <li><strong>Sacrifice:</strong> Muskrat drowns to bring back the life-saving soil.</li>
-                </ul>`
+                    <li><strong>Origin:</strong> The ancient hill, stretching tree, and primordial floodwaters.</li>
+                    <li><strong>Transformation:</strong> Tiny sand grains in a paw expanding into North America.</li>
+                    <li><strong>Interdependence:</strong> Manabozho cannot rebuild land without the animal divers.</li>
+                    <li><strong>Sacrifice:</strong> The muskrat risking his life to retrieve the life-saving soil.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    🔍 <strong>Analytical Synthesis:</strong> Notice how Interdependence and Sacrifice drive the resolution of the myth.
+                </div>`
         },
         {
-            title: "13. Seminar Discussion & Inquiry",
+            title: "13. Literary Time Periods Overview",
             std: "MN ELA 11.1.3.1",
             img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li>Why is it critical that the smallest animal succeeds where the strongest fail?</li>
-                    <li>How does this text establish early American values long before European contact?</li>
-                    <li>Where do we see modern echoes of Earth-Diver ethics today?</li>
-                </ul>`
+                    <li><strong>Native Era (Pre-1620 CE):</strong> Orality, cosmogony, ecological kinship.</li>
+                    <li><strong>Puritan / Colonial Era (1620–1750 CE):</strong> Providential theology, journals, early narratives.</li>
+                    <li><strong>Revolutionary & Romantic Eras (1750–1870 CE):</strong> Reason, independence, and transcendentalism.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    📚 <strong>Roadmap:</strong> Understanding time periods allows us to trace how perspectives on nature shifted across centuries.
+                </div>`
         },
         {
-            title: "14. Formative Exit Quick-Write",
+            title: "14. Formative Quick-Write & Exit Directions",
             std: "MN ELA 11.1.6.1",
             img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
             content: `
                 <ul>
-                    <li><strong>Prompt:</strong> Synthesize today's reading with OTIS. In 5-7 sentences, analyze how the Muskrat's sacrifice challenges anthropocentric views.</li>
-                    <li><strong>Requirement:</strong> Include two specific textual citations.</li>
-                    <li><strong>Submission:</strong> Complete on your electronic worksheet under Tab 2 before the bell.</li>
-                </ul>`
+                    <li><strong>Quick-Write Task:</strong> Synthesize today's reading using OTIS in 5–7 sentences. Explain how the Muskrat's sacrifice challenges anthropocentric (human-centered) views.</li>
+                    <li><strong>Citations Required:</strong> Include two direct citations/references from the story.</li>
+                    <li><strong>Submission:</strong> Complete and submit on **Tab 2: Electronic Student Worksheet**.</li>
+                </ul>`,
+            callout: `
+                <div class="info-callout-box">
+                    ✍️ <strong>Final Action:</strong> Complete all fields on Tab 2 and sign digitally before the class period ends!
+                </div>`
         }
     ];
 
@@ -813,7 +885,7 @@
         "\"How do origin stories reflect a culture's ethical relationship with nature?\"",
         "\"Compare the Muskrat's quiet determination with modern heroic archetypes.\"",
         "\"In what ways does the OTIS framework highlight interdependence over individualism?\"",
-        "\"Analyze how oral storytelling techniques ensure cultural survival.\""
+        "\"Analyze how oral storytelling techniques ensure cultural survival across centuries.\""
     ];
 
     let currentSlide = 0;
@@ -825,6 +897,7 @@
         document.getElementById('slideStandard').textContent = slide.std;
         document.getElementById('slideContent').innerHTML = slide.content;
         document.getElementById('slideImage').src = slide.img;
+        document.getElementById('slideCallout').innerHTML = slide.callout;
 
         document.getElementById('prevBtn').disabled = currentSlide === 0;
         document.getElementById('nextBtn').disabled = currentSlide === slideData.length - 1;
@@ -839,15 +912,16 @@
 
     function generatePrompt() {
         const randomIndex = Math.floor(Math.random() * prompts.length);
-        document.getElementById('promptText').innerHTML = `✍️ <strong>Random Daily Literature Prompt:</strong> ${prompts[randomIndex]}`;
+        const promptElem = document.getElementById('promptText');
+        if (promptElem) {
+            promptElem.innerHTML = `✍️ <strong>Random Daily Literature Prompt:</strong> ${prompts[randomIndex]}`;
+        }
     }
 
     function switchTab(tabName) {
-        // Toggle tab buttons
         const buttons = document.querySelectorAll('.tab-btn');
         buttons.forEach(btn => btn.classList.remove('active'));
 
-        // Toggle view panels
         const panels = document.querySelectorAll('.view-panel');
         panels.forEach(panel => panel.classList.remove('active'));
 
@@ -863,7 +937,7 @@
         }
     }
 
-    // Initial render
+    // Initial render call
     renderSlide();
 </script>
 </body>
