@@ -1,1025 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>American Literature | Chisholm High School</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-page: #f1f5f9;
-            --card-bg: #ffffff;
-            --primary-blue: #2563eb;
-            --primary-blue-hover: #1d4ed8;
-            --text-dark: #0f172a;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --stamp-green: #0b8a4f;
-            --badge-bg: #eff6ff;
-            --badge-text: #1d4ed8;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>American Literature: Media & Cultural Analysis</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #eef2f7; margin: 0; padding: 20px; color: #1e293b; }
+    .container { max-width: 900px; margin: 0 auto; }
+    
+    /* Header Styles */
+    .header-card, .form-card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 20px; }
+    .header-flex { display: flex; align-items: center; justify-content: space-between; }
+    .header-left { display: flex; align-items: center; gap: 15px; }
+    .header-left img { max-width: 65px; max-height: 65px; object-fit: contain; }
+    
+    /* Stamp with photo overlay */
+    .stamp-container { position: relative; width: 80px; height: 80px; }
+    .stamp-container .stamp-bg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
+    .stamp-container .photo-inner { width: 50px; height: 50px; border-radius: 50%; position: absolute; top: 15px; left: 15px; object-fit: cover; z-index: 1; }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-        }
+    /* Navigation Tabs */
+    .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
+    .tab-btn { 
+      flex: 1; 
+      padding: 14px; 
+      border-radius: 8px; 
+      border: 1px solid #cbd5e1; 
+      background: #fff; 
+      text-align: center; 
+      font-weight: bold; 
+      font-size: 0.9em;
+      cursor: pointer; 
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover { background: #f8fafc; }
+    .tab-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; }
 
-        body {
-            background-color: var(--bg-page);
-            color: var(--text-dark);
-            padding: 24px 16px;
-            display: flex;
-            justify-content: center;
-        }
+    /* Slide Deck Formatting */
+    .slide-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 25px; min-height: 440px; display: flex; flex-direction: column; justify-content: space-between; }
+    .slide { display: none; }
+    .slide.active { display: block; }
+    
+    .slide-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #2563eb; padding-bottom: 10px; margin-bottom: 15px; }
+    .slide-title { margin: 0; font-size: 1.3em; color: #0f172a; }
+    .std-badge { background: #dbeafe; color: #1e40af; font-size: 0.75em; font-weight: bold; padding: 4px 10px; border-radius: 6px; border: 1px solid #bfdbfe; text-transform: uppercase; white-space: nowrap; }
 
-        .page-container {
-            width: 100%;
-            max-width: 980px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
+    .slide-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; align-items: center; }
+    .slide-content ul { padding-left: 20px; line-height: 1.6; color: #334155; margin: 0; }
+    .slide-content li { margin-bottom: 10px; }
+    
+    .slide-media { text-align: center; }
+    .slide-media img { width: 100%; height: 210px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 
-        /* HEADER BOX */
-        .header-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 18px 24px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    .ctrl-btn { background: #2563eb; color: #fff; border: none; padding: 10px 22px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+    .ctrl-btn:hover { background: #1d4ed8; }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .chisholm-logo-img {
-            width: 52px;
-            height: 52px;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-
-        .header-titles h1 {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.2;
-        }
-
-        .header-titles p {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin-top: 3px;
-        }
-
-        /* CONCENTRIC GREEN STAMP - MATCHED TO SCREENSHOT */
-        .stamp-container {
-            position: relative;
-            width: 96px;
-            height: 96px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .stamp-svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* TOP NAVIGATION TABS */
-        .tab-nav {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .tab-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .tab-btn:hover {
-            border-color: var(--primary-blue);
-        }
-
-        .tab-btn.active {
-            background: var(--primary-blue);
-            color: #ffffff;
-            border-color: var(--primary-blue);
-            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
-        }
-
-        /* MAIN CONTENT CARD CONTAINER */
-        .content-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            padding: 28px;
-            min-height: 540px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .view-panel {
-            display: none;
-            height: 100%;
-        }
-
-        .view-panel.active {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* SLIDE VIEW STYLES */
-        .slide-top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .slide-main-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .slide-counter-badge {
-            background: #f1f5f9;
-            color: #475569;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            border: 1px solid #cbd5e1;
-        }
-
-        .slide-inner-box {
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 24px;
-            background: #ffffff;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .slide-header-line {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 2px solid #3b82f6;
-            padding-bottom: 8px;
-            margin-bottom: 18px;
-        }
-
-        .slide-header-line h2 {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--text-dark);
-        }
-
-        .std-badge {
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 4px 8px;
-            border-radius: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .slide-body-grid {
-            display: grid;
-            grid-template-columns: 1fr 280px;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .slide-text-content ul {
-            list-style: none;
-        }
-
-        .slide-text-content li {
-            position: relative;
-            padding-left: 20px;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #334155;
-        }
-
-        .slide-text-content li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-blue);
-            font-size: 1.4rem;
-            line-height: 1;
-            top: -2px;
-        }
-
-        .slide-img-box {
-            width: 100%;
-            height: 190px;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            background: #f8fafc;
-        }
-
-        .slide-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* CALLOUT BOXES */
-        .prompt-callout-box {
-            background: #f0f9ff;
-            border-left: 4px solid var(--primary-blue);
-            padding: 14px 16px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .prompt-callout-box p {
-            font-size: 0.85rem;
-            color: #0369a1;
-        }
-
-        .info-callout-box {
-            background: #f8fafc;
-            border-left: 4px solid var(--stamp-green);
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin-top: 16px;
-            font-size: 0.88rem;
-            color: #1e293b;
-            line-height: 1.4;
-        }
-
-        .btn-prompt {
-            background: var(--primary-blue);
-            color: #ffffff;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        /* SLIDE CONTROLS */
-        .slide-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-
-        .nav-btn {
-            background: var(--primary-blue);
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .nav-btn:hover:not(:disabled) {
-            background: var(--primary-blue-hover);
-        }
-
-        .nav-btn:disabled {
-            background: #cbd5e1;
-            cursor: not-allowed;
-        }
-
-        /* WORKSHEET FORM STYLES */
-        .worksheet-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 4px;
-        }
-
-        .worksheet-sub {
-            font-size: 0.88rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .form-grid-3 {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .form-group label {
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: #334155;
-        }
-
-        .form-group label span {
-            color: #dc2626;
-        }
-
-        .form-input, .form-textarea {
-            padding: 10px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 0.9rem;
-            background: #f8fafc;
-        }
-
-        .form-input:focus, .form-textarea:focus {
-            outline: none;
-            border-color: var(--primary-blue);
-            background: #ffffff;
-        }
-
-        .ws-question-block {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 18px;
-            margin-bottom: 16px;
-        }
-
-        .ws-question-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .mc-option {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 6px;
-            font-size: 0.88rem;
-            color: #334155;
-            cursor: pointer;
-        }
-
-        .submit-btn-banner {
-            background: #10b981;
-            color: #ffffff;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 1rem;
-            width: 100%;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .submit-btn-banner:hover {
-            background: #059669;
-        }
-
-        /* RESOURCE HUB STYLES */
-        .resource-section-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 6px;
-        }
-
-        .otis-profile-card {
-            display: grid;
-            grid-template-columns: 160px 1fr;
-            gap: 16px;
-            background: #fdf8f6;
-            border: 1px solid #ffedd5;
-            padding: 16px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            align-items: center;
-        }
-
-        .otis-img {
-            width: 100%;
-            height: 130px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .res-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .res-card {
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 18px;
-            background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        /* PRINT STYLES - FOR PRINT/SAVE TO PDF */
-        @media print {
-            body {
-                background: #ffffff;
-                padding: 0;
-            }
-            .header-card, .tab-nav, .slide-controls, .submit-btn-banner, #slides-view, #resources-view {
-                display: none !important;
-            }
-            #worksheet-view {
-                display: block !important;
-            }
-            .content-card {
-                border: none;
-                box-shadow: none;
-                padding: 0;
-            }
-            .form-input, .form-textarea {
-                border: 1px solid #94a3b8;
-                background: #ffffff;
-            }
-            .ws-question-block {
-                break-inside: avoid;
-            }
-        }
-    </style>
+    /* Form & Content Styles */
+    .form-group { margin-bottom: 15px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9em; }
+    input[type="text"], input[type="date"], textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+    textarea { resize: vertical; min-height: 90px; }
+    
+    .req { color: #dc2626; font-weight: bold; }
+    .standard-sec { margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
+    
+    .submit-btn { width: 100%; background: #10b981; color: white; padding: 14px; font-size: 1.1em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px; }
+    .submit-btn:hover { background: #059669; }
+    
+    .view-content { display: none; }
+    .view-content.active { display: block; }
+  </style>
 </head>
 <body>
 
-<div class="page-container">
-
-    <!-- TOP HEADER CARD -->
-    <header class="header-card">
-        <div class="header-left">
-            <!-- Chisholm Bluestreaks Logo -->
-            <img src="Chisholmlogo.png" alt="Chisholm High School Logo" class="chisholm-logo-img">
-            
-            <div class="header-titles">
-                <h1>American Literature: Media & Cultural Analysis</h1>
-                <p>Week 1 Foundations: Indigenous Oral Traditions, Cosmogony & The OTIS Framework</p>
-            </div>
+<div class="container">
+  <!-- Header Card -->
+  <div class="header-card">
+    <div class="header-flex">
+      <div class="header-left">
+        <!-- Chisholm Logo Container -->
+        <img src="Chisholmlogo.png" alt="Chisholm High School Logo" />
+        <div>
+          <h2 style="margin: 0; font-size: 1.3em;">American Literature: Media & Cultural Analysis</h2>
+          <p style="margin: 5px 0 0 0; color: #64748b; font-size: 0.9em;">Week 1 Foundations: Indigenous Oral Traditions, Cosmogony & The OTIS Framework</p>
         </div>
+      </div>
+      <!-- Classroom Stamp Seal -->
+      <div class="stamp-container">
+        <img class="photo-inner" src="boehm_photo.jpg" alt="Instructor Photo" />
+        <img class="stamp-bg" src="boehm-stamp.svg" alt="Classroom Seal" />
+      </div>
+    </div>
+  </div>
 
-        <!-- ACCURATE CONCENTRIC GREEN STAMP - LEFT TO RIGHT TEXT -->
-        <div class="stamp-container" title="★ THE BOEHM CLASSROOM ★ CHISHOLM HIGH SCHOOL">
-            <svg class="stamp-svg" viewBox="0 0 200 200">
-                <!-- 1. Outer Solid Circle Ring -->
-                <circle cx="100" cy="100" r="95" fill="none" stroke="#0b8a4f" stroke-width="3.5"/>
-                
-                <!-- Curved Text Arc Paths -->
-                <!-- Top Arc: Left to Right along top -->
-                <path id="textArcTop" d="M 22,100 A 78,78 0 0,1 178,100" fill="none"/>
-                <!-- Bottom Arc: Left to Right along bottom (Upright Text) -->
-                <path id="textArcBottom" d="M 22,100 A 78,78 0 0,0 178,100" fill="none"/>
-                
-                <!-- Curved Text Elements -->
-                <text font-size="13.5" font-weight="800" fill="#0b8a4f" letter-spacing="1.2">
-                    <textPath href="#textArcTop" startOffset="50%" text-anchor="middle">★ THE BOEHM CLASSROOM ★</textPath>
-                </text>
-                <text font-size="13.5" font-weight="800" fill="#0b8a4f" letter-spacing="1.5">
-                    <textPath href="#textArcBottom" startOffset="50%" text-anchor="middle">CHISHOLM HIGH SCHOOL</textPath>
-                </text>
+  <!-- Interactive Navigation Buttons -->
+  <div class="nav-tabs">
+    <button type="button" class="tab-btn active" id="deck-tab" onclick="switchTab('deck')">📑 Day 1 Curriculum Deck (14 Slides)</button>
+    <button type="button" class="tab-btn" id="worksheet-tab" onclick="switchTab('worksheet')">📝 Electronic Student Worksheet</button>
+    <button type="button" class="tab-btn" id="resources-tab" onclick="switchTab('resources')">🗺️ Course Resource Hub & Meet Otis</button>
+  </div>
 
-                <!-- 2. Middle Solid Circle Ring -->
-                <circle cx="100" cy="100" r="68" fill="none" stroke="#0b8a4f" stroke-width="2"/>
-                
-                <!-- 3. Innermost Concentric Dotted Ring (3rd Ring) -->
-                <circle cx="100" cy="100" r="60" fill="none" stroke="#0b8a4f" stroke-width="2.2" stroke-dasharray="4,4"/>
-                
-                <!-- Clip Path for Mr. Boehm's Photo inside the 3rd Dotted Ring -->
-                <defs>
-                    <clipPath id="innerDottedCircleClip">
-                        <circle cx="100" cy="100" r="57"/>
-                    </clipPath>
-                </defs>
+  <!-- VIEW 1: Curriculum Slide Deck -->
+  <div id="deck-view" class="form-card view-content active">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+      <h2 style="margin: 0; font-size: 1.2em; color: #0f172a;">Week 1: The Genesis of American Letters</h2>
+      <span id="slide-num" style="font-weight: bold; color: #2563eb; background: #eff6ff; padding: 6px 14px; border-radius: 20px; border: 1px solid #bfdbfe; font-size: 0.85em;">Slide 1 of 14</span>
+    </div>
 
-                <!-- Centered Photo Inside 3rd Ring -->
-                <image href="boehm_photo.jpg" x="43" y="43" width="114" height="114" clip-path="url(#innerDottedCircleClip)" preserveAspectRatio="xMidYMid slice"/>
-            </svg>
+    <!-- Slide Container -->
+    <div class="slide-box">
+      <!-- SLIDE 1 -->
+      <div class="slide active">
+        <div class="slide-header">
+          <h3 class="slide-title">1. Course Orientation & Teacher Introduction</h3>
+          <span class="std-badge">MN ELA 11.1.6.1</span>
         </div>
-    </header>
-
-    <!-- TOP NAVIGATION TAB BUTTONS -->
-    <nav class="tab-nav">
-        <button class="tab-btn active" onclick="switchTab('slides')">
-            📑 Day 1 Curriculum Deck (14 Slides)
-        </button>
-        <button class="tab-btn" onclick="switchTab('worksheet')">
-            📝 Electronic Student Worksheet
-        </button>
-        <button class="tab-btn" onclick="switchTab('resources')">
-            📚 Course Resource Hub & Meet Otis
-        </button>
-    </nav>
-
-    <!-- MAIN CONTENT CARD -->
-    <main class="content-card">
-
-        <!-- VIEW 1: CURRICULUM SLIDE DECK -->
-        <div id="slides-view" class="view-panel active">
-            <div>
-                <div class="slide-top-bar">
-                    <h3 class="slide-main-title">Week 1: The Genesis of American Letters</h3>
-                    <span class="slide-counter-badge" id="slideBadge">Slide 1 of 14</span>
-                </div>
-
-                <div class="slide-inner-box">
-                    <div class="slide-header-line">
-                        <h2 id="slideTitle">Loading...</h2>
-                        <span class="std-badge" id="slideStandard">MN ELA 11.1.6.1</span>
-                    </div>
-
-                    <div class="slide-body-grid">
-                        <div class="slide-text-content" id="slideContent">
-                            <!-- Injected dynamically by JavaScript -->
-                        </div>
-                        <div class="slide-img-box">
-                            <img id="slideImage" src="" alt="Slide Graphic">
-                        </div>
-                    </div>
-
-                    <!-- Dynamic Callout Container -->
-                    <div id="slideCallout">
-                        <!-- Injected by JavaScript -->
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide-controls">
-                <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous Slide</button>
-                <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next Slide →</button>
-            </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
+              <li><strong>Education:</strong> Calvin University B.A. 🏰 Go Knights! (2020) | University of Oregon M.S. 🦆 Go Ducks! (2026).</li>
+              <li><strong>Class Mascot:</strong> Meet Otis! My faithful beagle rescue dog who inspires our analytical framework.</li>
+              <li><strong>Course Goal:</strong> Explore American Literature across eras, oral traditions, and media analysis.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Station Mascot Otis" />
+          </div>
         </div>
-
-        <!-- VIEW 2: ELECTRONIC STUDENT WORKSHEET -->
-        <div id="worksheet-view" class="view-panel">
-            <div>
-                <h2 class="worksheet-title">Week 1 Academic Assessment: "Manabozho and the Muskrat"</h2>
-                <p class="worksheet-sub">Complete this electronic worksheet using today's oral story reading and lecture. You can print or save as PDF upon completion.</p>
-
-                <form id="studentWorksheetForm" onsubmit="event.preventDefault(); window.print();">
-                    <div class="form-grid-3">
-                        <div class="form-group">
-                            <label>Student Full Name <span>*</span></label>
-                            <input type="text" class="form-input" placeholder="e.g. Alex Morgan" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Class Period <span>*</span></label>
-                            <input type="text" class="form-input" placeholder="e.g. Period 2" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Date <span>*</span></label>
-                            <input type="date" class="form-input" required>
-                        </div>
-                    </div>
-
-                    <!-- Question 1: Multiple Choice -->
-                    <div class="ws-question-block">
-                        <div class="ws-question-title">1. Multiple Choice: Cultural Importance (1 pt)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">Why is the muskrat a very important animal to the Ojibwe people?</p>
-                        <label class="mc-option">
-                            <input type="radio" name="q1" value="A" required> A) The muskrat helped the Ojibwe people by being a spiritual leader.
-                        </label>
-                        <label class="mc-option">
-                            <input type="radio" name="q1" value="B"> B) The muskrat helped the Ojibwe people by running through the land to see how big the Earth was.
-                        </label>
-                        <label class="mc-option">
-                            <input type="radio" name="q1" value="C"> C) The muskrat helped the Ojibwe people by choosing which animals would survive the flood.
-                        </label>
-                        <label class="mc-option">
-                            <input type="radio" name="q1" value="D"> D) The muskrat helped the Ojibwe people by helping them survive a great flood.
-                        </label>
-                    </div>
-
-                    <!-- Question 2: Special Ability -->
-                    <div class="ws-question-block">
-                        <div class="ws-question-title">2. Textual Recall: Manabozho's Character Trait (1 pt)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">What is Manabozho’s special ability in the story?</p>
-                        <input type="text" class="form-input" style="width: 100%;" placeholder="Type your answer here..." required>
-                    </div>
-
-                    <!-- Question 3: Flood Myth Universality -->
-                    <div class="ws-question-block">
-                        <div class="ws-question-title">3. Universal Archetypes: Global Flood Stories (1 pt)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">A flood myth is repeated in over 200 cultures across the world. Why do you think flood myths are so universally prevalent?</p>
-                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Reflect on why human cultures share flood stories..." required></textarea>
-                    </div>
-
-                    <!-- Question 4: Antiquated Language & Oral Tradition -->
-                    <div class="ws-question-block">
-                        <div class="ws-question-title">4. Lecture Concept: Antiquated Language & Oral Traditions (2 pts)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">What does it mean for something to be "antiquated"? How has "Manabozho and the Muskrat" stood the test of time despite only recently being written down?</p>
-                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Explain how oral stories survive over thousands of years..." required></textarea>
-                    </div>
-
-                    <!-- Question 5: Time Frame Analysis -->
-                    <div class="ws-question-block">
-                        <div class="ws-question-title">5. Story Timeframe Analysis (1 pt)</div>
-                        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">What do you think is the overall time frame covered in the story? Consider the tree stretching four times and the tests with the fox and wolf.</p>
-                        <textarea class="form-textarea" rows="2" style="width:100%" placeholder="Describe the duration of time represented in the myth..." required></textarea>
-                    </div>
-
-                    <!-- Section 2: Personal Origin Story -->
-                    <div class="ws-question-block" style="border-left: 4px solid var(--primary-blue);">
-                        <div class="ws-question-title" style="color: #1e3a8a;">6. Creative Writing Prompt: Your Own Origin Story (14 pts)</div>
-                        <p style="font-size: 0.85rem; color: #334155; margin-bottom: 10px; line-height: 1.4;">
-                            Write an origin story about yourself in the style of an Indigenous creation narrative. You may create characters that are animals, spirits, or natural elements. Embed a situation that harbors wisdom, and conclude with what you learned about yourself through the experience.
-                        </p>
-                        <textarea class="form-textarea" rows="6" style="width:100%" placeholder="Once upon a time..." required></textarea>
-                    </div>
-
-                    <div class="form-group" style="margin-bottom: 16px;">
-                        <label>Student Digital Signature <span>*</span></label>
-                        <input type="text" class="form-input" placeholder="Type your full legal name to sign" required>
-                    </div>
-
-                    <button type="submit" class="submit-btn-banner">
-                        🖨️ Print / Save Completed Worksheet as PDF
-                    </button>
-                </form>
-            </div>
+        <div style="margin-top: 18px; background: #f0f9ff; border-left: 4px solid #0284c7; padding: 12px 16px; border-radius: 6px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <strong style="color: #0369a1; font-size: 0.9em;">✍️ Random Daily Literature Prompt</strong>
+            <button type="button" onclick="generatePrompt()" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 0.78em; font-weight: bold; cursor: pointer;">Generate New Prompt 🔄</button>
+          </div>
+          <p id="prompt-display" style="margin: 0; color: #334155; font-size: 0.88em; font-style: italic;">
+            "How do origin stories reflect a culture's ethical relationship with nature?"
+          </p>
         </div>
+      </div>
 
-        <!-- VIEW 3: RESOURCE HUB & MEET OTIS -->
-        <div id="resources-view" class="view-panel">
-            <div>
-                <h2 class="resource-section-title">Course Reference Materials & Mascot Spotlight</h2>
-
-                <!-- OTIS Dog Profile with otis-and-boehm.jpg -->
-                <div class="otis-profile-card">
-                    <img class="otis-img" src="otis-and-boehm.jpg" alt="Mr. Boehm and Otis">
-                    <div>
-                        <h3 style="font-size: 1.1rem; color: #9a3412;">Meet Otis & The OTIS Analytical Framework</h3>
-                        <p style="font-size: 0.85rem; color: #431407; margin-top: 4px; line-height: 1.4;">
-                            Named after Mr. Boehm's rescue dog, the <strong>OTIS Framework</strong> serves as our classroom's official analytical lens for examining literature: <strong>O</strong>rigin, <strong>T</strong>ransformation, <strong>I</strong>nterdependence, and <strong>S</strong>acrifice.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="res-grid">
-                    <!-- Resource Card 1 -->
-                    <div class="res-card">
-                        <div>
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">Literary Time Periods Reference Chart</h4>
-                            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Mr. Boehm's handy handout covering British and American eras from the Native Era through Postmodernism.</p>
-                        </div>
-                        <div style="margin-top: 16px; display: flex; gap: 8px;">
-                            <a href="Literary+Time+Periods_2.pdf" target="_blank" class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem;">👁️ View PDF</a>
-                            <a href="Literary+Time+Periods_2.pdf" download class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem; background: #475569;">📥 Download</a>
-                        </div>
-                    </div>
-
-                    <!-- Resource Card 2 -->
-                    <div class="res-card">
-                        <div>
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 4px;">"Manabozho and the Muskrat" Primary Text</h4>
-                            <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Full Ojibwe oral myth reading detailing the great flood, animal divers, and world reconstruction.</p>
-                        </div>
-                        <div style="margin-top: 16px; display: flex; gap: 8px;">
-                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" target="_blank" class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem;">📖 Read Text</a>
-                            <a href="3._Manabozho_and_the_Muskrat_2.pdf" download class="nav-btn" style="padding: 8px 14px; font-size: 0.8rem; background: #475569;">📥 Download</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <!-- SLIDE 2 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">2. Indigenous Oral Traditions & Storytelling</h3>
+          <span class="std-badge">MN ELA 11.1.1.1</span>
         </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Orality vs. Literacy:</strong> Indigenous narratives rely on oral performance, mnemonic structures, and communal repetition rather than static written texts.</li>
+              <li><strong>Cultural Continuity:</strong> Stories served as living histories, legal codes, spiritual guides, and environmental instruction manuals.</li>
+              <li><strong>Fluid Performance:</strong> Each telling adapts dynamically to the audience while maintaining core cultural truths.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Indigenous Storytelling Circle" />
+          </div>
+        </div>
+      </div>
 
-    </main>
+      <!-- SLIDE 3 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">3. Cosmogony & Creation Myths</h3>
+          <span class="std-badge">MN ELA 11.1.3.3</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Definition:</strong> Cosmogony explores narratives explaining the origin and structure of the universe.</li>
+              <li><strong>Earth-Diver Motifs:</strong> Common in Native American literature, where animals dive into primordial waters to retrieve mud and form land.</li>
+              <li><strong>Ecological Balance:</strong> Humans are viewed as equal partners in creation rather than dominant rulers over nature.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Creation Myth Symbolism" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">4. Comparative Origin Stories</h3>
+          <span class="std-badge">MN ELA 11.1.9.9</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Iroquois vs. Genesis:</strong> Contrast "The World on Turtle's Back" with Judeo-Christian creation traditions.</li>
+              <li><strong>Dualistic Balance:</strong> Exploring the twin brothers motif (right-handed vs. left-handed twin) as necessary harmony rather than simple good vs. evil.</li>
+              <li><strong>Textual Evidence:</strong> Analyzing how worldview shapes literary archetype and character motivations.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Comparative Literature Texts" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">5. Colonial Encounters & Early American Texts</h3>
+          <span class="std-badge">MN ELA 11.1.2.2</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>First-Contact Narratives:</strong> Examining Cabeza de Vaca, Bradford, and Rowlandson through critical historical lenses.</li>
+              <li><strong>Perspective & Bias:</strong> Dissecting early European journals for rhetorical positioning and ideological bias.</li>
+              <li><strong>Captivity Narratives:</strong> Analyzing literary tropes and popular propaganda in early colonial publishing.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=600&q=80" alt="Historical Manuscripts" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 6 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">6. Rhetoric of Revolution & Independence</h3>
+          <span class="std-badge">MN ELA 11.2.4.4</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Founding Documents:</strong> Ethos, Pathos, and Logos in Patrick Henry, Thomas Paine, and Thomas Jefferson.</li>
+              <li><strong>Persuasive Appeals:</strong> How revolutionary pamphlets mobilized public sentiment across colonies.</li>
+              <li><strong>Literary Paradox:</strong> Examining liberty rhetoric alongside the persistence of slavery in early America.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80" alt="Revolutionary Documents" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 7 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">7. Transcendentalism & The American Wild</h3>
+          <span class="std-badge">MN ELA 11.1.4.4</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Emerson & Thoreau:</strong> Self-Reliance, Over-Soul, and civil disobedience in 19th-century thought.</li>
+              <li><strong>Nature as Sanctuary:</strong> Rejecting industrial materialism in favor of individual spiritual intuition.</li>
+              <li><strong>Modern Resonance:</strong> Connecting 1840s Transcendentalism to modern environmental ethics.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80" alt="Wilderness Forest" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 8 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">8. Media Literacy & Cultural Narrative Analysis</h3>
+          <span class="std-badge">MN ELA 11.3.1.1</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Media as Mythmakers:</strong> How modern films, news outlets, and digital media construct national mythologies.</li>
+              <li><strong>Deconstructing Tropes:</strong> Identifying recurring cultural archetypes across print and visual media formats.</li>
+              <li><strong>Critical Lens:</strong> Questioning who holds narrative power and whose voices remain marginalized.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Media & Film Analysis" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 9 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">9. The O.T.I.S. Analytical Framework</h3>
+          <span class="std-badge">Core Course Methodology</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>O - Objectivity:</strong> Distinguish verifiable textual facts from reader assumption and emotional bias.</li>
+              <li><strong>T - Truthfulness:</strong> Evaluate authorial intent, logical consistency, and historical contextual accuracy.</li>
+              <li><strong>I - Integrity:</strong> Execute rigorous primary source citation and ethical scholarly synthesis.</li>
+              <li><strong>S - Stewardship:</strong> Respect diverse cultural traditions and maintain responsible classroom dialogue.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="otis-and-boehm.jpg" alt="Otis Framework Inspiration" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 10 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">10. Critical Reading & Textual Annotation</h3>
+          <span class="std-badge">MN ELA 11.1.1.2</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Active Annotation:</strong> Coding texts for rhetorical devices, thematic motifs, and structural shifts.</li>
+              <li><strong>Margin Dialogue:</strong> Writing analytical questions and connections directly alongside primary source passages.</li>
+              <li><strong>Vocabulary in Context:</strong> Tracking archaic diction and shift in word meanings across literary eras.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Annotating Literature" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 11 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">11. Textual Evidence & MLA Citation Standards</h3>
+          <span class="std-badge">MN ELA 11.2.8.8</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Signal Phrases:</strong> Integrating direct quotes seamlessly into analytical sentences.</li>
+              <li><strong>Parenthetical Citations:</strong> Formatting MLA in-text citations accurately for print and digital sources.</li>
+              <li><strong>Scholarship Ethics:</strong> Avoiding plagiarism through precise attribution and original paraphrase.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="Academic Writing" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 12 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">12. Synthesizing Multiple Media Formats</h3>
+          <span class="std-badge">MN ELA 11.3.2.2</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Cross-Media Analysis:</strong> Pairing 19th-century essays with 21st-century documentary media.</li>
+              <li><strong>Comparative Matrices:</strong> Charting thematic alignment across written, visual, and audio texts.</li>
+              <li><strong>Synthesized Claims:</strong> Formulating complex thesis statements that evaluate multiple mediums simultaneously.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=600&q=80" alt="Multi-Media Analysis" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 13 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">13. Course Expectations & Discussion Ethics</h3>
+          <span class="std-badge">Classroom Standards</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Socratic Seminar Norms:</strong> Speak with evidence, listen actively, and challenge ideas rather than people.</li>
+              <li><strong>Preparation Mandate:</strong> Arrive with completed readings, marked texts, and written discussion questions.</li>
+              <li><strong>Academic Rigor:</strong> Revision opportunities require full reflection submissions within one week of feedback.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Classroom Seminar Discussion" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDE 14 -->
+      <div class="slide">
+        <div class="slide-header">
+          <h3 class="slide-title">14. Student Worksheet Guidance & Next Steps</h3>
+          <span class="std-badge">Week 1 Action Plan</span>
+        </div>
+        <div class="slide-grid">
+          <div class="slide-content">
+            <ul>
+              <li><strong>Next Step:</strong> Click the <strong>"Electronic Student Worksheet"</strong> tab above to complete your Week 1 analysis response.</li>
+              <li><strong>Submission:</strong> Complete all short-answer prompt fields and submit digital signatures before Friday 3:00 PM.</li>
+              <li><strong>Resource Hub:</strong> Use the third tab to access course reading PDFs, assignment rubrics, and station updates.</li>
+            </ul>
+          </div>
+          <div class="slide-media">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Digital Worksheet Completion" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+      <button type="button" class="ctrl-btn" onclick="changeSlide(-1)">⬅️ Previous Slide</button>
+      <button type="button" class="ctrl-btn" onclick="changeSlide(1)">Next Slide ➡️</button>
+    </div>
+  </div>
+
+  <!-- VIEW 2: Student Worksheet View -->
+  <div id="worksheet-view" class="form-card view-content">
+    <h2>Week 1 Electronic Student Worksheet</h2>
+    <p style="color: #64748b; font-size: 0.9em;">Complete this guided reflection using evidence from Week 1 readings and class lectures.</p>
+
+    <form onsubmit="event.preventDefault(); window.print();">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Student Full Name <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. Morgan Taylor" required />
+        </div>
+        <div class="form-group">
+          <label>Class Period <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. Period 3" required />
+        </div>
+        <div class="form-group">
+          <label>Date <span class="req">*</span></label>
+          <input type="date" required />
+        </div>
+        <div class="form-group">
+          <label>Selected Text for Analysis <span class="req">*</span></label>
+          <input type="text" placeholder="e.g., The World on Turtle's Back" required />
+        </div>
+      </div>
+
+      <div class="standard-sec">
+        <h3>Part 1: Textual Analysis & O.T.I.S. Framework</h3>
+        <div class="form-group">
+          <label>1. Apply the 'O' (Objectivity) lens: What key facts and narrative events occur in your selected text without applying modern assumptions? <span class="req">*</span></label>
+          <textarea required placeholder="Write 3-4 sentences outlining clear textual events..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>2. Compare how nature is depicted in Indigenous creation narratives vs. European colonial texts. Cite specific details. <span class="req">*</span></label>
+          <textarea required placeholder="Contrast the ecological relationships presented in both traditions..."></textarea>
+        </div>
+      </div>
+
+      <div class="standard-sec">
+        <h3>Part 2: Media & Cultural Connections</h3>
+        <div class="form-group">
+          <label>3. Identify a modern film, news story, or digital media narrative that uses a classic origin story archetype. Explain the connection. <span class="req">*</span></label>
+          <textarea required placeholder="Identify modern media and explain the cultural archetype used..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-top: 25px;">
+        <label>Student Digital Signature (Type Legal Full Name) <span class="req">*</span></label>
+        <input type="text" placeholder="Type full name to digitally sign" required style="font-family: 'Courier New', monospace; font-size: 1.1em; font-weight: bold;" />
+      </div>
+
+      <button type="submit" class="submit-btn">Submit Worksheet & Print Copy</button>
+    </form>
+  </div>
+
+  <!-- VIEW 3: Course Resource Hub View -->
+  <div id="resources-view" class="form-card view-content">
+    <h2>Course Resource Hub & Meet Otis</h2>
+    <p style="color: #64748b; font-size: 0.9em;">Access course syllabus, reading links, writing rubrics, and mascot updates.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+      <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 8px;">
+        <h3 style="margin-top: 0; color: #2563eb;">📚 Week 1 Primary Text Links</h3>
+        <ul style="line-height: 1.8; color: #334155; padding-left: 20px;">
+          <li><a href="#" style="color: #2563eb; font-weight: bold;">Iroquois Creation Story: "World on Turtle's Back" (PDF)</a></li>
+          <li><a href="#" style="color: #2563eb; font-weight: bold;">William Bradford: "Of Plymouth Plantation" Excerpts</a></li>
+          <li><a href="#" style="color: #2563eb; font-weight: bold;">The O.T.I.S. Analytical Matrix Guide</a></li>
+          <li><a href="#" style="color: #2563eb; font-weight: bold;">MLA 9th Edition Citation Cheat Sheet</a></li>
+        </ul>
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 8px; text-align: center;">
+        <img src="otis-and-boehm.jpg" alt="Meet Otis" style="width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 10px;" />
+        <h3 style="margin: 0; color: #0f172a;">Meet Otis the Beagle!</h3>
+        <p style="color: #475569; font-size: 0.88em; margin-top: 6px;">
+          Otis is our official classroom mascot and analytical inspiration! When evaluating texts, ask yourself: <em>"Is this analysis grounded, objective, and truthful to the source material?"</em>
+        </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-    // 14 FULL ROBUST SLIDES WITH UPDATED SLIDE 1 EDUCATION TEXT
-    const slideData = [
-        {
-            title: "1. Course Orientation & Teacher Introduction",
-            std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Chisholm High School Alum 2015).</li>
-                    <li><strong>Education:</strong> Calvin University B.A. 🏰 Go Knights! (2020) | University of Oregon M.S. 🦆 Go Ducks! (2026).</li>
-                    <li><strong>Class Mascot:</strong> Meet Otis! My faithful beagle rescue dog who inspires our analytical framework.</li>
-                    <li><strong>Course Goal:</strong> Explore American Literature across eras, oral traditions, and media analysis.</li>
-                </ul>`,
-            callout: `
-                <div class="prompt-callout-box">
-                    <p id="promptText">✍️ <strong>Random Daily Literature Prompt:</strong> "How do origin stories reflect a culture's ethical relationship with nature?"</p>
-                    <button class="btn-prompt" onclick="generatePrompt()">Generate New Prompt 🔄</button>
-                </div>`
-        },
-        {
-            title: "2. Academic Standards & Course Benchmarks",
-            std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>MN ELA 11.1.6.1:</strong> Evaluate foundational American texts, cosmogonic myths, and cultural perspectives.</li>
-                    <li><strong>MN ELA 11.1.3.1:</strong> Analyze complex character interactions, allegorical motifs, and authorial intent.</li>
-                    <li><strong>Mastery Metric:</strong> Demonstrate textual evidence and critical synthesis through the OTIS lens.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    💡 <strong>Standard Alignment:</strong> High school ELA standards require evaluating how oral traditions preserve communal ethics.
-                </div>`
-        },
-        {
-            title: "3. Classroom Ethos & Netiquette Guidelines",
-            std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Participate & Be Persistent:</strong> Active presence required; ask questions immediately when stuck.</li>
-                    <li><strong>Think Before Sending:</strong> Online tone can easily be misunderstood; practice courtesy and respect.</li>
-                    <li><strong>Academic Integrity:</strong> Zero tolerance for plagiarism under the Chisholm Code of Conduct.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    📜 <strong>Netiquette Rule:</strong> "Practices of courtesy and respect that apply in the physical classroom require even greater attention online."
-                </div>`
-        },
-        {
-            title: "4. The Native Literary Era (Before 1620 CE)",
-            std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Historical Context:</strong> Pre-dates European contact (Native Era in Mr. Boehm's time periods chart).</li>
-                    <li><strong>Orality vs. Literacy:</strong> Stories are living, performance-based history, law, and ecological science.</li>
-                    <li><strong>Mnemonic Devices:</strong> Repetition, symbolic numbers (e.g., 4), and animal personification.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    ⏳ <strong>Timeline Note:</strong> Indigenous oral traditions represent the true foundational era of North American literary expression.
-                </div>`
-        },
-        {
-            title: "5. Cosmogony & Creation Archetypes Defined",
-            std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Cosmogony:</strong> Universal narratives explaining how the world was formed and humanity's place in it.</li>
-                    <li><strong>Creation Ex Nihilo:</strong> Creation out of nothing by divine fiat.</li>
-                    <li><strong>Earth-Diver Archetype:</strong> A creature dives into primordial waters to recover mud to build land.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    🌍 <strong>Key Concept:</strong> Earth-Diver myths portray creation as a physical, cooperative effort requiring humility and sacrifice.
-                </div>`
-        },
-        {
-            title: "6. Anishinaabe Worldview & Manabozho",
-            std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Manabozho Figure:</strong> Sacred hero, trickster, and teacher in Ojibwe oral tradition.</li>
-                    <li><strong>Kinship with Nature:</strong> Humans are considered "younger siblings" who must learn from animals.</li>
-                    <li><strong>Reciprocity:</strong> Maintaining balance through gratitude, respect, and non-exploitative relationships.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    🐺 <strong>Cultural Lens:</strong> Animals possess high moral wisdom; humanity depends on them for survival.
-                </div>`
-        },
-        {
-            title: "7. Primary Text: 'Manabozho and the Muskrat'",
-            std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>The Great Flood:</strong> Rising waters force Manabozho to seek refuge on a high hill.</li>
-                    <li><strong>The Four Stretching Commands:</strong> Manabozho asks the tree to grow four times, yet waters rise.</li>
-                    <li><strong>The Call for Unity:</strong> <em>"We must work together. If we don't, there will be no more earth!"</em></li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    📖 <strong>Textual Motif:</strong> The repetition of the number four reflects sacred balance and the four directions in Ojibwe culture.
-                </div>`
-        },
-        {
-            title: "8. The Sacrificial Dive of the Animal Brothers",
-            std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Failed Attempts:</strong> Duck, Beaver, and others dive into the deep water but drown in the attempt.</li>
-                    <li><strong>Enter Wazhashk (The Muskrat):</strong> Small and humble, the muskrat willingly offers to dive down.</li>
-                    <li><strong>The Deep Descent:</strong> The muskrat stays under for a long duration until his body floats up.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    💧 <strong>Critical Inversion:</strong> Physical strength (Beaver) fails, while humble determination (Muskrat) achieves the goal.
-                </div>`
-        },
-        {
-            title: "9. Resurrection, Soil & World Rebuilding",
-            std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Breath of Life:</strong> Manabozho pulls the muskrat out and gently blows on him until he revives.</li>
-                    <li><strong>Grains of Sand:</strong> Unclasping the muskrat's paw reveals a few precious grains of earth.</li>
-                    <li><strong>Expanding the Earth:</strong> Manabozho scatters the sand over the water, expanding it into vast land.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    🐾 <strong>Symbolic Detail:</strong> A single handful of earth, gained through total sacrifice, regenerates the cosmos.
-                </div>`
-        },
-        {
-            title: "10. Verification: The Fox & Wolf Trail",
-            std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>The Fox Test:</strong> A young fox is sent to run around the earth; he returns as an old fox!</li>
-                    <li><strong>The Wolf Test:</strong> A young wolf is sent to verify; he too returns as an old wolf.</li>
-                    <li><strong>Confirmation:</strong> Manabozho knows for certain the restored earth is vast and sustainable.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    🦊 <strong>Time & Scale:</strong> Restoration requires verification through time, proving the new earth's permanence.
-                </div>`
-        },
-        {
-            title: "11. The OTIS Analytical Framework",
-            std: "MN ELA 11.1.3.1",
-            img: "otis-and-boehm.jpg",
-            content: `
-                <ul>
-                    <li><strong>O - Origin:</strong> What is the source of life, crisis, or authority in the text?</li>
-                    <li><strong>T - Transformation:</strong> How do characters or environments evolve through trial?</li>
-                    <li><strong>I - Interdependence:</strong> How do entities rely upon one another for survival?</li>
-                    <li><strong>S - Sacrifice:</strong> What must be surrendered for the collective good?</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    🐶 <strong>Hermeneutic Tool:</strong> Designed by Mr. Boehm to give students a structured lens for literary analysis.
-                </div>`
-        },
-        {
-            title: "12. OTIS Applied to Ojibwe Creation Myth",
-            std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Origin:</strong> The ancient hill, stretching tree, and primordial floodwaters.</li>
-                    <li><strong>Transformation:</strong> Tiny sand grains in a paw expanding into North America.</li>
-                    <li><strong>Interdependence:</strong> Manabozho cannot rebuild land without the animal divers.</li>
-                    <li><strong>Sacrifice:</strong> The muskrat risking his life to retrieve the life-saving soil.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    🔍 <strong>Analytical Synthesis:</strong> Notice how Interdependence and Sacrifice drive the resolution of the myth.
-                </div>`
-        },
-        {
-            title: "13. Literary Time Periods Overview",
-            std: "MN ELA 11.1.3.1",
-            img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Native Era (Pre-1620 CE):</strong> Orality, cosmogony, ecological kinship.</li>
-                    <li><strong>Puritan / Colonial Era (1620–1750 CE):</strong> Providential theology, journals, early narratives.</li>
-                    <li><strong>Revolutionary & Romantic Eras (1750–1870 CE):</strong> Reason, independence, and transcendentalism.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    📚 <strong>Roadmap:</strong> Understanding time periods allows us to trace how perspectives on nature shifted across centuries.
-                </div>`
-        },
-        {
-            title: "14. Formative Quick-Write & Exit Directions",
-            std: "MN ELA 11.1.6.1",
-            img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
-            content: `
-                <ul>
-                    <li><strong>Quick-Write Task:</strong> Synthesize today's reading using OTIS in 5–7 sentences. Explain how the Muskrat's sacrifice challenges human-centered views.</li>
-                    <li><strong>Citations Required:</strong> Include two direct citations/references from the story.</li>
-                    <li><strong>Submission:</strong> Complete and submit on **Tab 2: Electronic Student Worksheet**.</li>
-                </ul>`,
-            callout: `
-                <div class="info-callout-box">
-                    ✍️ <strong>Final Action:</strong> Complete all fields on Tab 2 and sign digitally before the class period ends!
-                </div>`
-        }
-    ];
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
 
-    const prompts = [
-        "\"How do origin stories reflect a culture's ethical relationship with nature?\"",
-        "\"Compare the Muskrat's quiet determination with modern heroic archetypes.\"",
-        "\"In what ways does the OTIS framework highlight interdependence over individualism?\"",
-        "\"Analyze how oral storytelling techniques ensure cultural survival across centuries.\""
-    ];
+  const literaturePrompts = [
+    '"How do origin stories reflect a culture\'s ethical relationship with nature?"',
+    '"In what ways does oral performance alter text interpretation compared to reading a printed page?"',
+    '"Identify how modern advertisements rely on traditional literary archetypes to persuade consumers."',
+    '"How do colonial journals balance objective recording with ideological bias?"',
+    '"What role does the dualistic twin archetype play in explaining moral balance in Indigenous literature?"'
+  ];
 
-    let currentSlide = 0;
+  function generatePrompt() {
+    const randomIdx = Math.floor(Math.random() * literaturePrompts.length);
+    document.getElementById('prompt-display').innerText = literaturePrompts[randomIdx];
+  }
 
-    function renderSlide() {
-        const slide = slideData[currentSlide];
-        document.getElementById('slideBadge').textContent = `Slide ${currentSlide + 1} of ${slideData.length}`;
-        document.getElementById('slideTitle').textContent = slide.title;
-        document.getElementById('slideStandard').textContent = slide.std;
-        document.getElementById('slideContent').innerHTML = slide.content;
-        document.getElementById('slideImage').src = slide.img;
-        document.getElementById('slideCallout').innerHTML = slide.callout;
+  function updateSlideDisplay() {
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('active', index === currentSlide);
+    });
+    document.getElementById('slide-num').innerText = `Slide ${currentSlide + 1} of ${slides.length}`;
+  }
 
-        document.getElementById('prevBtn').disabled = currentSlide === 0;
-        document.getElementById('nextBtn').disabled = currentSlide === slideData.length - 1;
-    }
+  function changeSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide < 0) currentSlide = 0;
+    if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+    updateSlideDisplay();
+  }
 
-    function changeSlide(direction) {
-        currentSlide += direction;
-        if (currentSlide < 0) currentSlide = 0;
-        if (currentSlide >= slideData.length) currentSlide = slideData.length - 1;
-        renderSlide();
-    }
+  function switchTab(tab) {
+    document.getElementById('deck-tab').classList.toggle('active', tab === 'deck');
+    document.getElementById('worksheet-tab').classList.toggle('active', tab === 'worksheet');
+    document.getElementById('resources-tab').classList.toggle('active', tab === 'resources');
 
-    function generatePrompt() {
-        const randomIndex = Math.floor(Math.random() * prompts.length);
-        const promptElem = document.getElementById('promptText');
-        if (promptElem) {
-            promptElem.innerHTML = `✍️ <strong>Random Daily Literature Prompt:</strong> ${prompts[randomIndex]}`;
-        }
-    }
-
-    function switchTab(tabName) {
-        const buttons = document.querySelectorAll('.tab-btn');
-        buttons.forEach(btn => btn.classList.remove('active'));
-
-        const panels = document.querySelectorAll('.view-panel');
-        panels.forEach(panel => panel.classList.remove('active'));
-
-        if (tabName === 'slides') {
-            buttons[0].classList.add('active');
-            document.getElementById('slides-view').classList.add('active');
-        } else if (tabName === 'worksheet') {
-            buttons[1].classList.add('active');
-            document.getElementById('worksheet-view').classList.add('active');
-        } else if (tabName === 'resources') {
-            buttons[2].classList.add('active');
-            document.getElementById('resources-view').classList.add('active');
-        }
-    }
-
-    // Initial render call
-    renderSlide();
+    document.getElementById('deck-view').classList.toggle('active', tab === 'deck');
+    document.getElementById('worksheet-view').classList.toggle('active', tab === 'worksheet');
+    document.getElementById('resources-view').classList.toggle('active', tab === 'resources');
+  }
 </script>
+
 </body>
 </html>
