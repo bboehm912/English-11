@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 1: Genesis of American Letters | Chisholm High School</title>
+  <title>English 11: American Literature | Chisholm High School</title>
   <style>
     :root {
       --chisholm-blue: #002855;
@@ -16,40 +16,32 @@
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      line-height: 1.7;
+      line-height: 1.6;
       color: var(--text);
       background-color: var(--bg-light);
       margin: 0;
       padding: 0;
     }
 
-    /* HEADER & BRANDING */
+    /* HEADER */
     header {
       background: var(--chisholm-blue);
       color: white;
-      padding: 1.75rem 1.5rem;
+      padding: 1.5rem;
       border-bottom: 5px solid var(--chisholm-gold);
     }
 
     .header-container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-    }
-
-    .brand-section {
       display: flex;
       align-items: center;
       gap: 1.25rem;
     }
 
     .logo-frame {
-      width: 80px;
-      height: 80px;
+      width: 70px;
+      height: 70px;
       background: #ffffff;
       border-radius: 50%;
       display: flex;
@@ -68,9 +60,8 @@
 
     .header-titles h1 {
       margin: 0;
-      font-size: 1.85rem;
+      font-size: 1.75rem;
       color: #ffffff;
-      letter-spacing: -0.02em;
     }
 
     .header-titles p {
@@ -82,104 +73,177 @@
       letter-spacing: 0.05em;
     }
 
-    /* MAIN CONTAINER */
+    /* CONTAINER */
     .container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: 2rem auto;
       padding: 0 1.5rem;
     }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 2.25rem;
+    /* TOP PROFILE CARD (PHOTOS & STAMP) */
+    .top-profile-card {
+      background: #ffffff;
+      border: 2px solid var(--chisholm-gold);
+      border-radius: 12px;
+      padding: 1.5rem;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-      border: 1px solid var(--border);
-    }
-
-    h2 {
-      color: var(--chisholm-blue);
-      border-bottom: 2px solid var(--chisholm-gold);
-      padding-bottom: 0.5rem;
-      margin-top: 0;
-      font-size: 1.45rem;
-    }
-
-    /* OTIS SPOTLIGHT */
-    .otis-card {
       display: flex;
       align-items: center;
       gap: 1.75rem;
-      background: #fffdf5;
-      border: 2px solid var(--chisholm-gold);
-      padding: 1.5rem;
-      border-radius: 10px;
-      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       flex-wrap: wrap;
     }
 
-    .otis-photo-frame {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background: #cbd5e1;
-      border: 4px solid var(--chisholm-blue);
+    .media-group {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 1rem;
       flex-shrink: 0;
-      overflow: hidden;
     }
 
-    .otis-photo-frame img {
+    .photo-frame {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid var(--chisholm-blue);
+      overflow: hidden;
+      background: #cbd5e1;
+    }
+
+    .photo-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .otis-info {
+    .stamp-frame {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stamp-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .profile-info {
       flex: 1;
       min-width: 280px;
     }
 
-    .otis-info h3 {
-      margin: 0 0 0.35rem 0;
+    .profile-info h2 {
+      margin: 0 0 0.5rem 0;
       color: var(--chisholm-blue);
-      font-size: 1.2rem;
+      font-size: 1.35rem;
+      border: none;
+      padding: 0;
     }
 
-    .otis-info p {
+    .profile-info p {
       margin: 0;
       font-size: 0.95rem;
       color: #334155;
     }
 
-    /* OTIS SLOW-LOOKING FRAMEWORK */
-    .framework-box {
+    /* INTERACTIVE SLIDE DECK */
+    .slide-deck-container {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .slide-header {
+      background: var(--chisholm-blue);
+      color: white;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--chisholm-gold);
+    }
+
+    .slide-counter {
+      background: rgba(255,255,255,0.15);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .slide-body {
+      padding: 2rem;
+      min-height: 380px;
+    }
+
+    .slide {
+      display: none;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide h2 {
+      color: var(--chisholm-blue);
+      border-bottom: 2px solid var(--chisholm-gold);
+      padding-bottom: 0.5rem;
+      margin-top: 0;
+    }
+
+    /* SLIDE CONTROLS */
+    .slide-controls {
       background: #f8fafc;
-      border-left: 5px solid var(--chisholm-gold);
-      padding: 1.5rem;
+      border-top: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-slide {
+      background: var(--chisholm-blue);
+      color: white;
+      border: 1px solid var(--chisholm-gold);
+      padding: 0.6rem 1.25rem;
       border-radius: 6px;
-      margin: 1.5rem 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .framework-attribution {
-      font-style: italic;
-      color: #64748b;
-      margin-bottom: 1rem;
-      font-size: 0.88rem;
+    .btn-slide:hover:not(:disabled) {
+      background: var(--chisholm-gold);
+      color: var(--chisholm-blue);
     }
 
+    .btn-slide:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      border-color: #cbd5e1;
+    }
+
+    /* CONTENT SPECIFICS INSIDE SLIDES */
     .otis-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
     }
 
     .otis-step {
-      background: #ffffff;
+      background: #f8fafc;
       padding: 1.25rem;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -190,375 +254,222 @@
       background: var(--chisholm-blue);
       color: var(--chisholm-gold);
       font-weight: bold;
-      font-size: 1.25rem;
-      width: 38px;
-      height: 38px;
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
       text-align: center;
-      line-height: 38px;
+      line-height: 36px;
       border-radius: 50%;
       margin-bottom: 0.5rem;
     }
 
-    /* SLIDE PRESENTATION & STAMP GRID */
-    .slide-section-grid {
-      display: grid;
-      grid-template-columns: 3fr 1fr;
-      gap: 1.5rem;
-      align-items: start;
-      margin-top: 1.5rem;
-    }
-
-    @media (max-width: 820px) {
-      .slide-section-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .pdf-viewer-frame {
-      width: 100%;
-      height: 500px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #1e293b;
-    }
-
-    .teacher-stamp-card {
-      background: #f8fafc;
-      border: 2px dashed var(--chisholm-gold);
-      border-radius: 8px;
-      padding: 1.5rem 1rem;
-      text-align: center;
-    }
-
-    .stamp-img-container {
-      width: 140px;
-      height: 140px;
-      margin: 0 auto 0.75rem auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .stamp-img-container img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-
-    .teacher-stamp-card h4 {
-      margin: 0 0 0.25rem 0;
-      color: var(--chisholm-blue);
-      font-size: 1rem;
-    }
-
-    .teacher-stamp-card p {
-      margin: 0;
-      font-size: 0.85rem;
-      color: #64748b;
-    }
-
-    /* PRIMARY TEXT EXCERPTS */
-    .reading-excerpt {
-      background: #fafaf9;
+    .poem-card {
+      background: #fdfbf7;
       border: 1px solid #e7e5e4;
-      border-left: 4px solid var(--chisholm-blue);
-      border-radius: 6px;
+      border-left: 4px solid var(--chisholm-gold);
       padding: 1.5rem;
-      margin: 1.5rem 0;
+      border-radius: 6px;
+      margin: 1rem 0;
     }
 
-    .reading-excerpt h3 {
-      margin-top: 0;
-      color: var(--chisholm-blue);
-      font-size: 1.15rem;
-    }
-
-    .poem-block {
+    .poem-text {
       font-family: 'Georgia', serif;
-      font-style: italic;
+      line-height: 1.8;
       font-size: 1.05rem;
-      line-height: 1.9;
-      padding: 1rem 1.5rem;
-      background: #ffffff;
-      border-left: 3px solid var(--chisholm-gold);
+      color: #262626;
+      white-space: pre-line;
+    }
+
+    .definition-box {
+      background: #eef2f7;
+      border-left: 4px solid var(--chisholm-blue);
+      padding: 1rem;
       border-radius: 4px;
       margin: 1rem 0;
     }
 
-    /* BUTTONS */
-    .btn-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 1.5rem 0;
-    }
-
-    .btn {
-      display: inline-block;
-      background: var(--chisholm-blue);
-      color: white;
-      padding: 0.75rem 1.25rem;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.9rem;
+    .prompt-box {
+      background: #fffdf5;
       border: 1px solid var(--chisholm-gold);
-      transition: all 0.2s;
-    }
-
-    .btn:hover {
-      background: var(--chisholm-gold);
-      color: var(--chisholm-blue);
-    }
-
-    /* ACCORDION TABLE */
-    details {
-      background: var(--bg-light);
-      border: 1px solid var(--border);
+      padding: 1rem 1.25rem;
       border-radius: 6px;
-      padding: 1rem;
       margin-top: 1rem;
-    }
-
-    summary {
-      font-weight: bold;
-      cursor: pointer;
-      color: var(--chisholm-blue);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-    }
-
-    th, td {
-      border: 1px solid var(--border);
-      padding: 0.65rem;
-      text-align: left;
-    }
-
-    th {
-      background: var(--chisholm-blue);
-      color: white;
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER WITH CHISHOLM LOGO -->
+  <!-- HEADER -->
   <header>
     <div class="header-container">
-      <div class="brand-section">
-        <div class="logo-frame">
-          <img src="Chisholmlogo.png" alt="Chisholm High School Logo">
-        </div>
-        <div class="header-titles">
-          <h1>English 11 & Scholastic Journalism Crossover</h1>
-          <p>Chisholm High School • Master Curriculum Portal</p>
-        </div>
+      <div class="logo-frame">
+        <img src="Chisholmlogo.png" alt="Chisholm High School Logo">
+      </div>
+      <div class="header-titles">
+        <h1>English 11: American Literature</h1>
+        <p>Chisholm High School • Master Lesson Portal</p>
       </div>
     </div>
   </header>
 
   <div class="container">
 
-    <!-- OTIS PERSONAL PET SPOTLIGHT -->
-    <div class="otis-card">
-      <div class="otis-photo-frame">
-        <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Otis">
+    <!-- TOP PROFILE CARD (PHOTOS & STAMP TOGETHER) -->
+    <div class="top-profile-card">
+      <div class="media-group">
+        <div class="photo-frame">
+          <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Otis">
+        </div>
+        <div class="stamp-frame">
+          <img src="boehm-stamp.svg" alt="Boehm Classroom Verified Stamp">
+        </div>
       </div>
-      <div class="otis-info">
-        <h3>Inspiration Corner: Meet Otis!</h3>
-        <p>Otis is my companion dog at home. While he won't be roaming our classroom halls, his steady, deliberate, and deeply observant posture serves as the namesake for our course’s analytical routine. In an era of rapid information consumption, we practice intellectual patience—channeling Otis to slow down, observe raw evidence, and avoid premature conclusions.</p>
+      <div class="profile-info">
+        <h2>Inspiration Corner: Meet Otis!</h2>
+        <p>Otis is my dog at home. While he won't be walking our hallways, his calm, focused, and deliberate posture inspired our classroom approach to reading complex texts: <strong>The OTIS Framework</strong>. Before we rush to judgment, we slow down, look carefully, and gather evidence.</p>
       </div>
     </div>
 
-    <!-- DAY 1 LESSON OVERVIEW & ACADEMIC OBJECTIVES -->
-    <div class="card">
-      <h2>Day 1: Genesis of American Letters & Epistemology of Observation</h2>
-      <p>Welcome to Grade 11 English Literature and Journalism! Today, we examine how foundational cultural identity is constructed, documented, and transmitted. By merging journalistic empiricism with literary hermeneutics, we establish a rigorous framework for deconstructing primary texts, oral traditions, and cultural narratives[cite: 4].</p>
-      
-      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.25rem;">
-        <div style="flex: 1; min-width: 260px; background: #f1f5f9; padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--chisholm-blue);">
-          <strong>Primary Analytical Focus:</strong> Cultivating objective observational habits to isolate textual and structural evidence prior to synthesis.
-        </div>
-        <div style="flex: 1; min-width: 260px; background: #f1f5f9; padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--chisholm-gold);">
-          <strong>Core Academic Objective:</strong> Applying the OTIS Framework to Ojibwe cosmogonic mythology and foundational poetry to evaluate authorial intent and communal ethics[cite: 4].
-        </div>
+    <!-- INTERACTIVE HTML SLIDE PRESENTATION -->
+    <div class="slide-deck-container">
+      <div class="slide-header">
+        <h3>Interactive Lesson Slides • Day 1</h3>
+        <span class="slide-counter" id="slideCounter">Slide 1 of 5</span>
       </div>
-    </div>
 
-    <!-- THE OTIS SLOW-LOOKING FRAMEWORK -->
-    <div class="card">
-      <h2>The OTIS Slow-Looking Framework</h2>
-      <p class="framework-attribution">Informed by the observational pedagogy of Dr. Jennifer Holberg (Calvin University) • Named in honor of Otis</p>
-
-      <div class="framework-box">
-        <p>Before jumping to quick interpretive assertions, scholars and journalists utilize the <strong>OTIS Framework</strong> to resist bias, systematically analyze primary visual and textual evidence, and construct defensible theses.</p>
-
-        <div class="otis-grid">
-          <div class="otis-step">
-            <span class="otis-letter">O</span>
-            <strong>Observe</strong>
-            <p><em>Paws & Pause (Empiricism):</em> Catalog explicit textual details, syntax, diction, imagery, and structural choices without immediate valuation.</p>
+      <div class="slide-body">
+        
+        <!-- SLIDE 1 -->
+        <div class="slide active">
+          <h2>Slide 1: Welcome to American Literature</h2>
+          <p>Welcome to Grade 11 English! This year, we will explore how stories shape our understanding of culture, identity, and history.</p>
+          
+          <div class="definition-box">
+            <strong>Essential Questions for Day 1:</strong>
+            <ul>
+              <li>How do we observe a text carefully before making assumptions?</li>
+              <li>What details often get overlooked when we read too quickly?</li>
+            </ul>
           </div>
-          <div class="otis-step">
-            <span class="otis-letter">T</span>
-            <strong>Trace</strong>
-            <p><em>Contextual Inquiry:</em> Investigate the socio-historical genesis, authorial perspective, cultural framing, and medium of transmission.</p>
-          </div>
-          <div class="otis-step">
-            <span class="otis-letter">I</span>
-            <strong>Interpret</strong>
-            <p><em>Hermeneutic Analysis:</em> Evaluate how subtext, rhetorical devices, motifs, and authorial choices generate implicit meaning.</p>
-          </div>
-          <div class="otis-step">
-            <span class="otis-letter">S</span>
-            <strong>Synthesize</strong>
-            <p><em>Critical Thesis:</em> Connect localized textual evidence to broader thematic arguments concerning American identity and human nature.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 14-SLIDE PRESENTATION EMBED & TEACHER STAMP -->
-    <div class="card">
-      <h2>Day 1 Interactive Lecture Deck & Seminar Materials</h2>
-      <p>Follow along with today's master deck (`Day1.pdf`), detailing our observational methodology and initial primary text breakdowns.</p>
-      
-      <div class="slide-section-grid">
-        <!-- PDF Viewer Embed -->
-        <div>
-          <iframe class="pdf-viewer-frame" src="Day1.pdf" title="Day 1 Presentation Deck"></iframe>
+          <p>Today, we practice slowing down our reading process using a structured observational method.</p>
         </div>
 
-        <!-- Teacher Stamp -->
-        <div class="teacher-stamp-card">
-          <div class="stamp-img-container">
-            <img src="boehm-stamp.svg" alt="Official Instructor Stamp">
+        <!-- SLIDE 2 -->
+        <div class="slide">
+          <h2>Slide 2: The OTIS Analytical Framework</h2>
+          <p>To analyze literature effectively, we use four clear steps to guide our thinking:</p>
+
+          <div class="otis-grid">
+            <div class="otis-step">
+              <span class="otis-letter">O</span>
+              <strong>Observe</strong>
+              <p>Look at the raw evidence. What specific words, imagery, or details stand out on the page?</p>
+            </div>
+            <div class="otis-step">
+              <span class="otis-letter">T</span>
+              <strong>Trace</strong>
+              <p>Consider the context. Who wrote or spoke this? What background situation surrounds it?</p>
+            </div>
+            <div class="otis-step">
+              <span class="otis-letter">I</span>
+              <strong>Interpret</strong>
+              <p>Uncover deeper meaning. What message or theme is the author conveying beneath the surface?</p>
+            </div>
+            <div class="otis-step">
+              <span class="otis-letter">S</span>
+              <strong>Synthesize</strong>
+              <p>Connect it all. How does this passage connect to our bigger questions about American Literature?</p>
+            </div>
           </div>
-          <h4>Curriculum Verified</h4>
-          <p>Chisholm English 11 & Scholastic Journalism Department</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- HIGH-RIGOR DAY 1 TEXT CLOSE READINGS -->
-    <div class="card">
-      <h2>Primary Source Seminars & Close-Reading Exercises</h2>
-
-      <!-- TEXT 1: MANABOZHO AND THE MUSKRAT -->
-      <div class="reading-excerpt">
-        <h3>1. Indigenous Cosmogonic Narrative: "Manabozho and the Muskrat" (Ojibwe Tradition)[cite: 4]</h3>
-        <p><em>Contextual Framing: Cosmogonic myths establish ontological structures, ecological ethics, and societal virtues.</em></p>
-
-        <blockquote style="margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--chisholm-blue); font-style: italic; color: #334155;">
-          "When the great flood submerged the earth, Manabozho rested upon a timber raft alongside the creation's creatures. Seeking to restore the land, he called upon the supreme divers—the otter, the beaver, the loon—to descend into the abyss and retrieve a single grain of earth. Each returned exhausted, defeated by the depth. At last, the unassuming Muskrat stepped forward, risking mortality for the collective survival..."[cite: 4]
-        </blockquote>
-
-        <p><strong>Grade 11 Analytical Task (OTIS Protocol):</strong> Apply the <em>Trace</em> and <em>Interpret</em> phases[cite: 4]. Compare this non-Western teleology with anthropocentric European origin narratives. How does elevating a humble creature alter a culture's definition of heroism, leadership, and ecological stewardship?</p>
-      </div>
-
-      <!-- TEXT 2: THE POET'S LOT -->
-      <div class="reading-excerpt">
-        <h3>2. Introductory Hermeneutics: "The Poet's Lot"</h3>
-        <p><em>Contextual Framing: Investigating the dual roles of journalistic recording versus literary synthesis.</em></p>
-
-        <div class="poem-block">
-          To see the world with quiet eyes,<br>
-          Where hasty judgment turns and flies,<br>
-          To trace the line, to hold the phrase,<br>
-          And measure truth through patient days.<br>
-          The journalist records the flame;<br>
-          The poet gives the spark a name.
         </div>
 
-        <p><strong>Journalistic & Literary Synthesis Prompt:</strong> Analyze the final couplet. How does "recording the flame" (empirical journalism) differ from "giving the spark a name" (literary analysis)? How will we integrate both disciplines to achieve intellectual rigor in English 11?</p>
+        <!-- SLIDE 3 -->
+        <div class="slide">
+          <h2>Slide 3: Warm-Up Exercise — Close Reading</h2>
+          <p>Let's practice the <strong>Observe</strong> and <strong>Trace</strong> steps with this poem:</p>
+
+          <div class="poem-card">
+            <h3 style="margin-top:0; color: var(--chisholm-blue);">Cause I Ain't Got a Pencil</h3>
+            <p style="margin-top:-0.5rem; font-size:0.9rem; color:#64748b;">by Joshua T. Dickerson</p>
+            <div class="poem-text">I woke myself up
+Because we ain't got an alarm clock
+Dug in the dirty clothes basket,
+Cause ain't nobody washed my uniform
+Brushed my hair and teeth in the dark,
+Cause the lights ain't on
+Even got my baby sister ready,
+Cause my mama wasn't home.
+Got us both to school on time,
+To eat us a good breakfast.
+Then when I got to class the teacher fussed
+Cause I ain't got a pencil.</div>
+          </div>
+
+          <div class="prompt-box">
+            <strong>OTIS Activity Prompt:</strong>
+            <p style="margin: 0.5rem 0 0 0;">List 3 specific details from the speaker's morning routine. How does the final line change our understanding of why the student didn't have a pencil?</p>
+          </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide">
+          <h2>Slide 4: Origin Stories & Oral Traditions</h2>
+          <p>American Literature begins long before printed books, rooted in rich Indigenous oral traditions.</p>
+
+          <div class="definition-box">
+            <strong>Key Concept: Cosmogonic Myth</strong>
+            <p style="margin: 0.25rem 0 0 0;"><em>Cosmogonic Myth</em> (noun) — A traditional narrative explaining how the world, nature, and human society were created.</p>
+          </div>
+
+          <p>In our next reading, <strong>"Manabozho and the Muskrat"</strong> (Ojibwe Tradition), we will observe how different cultures celebrate bravery, humility, and community cooperation through storytelling.</p>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide">
+          <h2>Slide 5: Day 1 Synthesis & Exit Ticket</h2>
+          <p>Great work today! Before class ends, complete your quick-write reflection:</p>
+
+          <div class="prompt-box">
+            <strong>Exit Ticket Prompt:</strong>
+            <p style="margin:0.5rem 0 0 0;">In 3–4 sentences, explain how slowing down to <strong>Observe</strong> details in a text (like the poem in Slide 3) prevents us from making unfair assumptions about characters or real people.</p>
+          </div>
+        </div>
+
       </div>
-    </div>
 
-    <!-- COURSE RESOURCES & DOWNLOADS -->
-    <div class="card">
-      <h2>Syllabus Archival Access & Curricular Downloads</h2>
-      <p>Download official course documentation and historical periodization guides below.</p>
-
-      <div class="btn-group">
-        <a href="Day1.pdf" class="btn" download>
-          📄 Download Day 1 Lecture Deck (PDF)
-        </a>
-        <a href="Literary+Time+Periods.pdf" class="btn" download>
-          📚 Download Literary Time Periods Reference (PDF)
-        </a>
+      <!-- NAVIGATION BUTTONS -->
+      <div class="slide-controls">
+        <button class="btn-slide" id="prevBtn" onclick="changeSlide(-1)" disabled>← Previous Slide</button>
+        <button class="btn-slide" id="nextBtn" onclick="changeSlide(1)">Next Slide →</button>
       </div>
-
-      <details>
-        <summary>🔍 Expand 38-Week Academic Reading Curriculum Map</summary>
-        <table>
-          <thead>
-            <tr>
-              <th>Work / Primary Source</th>
-              <th>Genre & Focus</th>
-              <th>Publication Context</th>
-              <th>Syllabus Mapping</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Ojibwe Tradition:</strong> "Manabozho and the Muskrat"[cite: 4]</td>
-              <td>Cosmogonic Myth[cite: 4]</td>
-              <td>Oral Tradition (Pub. 1999)[cite: 4]</td>
-              <td>Week 1: Cosmogonic Mythologies</td>
-            </tr>
-            <tr>
-              <td><strong>Iroquois Confederacy:</strong> "The World on the Turtle’s Back"[cite: 4]</td>
-              <td>Creation Narrative[cite: 4]</td>
-              <td>Oral Tradition (Pub. 1827)[cite: 4]</td>
-              <td>Week 1: Indigenous Foundations</td>
-            </tr>
-            <tr>
-              <td><strong>Navajo Nation:</strong> "The Navajo Creation Story: Hajíínéí"[cite: 4]</td>
-              <td>Emergence Epic[cite: 4]</td>
-              <td>Oral Tradition (Pub. 1997)[cite: 4]</td>
-              <td>Week 1: Cosmic Ethics & Order</td>
-            </tr>
-            <tr>
-              <td><strong>Columbus / Powhatan / Smith / Cabeza de Vaca</strong>[cite: 4]</td>
-              <td>Exploration Non-Fiction[cite: 4]</td>
-              <td>1493–1624[cite: 4]</td>
-              <td>Weeks 2 & 34: Contact Narratives</td>
-            </tr>
-            <tr>
-              <td><strong>Arthur Miller:</strong> <em>The Crucible</em>[cite: 4]</td>
-              <td>Modern Tragedy / Allegory[cite: 4]</td>
-              <td>1952[cite: 4]</td>
-              <td>Weeks 3–4: Mass Hysteria & Ethics</td>
-            </tr>
-            <tr>
-              <td><strong>John Steinbeck:</strong> <em>Of Mice and Men</em>[cite: 4]</td>
-              <td>Social Realism Fiction[cite: 4]</td>
-              <td>1937[cite: 4]</td>
-              <td>Weeks 8 & 28: Labor & Alienation</td>
-            </tr>
-            <tr>
-              <td><strong>Lorraine Hansberry:</strong> <em>A Raisin in the Sun</em>[cite: 4]</td>
-              <td>American Drama[cite: 4]</td>
-              <td>1959[cite: 4]</td>
-              <td>Weeks 10–11: The Great Migration</td>
-            </tr>
-            <tr>
-              <td><strong>Maya Angelou / MLK Jr. / Wheatley</strong>[cite: 4]</td>
-              <td>Rhetoric & Poetry[cite: 4]</td>
-              <td>1773–1983[cite: 4]</td>
-              <td>Weeks 11 & 31: Civil Rights & Witness</td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
     </div>
 
   </div>
+
+  <!-- SIMPLE SLIDE DECK SCRIPT -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function changeSlide(direction) {
+      slides[currentSlide].classList.remove('active');
+      currentSlide += direction;
+
+      if (currentSlide < 0) currentSlide = 0;
+      if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+
+      slides[currentSlide].classList.add('active');
+
+      // Update UI elements
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+      document.getElementById('prevBtn').disabled = (currentSlide === 0);
+      document.getElementById('nextBtn').disabled = (currentSlide === totalSlides - 1);
+    }
+  </script>
+
+</body>
+</html>
 
 </body>
 </html>
