@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>American Literature: Media & Cultural Analysis</title>
+  <title>American Literature: Literary Movements & Textual Analysis</title>
   <style>
-    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #eef2f7; margin: 0; padding: 20px; color: #1e293b; }
-    .container { max-width: 950px; margin: 0 auto; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f1f5f9; margin: 0; padding: 20px; color: #1e293b; }
+    .container { max-width: 900px; margin: 0 auto; }
     
-    /* Header Styles */
+    /* Header Card */
     .header-card, .form-card { background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 20px; }
     .header-flex { display: flex; align-items: center; justify-content: space-between; }
-    .header-left { display: flex; align-items: center; gap: 18px; }
-    .header-left img { max-width: 70px; max-height: 70px; object-fit: contain; }
+    .header-left { display: flex; align-items: center; gap: 15px; }
+    .header-left img { max-width: 65px; max-height: 65px; object-fit: contain; }
     
     /* Stamp with photo overlay */
-    .stamp-container { position: relative; width: 85px; height: 85px; }
+    .stamp-container { position: relative; width: 80px; height: 80px; }
     .stamp-container .stamp-bg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none; }
-    .stamp-container .photo-inner { width: 54px; height: 54px; border-radius: 50%; position: absolute; top: 15px; left: 15px; object-fit: cover; z-index: 1; }
+    .stamp-container .photo-inner { width: 50px; height: 50px; border-radius: 50%; position: absolute; top: 15px; left: 15px; object-fit: cover; z-index: 1; }
 
     /* Navigation Tabs */
     .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; }
@@ -29,55 +29,47 @@
       background: #fff; 
       text-align: center; 
       font-weight: bold; 
-      font-size: 0.9em;
+      font-size: 0.95em;
       cursor: pointer; 
       transition: all 0.2s ease;
     }
     .tab-btn:hover { background: #f8fafc; }
-    .tab-btn.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .tab-btn.active { background: #0f766e; color: #fff; border-color: #0f766e; }
 
     /* Slide Deck Formatting */
-    .slide-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 25px; min-height: 470px; display: flex; flex-direction: column; justify-content: space-between; }
+    .slide-box { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 25px; min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
     .slide { display: none; }
     .slide.active { display: block; }
     
-    .slide-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #2563eb; padding-bottom: 10px; margin-bottom: 15px; }
+    .slide-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #0f766e; padding-bottom: 10px; margin-bottom: 15px; }
     .slide-title { margin: 0; font-size: 1.3em; color: #0f172a; }
-    .std-badge { background: #dbeafe; color: #1e40af; font-size: 0.75em; font-weight: bold; padding: 4px 10px; border-radius: 6px; border: 1px solid #bfdbfe; text-transform: uppercase; white-space: nowrap; }
+    .std-badge { background: #ccfbf1; color: #0f766e; font-size: 0.75em; font-weight: bold; padding: 4px 10px; border-radius: 6px; border: 1px solid #99f6e4; text-transform: uppercase; white-space: nowrap; }
 
-    .slide-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 20px; align-items: center; }
+    .slide-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; align-items: center; }
     .slide-content ul { padding-left: 20px; line-height: 1.6; color: #334155; margin: 0; }
-    .slide-content li { margin-bottom: 10px; font-size: 0.95em; }
+    .slide-content li { margin-bottom: 10px; }
     
     .slide-media { text-align: center; }
-    .slide-media img { width: 100%; height: 220px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .slide-media img { width: 100%; height: 210px; object-fit: cover; border-radius: 8px; border: 1px solid #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
 
-    .callout-box { margin-top: 15px; background: #f0f9ff; border-left: 4px solid #0284c7; padding: 12px 16px; border-radius: 6px; }
+    .ctrl-btn { background: #0f766e; color: #fff; border: none; padding: 10px 22px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
+    .ctrl-btn:hover { background: #115e59; }
 
-    .ctrl-btn { background: #2563eb; color: #fff; border: none; padding: 10px 22px; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s; }
-    .ctrl-btn:hover { background: #1d4ed8; }
-
-    /* Form & Content Styles */
-    .form-group { margin-bottom: 18px; }
+    /* Form Styles */
+    .form-group { margin-bottom: 15px; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-    label { display: block; font-weight: bold; margin-bottom: 6px; font-size: 0.9em; color: #1e293b; }
-    input[type="text"], input[type="date"], textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-family: inherit; font-size: 0.95em; }
-    textarea { resize: vertical; min-height: 100px; }
-    
+    label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.9em; }
+    input[type="text"], input[type="date"], textarea { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; }
+    textarea { height: 100px; resize: vertical; }
+
     .req { color: #dc2626; font-weight: bold; }
-    .standard-sec { margin-top: 25px; padding-top: 18px; border-top: 1px solid #e2e8f0; }
-    .standard-sec h3 { margin-top: 0; color: #1e40af; font-size: 1.1em; }
+    .standard-sec { margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0; }
     
-    .submit-btn { width: 100%; background: #10b981; color: white; padding: 14px; font-size: 1.1em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px; }
-    .submit-btn:hover { background: #059669; }
+    .submit-btn { width: 100%; background: #0f766e; color: white; padding: 14px; font-size: 1.1em; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; margin-top: 20px; }
+    .submit-btn:hover { background: #115e59; }
     
     .view-content { display: none; }
     .view-content.active { display: block; }
-
-    .resource-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 18px; transition: transform 0.2s, box-shadow 0.2s; }
-    .resource-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    .resource-link { color: #2563eb; text-decoration: none; font-weight: bold; font-size: 1.05em; display: inline-block; margin-bottom: 6px; }
-    .resource-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -87,14 +79,14 @@
   <div class="header-card">
     <div class="header-flex">
       <div class="header-left">
-        <!-- Exact Chisholm Logo -->
-        <img src="Chisholmlogo.png" alt="Chisholm High School Logo" />
+        <!-- TOP LEFT: Chisholm Logo -->
+        <img src="chisholm_logo.png" alt="Chisholm High School Logo" onerror="this.style.display='none'" />
         <div>
-          <h2 style="margin: 0; font-size: 1.35em;">American Literature: Media & Cultural Analysis</h2>
-          <p style="margin: 5px 0 0 0; color: #64748b; font-size: 0.9em;">Week 1 Foundations: Indigenous Oral Traditions, Cosmogony & The O.T.I.S. Framework</p>
+          <h2 style="margin: 0; font-size: 1.3em;">American Literature: Textual Analysis & Canon Development</h2>
+          <p style="margin: 5px 0 0 0; color: #64748b; font-size: 0.9em;">Unit 1: Native Orality, Creation Stories & Historical Perspectives</p>
         </div>
       </div>
-      <!-- Classroom Stamp Seal -->
+      <!-- TOP RIGHT: Classroom Stamp Seal -->
       <div class="stamp-container">
         <img class="photo-inner" src="boehm_photo.jpg" alt="Instructor Photo" />
         <img class="stamp-bg" src="boehm-stamp.svg" alt="Classroom Seal" />
@@ -102,466 +94,155 @@
     </div>
   </div>
 
-  <!-- Navigation Tabs -->
+  <!-- Interactive Navigation Buttons -->
   <div class="nav-tabs">
-    <button type="button" class="tab-btn active" id="deck-tab" onclick="switchTab('deck')">📑 Day 1 Curriculum Deck (14 Slides)</button>
-    <button type="button" class="tab-btn" id="worksheet-tab" onclick="switchTab('worksheet')">📝 Electronic Student Worksheet</button>
-    <button type="button" class="tab-btn" id="resources-tab" onclick="switchTab('resources')">🗺️ Course Resource Hub & Meet Otis</button>
+    <button type="button" class="tab-btn active" id="deck-tab" onclick="switchTab('deck')">📖 Unit Overview & Literary Timeline</button>
+    <button type="button" class="tab-btn" id="form-tab" onclick="switchTab('form')">✍️ Textual Response & Discussion Form</button>
   </div>
 
-  <!-- VIEW 1: Curriculum Slide Deck -->
+  <!-- VIEW 1: Visual Slide Deck -->
   <div id="deck-view" class="form-card view-content active">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-      <h2 style="margin: 0; font-size: 1.2em; color: #0f172a;">Week 1: Indigenous Cosmogony & The American Literary Continuum</h2>
-      <span id="slide-num" style="font-weight: bold; color: #2563eb; background: #eff6ff; padding: 6px 14px; border-radius: 20px; border: 1px solid #bfdbfe; font-size: 0.85em;">Slide 1 of 14</span>
+      <h2 style="margin: 0; font-size: 1.2em; color: #0f172a;">American Literature Foundations</h2>
+      <span id="slide-num" style="font-weight: bold; color: #0f766e; background: #ccfbf1; padding: 6px 14px; border-radius: 20px; border: 1px solid #99f6e4; font-size: 0.85em;">Slide 1 of 4</span>
     </div>
 
-    <!-- Slide Box -->
+    <!-- Slide Container -->
     <div class="slide-box">
-      
       <!-- SLIDE 1 -->
       <div class="slide active">
         <div class="slide-header">
-          <h3 class="slide-title">1. Course Orientation & Teacher Background</h3>
-          <span class="std-badge">MN ELA 11.1.6.1</span>
+          <h3 class="slide-title">1. Literary Movements & Epoch Timeline</h3>
+          <span class="std-badge">ELA Standard 11.01</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
               <li><strong>Instructor:</strong> Mr. Brady Edward Boehm (Hibbing High School Alum 2015).</li>
-              <li><strong>Academic Pedigree:</strong> Calvin University B.A. 🏰 Go Knights! (2020) | University of Oregon M.S. 🦆 Go Ducks! (2026).</li>
-              <li><strong>Classroom Mascot:</strong> Meet Otis! My faithful rescue beagle whose instinctual focus inspires our critical inquiry framework.</li>
-              <li><strong>Essential Focus:</strong> Investigating the evolutionary continuum of American literature—from pre-colonial oral cosmogonies to contemporary digital media discourse.</li>
+              <!-- Fixed: Replaced LaTeX syntax with clean Unicode arrows -->
+              <li><strong>Chronological Epochs:</strong> Tracking literature from Native Orality (Pre-1600) → Colonial/Puritan (1620–1750) → Revolutionary/Enlightenment (1750–1800) → Transcendentalism (1830–1865) → Realism → Modernism.</li>
+              <li><strong>Core Lens:</strong> Examining how cultural context shapes authorial intent, narrative structure, and societal values across centuries.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Class Mascot Otis" />
+            <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80" alt="Classic Open Book" />
           </div>
-        </div>
-        <div class="callout-box">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-            <strong style="color: #0369a1; font-size: 0.9em;">✍️ Daily Literary & Critical Analysis Inquiry Prompt</strong>
-            <button type="button" onclick="generatePrompt()" style="background: #0284c7; color: white; border: none; padding: 5px 12px; border-radius: 4px; font-size: 0.78em; font-weight: bold; cursor: pointer;">Generate New Inquiry 🔄</button>
-          </div>
-          <p id="prompt-display" style="margin: 0; color: #334155; font-size: 0.88em; font-style: italic;">
-            "How does an oral origin myth establish an eco-centric ethic compared to an anthropocentric Eurocentric narrative?"
-          </p>
         </div>
       </div>
 
       <!-- SLIDE 2 -->
       <div class="slide">
         <div class="slide-header">
-          <h3 class="slide-title">2. Anishinaabe Orality & Sacred Narrative Transmission</h3>
-          <span class="std-badge">MN ELA 11.1.1.1</span>
+          <h3 class="slide-title">2. Native Oral Tradition & Creation Myths</h3>
+          <span class="std-badge">ELA Standard 11.03</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
-              <li><strong>Primary Text Focus:</strong> Analyzing <em>Manabozho and the Muskrat</em> as a foundational Anishinaabe creation account.</li>
-              <li><strong>Epistemological Orality:</strong> Understanding oral performance as a dynamic, living repository of tribal jurisprudence, ecological science, and communal ethics.</li>
-              <li><strong>Mnemonic Architecture:</strong> How rhythm, repetition, and spatial geography preserve complex historical memory across generations without written codification.</li>
+              <li><strong>Oral Tradition Dynamics:</strong> Storytelling as a living narrative mechanism for passing history, moral frameworks, and ecological knowledge.</li>
+              <li><strong>Focus Text:</strong> <em>"Manabozho and the Muskrat"</em> (Ojibwe Creation Narrative).</li>
+              <li><strong>Key Themes:</strong> Earth-Diver motifs, communal sacrifice, humility, and the interconnectedness of all living beings.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Indigenous Oral Tradition Gathering" />
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Literary Writing" />
           </div>
-        </div>
-        <div class="callout-box">
-          <strong style="color: #0369a1; font-size: 0.88em;">Critical Analysis Note:</strong>
-          <span style="color: #334155; font-size: 0.85em;">Oral texts are not primitive predecessors to written books; they are sophisticated, adaptable pedagogical instruments designed for communal endurance.</span>
         </div>
       </div>
 
       <!-- SLIDE 3 -->
       <div class="slide">
         <div class="slide-header">
-          <h3 class="slide-title">3. Cosmogony & The Earth-Diver Archetype</h3>
-          <span class="std-badge">MN ELA 11.1.3.3</span>
+          <h3 class="slide-title">3. Structural Analysis & Archetype Mapping</h3>
+          <span class="std-badge">ELA Standard 11.04</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
-              <li><strong>The Earth-Diver Motif:</strong> A prevalent mythic structure where creation emerges from primordial floodwaters through animal agency.</li>
-              <li><strong>Selflessness vs. Heroism:</strong> In <em>Manabozho and the Muskrat</em>, creation succeeds not through the physical strength of mighty creatures, but through the sacrificial perseverance of the humble Muskrat (*Waizhuck*).</li>
-              <li><strong>Reciprocal Ecology:</strong> Soil placed upon the Turtle's back demonstrates the interdependence between human life and animal sacrifice.</li>
+              <li><strong>Trickster Archetype:</strong> Analyzing Manabozho as both creator and learner through environmental challenges.</li>
+              <li><strong>Comparative Analysis:</strong> How Ojibwe cosmological views contrast with Western linear narrative conventions.</li>
+              <li><strong>Symbolism:</strong> The role of water, earth, and animal resilience in foundational mythology.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80" alt="Water and Earth Cosmogony Symbolism" />
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Journal and Pen" />
           </div>
-        </div>
-        <div class="callout-box">
-          <strong style="color: #0369a1; font-size: 0.88em;">Textual Focus Question:</strong>
-          <span style="color: #334155; font-size: 0.85em;">Why does Ojibwe cosmogony honor the smallest creature above the largest predators? What cultural values are imparted?</span>
         </div>
       </div>
 
       <!-- SLIDE 4 -->
       <div class="slide">
         <div class="slide-header">
-          <h3 class="slide-title">4. Comparative Worldviews: Eco-Centrism vs. Dominion</h3>
-          <span class="std-badge">MN ELA 11.1.9.9</span>
+          <h3 class="slide-title">4. Critical Response & Discussion Prep</h3>
+          <span class="std-badge">ELA Standard 11.07</span>
         </div>
         <div class="slide-grid">
           <div class="slide-content">
             <ul>
-              <li><strong>Kinship Model:</strong> Indigenous oral traditions treat non-human elements (animals, winds, waters) as moral actors and elder relatives.</li>
-              <li><strong>Euro-American Tradition:</strong> Contrast with Judeo-Christian Genesis, which posits human dominion over nature and a hierarchical creation ladder.</li>
-              <li><strong>Rhetorical Implications:</strong> How initial cosmological assumptions shape centuries of land use, environmental policy, and literary allegory.</li>
+              <li><strong>Task Guidance:</strong> Navigate to the <strong>"Textual Response & Discussion Form"</strong> tab.</li>
+              <li><strong>Evidence Requirement:</strong> Support all analytical claims with direct textual citations from assigned readings.</li>
+              <li><strong>Synthesis Goal:</strong> Be prepared to present your response during our seminar circle.</li>
             </ul>
           </div>
           <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80" alt="Comparative Literature & Philosophy" />
+            <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="Classroom Discussion" />
           </div>
         </div>
       </div>
-
-      <!-- SLIDE 5 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">5. The American Literary Continuum & Time Periods</h3>
-          <span class="std-badge">MN ELA 11.1.2.2</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Reference Text:</strong> Integrating our master reference document <em>Literary Time Periods</em>.</li>
-              <li><strong>Chronological Epochs:</strong> Tracking literature from Native Orality (Pre-1600) $\rightarrow$ Colonial/Puritan (1620–1750) $\rightarrow$ Revolutionary/Enlightenment (1750–1800) $\rightarrow$ Transcendentalism (1830–1865) $\rightarrow$ Realism $\rightarrow$ Modernism.</li>
-              <li><strong>Historiography Critique:</strong> Examining how traditional anthologies historically excluded oral traditions from the official "canon."</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=600&q=80" alt="Historical Manuscripts and Literary Epochs" />
-          </div>
-        </div>
-        <div class="callout-box">
-          <strong style="color: #0369a1; font-size: 0.88em;">Methodology Challenge:</strong>
-          <span style="color: #334155; font-size: 0.85em;">How does classifying oral literature within a linear European timeline alter or restrict our understanding of its true cultural timelessness?</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 6 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">6. Colonial First Encounters & Rhetorical Framing</h3>
-          <span class="std-badge">MN ELA 11.2.4.4</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>The Contact Zone:</strong> Analyzing journals from Columbus, Cabeza de Vaca, and John Smith.</li>
-              <li><strong>Rhetoric of Justification:</strong> How early European writers employed biblical typography and "wilderness" metaphors to rationalize territorial expansion.</li>
-              <li><strong>Captivity Narratives:</strong> Dissecting Mary Rowlandson’s narrative as both psychological defense and early American bestseller.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80" alt="Colonial Documents and Maps" />
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 7 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">7. Transcendentalism & Reclaiming the Natural Sacred</h3>
-          <span class="std-badge">MN ELA 11.1.4.4</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Emerson & Thoreau:</strong> 19th-century intellectuals seeking divine immanence in nature after industrial urbanization.</li>
-              <li><strong>Unintended Parallels:</strong> How Transcendentalist concepts like the "Over-Soul" echoed Indigenous eco-philosophy, yet remained rooted in European individualism.</li>
-              <li><strong>Civil Disobedience:</strong> The ethical mandate to prioritize moral truth over institutional law.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80" alt="Old-Growth Forest" />
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 8 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">8. Introducing The O.T.I.S. Analytical Framework</h3>
-          <span class="std-badge">Core Academic Methodology</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>O - Objectivity:</strong> Isolating textual claims and cultural facts from modern reader projection or implicit bias.</li>
-              <li><strong>T - Truthfulness:</strong> Evaluating authorial motivation, historical context, and internal narrative consistency.</li>
-              <li><strong>I - Integrity:</strong> Demonstrating academic scholarship through precise textual citation and respectful critique.</li>
-              <li><strong>S - Stewardship:</strong> Preserving the dignity of diverse cultural narratives and engaging in ethical classroom dialogue.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="otis-and-boehm.jpg" alt="Otis Framework Inspiration" />
-          </div>
-        </div>
-        <div class="callout-box">
-          <strong style="color: #0369a1; font-size: 0.88em;">Framework Standard:</strong>
-          <span style="color: #334155; font-size: 0.85em;">All essay assignments and worksheet responses in this course will be evaluated using the O.T.I.S. rubric criteria.</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 9 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">9. Media Literacy: Mythmaking in Modern Media</h3>
-          <span class="std-badge">MN ELA 11.3.1.1</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Modern Cosmogony:</strong> How contemporary cinema, advertising, and news broadcasts build national mythologies.</li>
-              <li><strong>Archetype Identification:</strong> Recognizing the Earth-Diver, the Trickster, and the Sacrificial Hero in modern media narratives.</li>
-              <li><strong>Critical Deconstruction:</strong> Analyzing media formats to reveal embedded ideological assumptions and power structures.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Media & Digital Analysis" />
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 10 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">10. Advanced Textual Annotation Strategies</h3>
-          <span class="std-badge">MN ELA 11.1.1.2</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Triple-Column Annotation:</strong> Tracking <em>Observation (Quotes)</em>, <em>Rhetorical Mechanics</em>, and <em>Cultural Significance</em>.</li>
-              <li><strong>Linguistic Shifts:</strong> Identifying translated Ojibwe terms, archaic colonial syntax, and shifts in narrative perspective.</li>
-              <li><strong>Intertextual Mapping:</strong> Marking direct thematic cross-references between different historical eras.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Annotating Primary Sources" />
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 11 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">11. Citation Ethics & MLA 9th Mechanics</h3>
-          <span class="std-badge">MN ELA 11.2.8.8</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Attributing Oral Literature:</strong> Citing storytellers, translators, and anthologists with historical precision.</li>
-              <li><strong>Seamless Integration:</strong> Utilizing analytical signal phrases rather than dropping unanchored quote blocks.</li>
-              <li><strong>Ethical Synthesis:</strong> Synthesizing original student analysis with primary source quotes while avoiding superficial summary.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=600&q=80" alt="Academic Citation & Research" />
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 12 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">12. Synthesis Matrix: Oral Tradition vs. Time Periods</h3>
-          <span class="std-badge">MN ELA 11.3.2.2</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Synthesizing Texts:</strong> Combining findings from <em>Manabozho and the Muskrat</em> and the <em>Literary Time Periods</em> guide.</li>
-              <li><strong>Analytical Thesis Formulation:</strong> Constructing a dual-source thesis that addresses continuity and change in American literary history.</li>
-              <li><strong>Evidence Evaluation:</strong> Balancing textual evidence from primary mythic narratives with secondary literary history.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=600&q=80" alt="Synthesis & Matrix Analysis" />
-          </div>
-        </div>
-        <div class="callout-box">
-          <strong style="color: #0369a1; font-size: 0.88em;">Synthesis Objective:</strong>
-          <span style="color: #334155; font-size: 0.85em;">Explain how Indigenous cosmogonies challenge the linear progression outlined in standard American literary timelines.</span>
-        </div>
-      </div>
-
-      <!-- SLIDE 13 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">13. Academic Discourse & Socratic Seminar Standards</h3>
-          <span class="std-badge">Classroom Inquiry Code</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Evidence-Based Dialogue:</strong> All assertions must be grounded directly in textual citations from assigned readings.</li>
-              <li><strong>Inquiry Over Idealogy:</strong> Interrogate ideas rigorously while respecting the cultural origins of every narrative.</li>
-              <li><strong>Peer Collaboration:</strong> Active listening, constructive rebuttal, and collaborative refinement of literary claims.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Socratic Seminar Discussion" />
-          </div>
-        </div>
-      </div>
-
-      <!-- SLIDE 14 -->
-      <div class="slide">
-        <div class="slide-header">
-          <h3 class="slide-title">14. Week 1 Action Plan & Worksheet Guidance</h3>
-          <span class="std-badge">Execution Blueprint</span>
-        </div>
-        <div class="slide-grid">
-          <div class="slide-content">
-            <ul>
-              <li><strong>Step 1:</strong> Access <em>3._Manabozho_and_the_Muskrat.pdf</em> and <em>Literary+Time+Periods.pdf</em> from the Course Resource Hub tab.</li>
-              <li><strong>Step 2:</strong> Navigate to the <strong>Electronic Student Worksheet</strong> tab and complete all short-answer analytical responses.</li>
-              <li><strong>Step 3:</strong> Apply the O.T.I.S. criteria, complete the digital signature, and submit your response before Friday at 3:00 PM.</li>
-            </ul>
-          </div>
-          <div class="slide-media">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Student Task Completion" />
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <!-- Controls -->
     <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
-      <button type="button" class="ctrl-btn" onclick="changeSlide(-1)">⬅️ Previous Slide</button>
-      <button type="button" class="ctrl-btn" onclick="changeSlide(1)">Next Slide ➡️</button>
+      <button type="button" class="ctrl-btn" onclick="changeSlide(-1)">⬅️ Previous Section</button>
+      <button type="button" class="ctrl-btn" onclick="changeSlide(1)">Next Section ➡️</button>
     </div>
   </div>
 
-  <!-- VIEW 2: Student Worksheet View -->
-  <div id="worksheet-view" class="form-card view-content">
-    <h2 style="margin-top:0; color:#0f172a;">Week 1 Analysis Worksheet: Manabozho & The Literary Continuum</h2>
-    <p style="color: #64748b; font-size: 0.9em; margin-bottom: 20px;">
-      Demonstrate analytical rigor by synthesizing <em>Manabozho and the Muskrat</em> with our <em>Literary Time Periods</em> reference guide.
-    </p>
+  <!-- VIEW 2: Student Discussion Form -->
+  <div id="form-view" class="form-card view-content">
+    <h2>Textual Analysis Submission</h2>
+    <p style="color: #64748b; font-size: 0.9em;">Submit your initial textual reflections and seminar preparation notes below.</p>
 
-    <form onsubmit="event.preventDefault(); window.print();">
+    <form onsubmit="event.preventDefault(); alert('Response Saved Successfully!');">
       <div class="form-grid">
         <div class="form-group">
-          <label>Student Legal Full Name <span class="req">*</span></label>
-          <input type="text" placeholder="e.g. Morgan Taylor" required />
+          <label>Student Full Name <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. Jordan Taylor" required />
         </div>
         <div class="form-group">
           <label>Class Period <span class="req">*</span></label>
-          <input type="text" placeholder="e.g. Period 2 - American Lit" required />
+          <input type="text" placeholder="e.g. Period 3" required />
         </div>
-        <div class="form-group">
-          <label>Date <span class="req">*</span></label>
-          <input type="date" required />
-        </div>
-        <div class="form-group">
-          <label>Primary Focus Text <span class="req">*</span></label>
-          <input type="text" value="3._Manabozho_and_the_Muskrat.pdf & Literary+Time+Periods.pdf" readonly style="background: #f1f5f9; color: #475569;" />
-        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Primary Focus Text <span class="req">*</span></label>
+        <!-- Fixed: Replaced raw URL encoded filename with clean formatted title -->
+        <input type="text" value='"Manabozho and the Muskrat" & Literary Time Periods Overview' required />
       </div>
 
       <div class="standard-sec">
-        <h3>Part 1: Textual Analysis of "Manabozho and the Muskrat"</h3>
+        <h3>Critical Reflection & Thesis Statement</h3>
         <div class="form-group">
-          <label>1. Analysis of the Earth-Diver Archetype: Why does the narrative emphasize the sacrifice of the Muskrat (*Waizhuck*) over larger, stronger animals? What specific cultural virtues are established through this resolution? <span class="req">*</span></label>
-          <textarea required placeholder="Provide 4-5 sentences citing specific narrative details from 3._Manabozho_and_the_Muskrat.pdf..."></textarea>
+          <label>1. How does the narrative structure of "Manabozho and the Muskrat" reflect Ojibwe worldview and cultural values regarding the natural environment? <span class="req">*</span></label>
+          <textarea placeholder="Identify key motives, animal symbolism, and core moral lessons supported by evidence..." required></textarea>
         </div>
-        <div class="form-group">
-          <label>2. Ecological Worldview: Contrast the relational bond between Manabozho, the animals, and the Earth with the concept of human dominion found in European colonial texts. <span class="req">*</span></label>
-          <textarea required placeholder="Examine the contrast in eco-centric vs. anthropocentric worldviews..."></textarea>
-        </div>
-      </div>
 
-      <div class="standard-sec">
-        <h3>Part 2: American Literary Time Periods Continuum</h3>
         <div class="form-group">
-          <label>3. Historiographical Critique: Referencing Literary+Time+Periods.pdf, explain how placing Indigenous Oral Traditions prior to 1620 can inadvertently mislead readers about the ongoing, contemporary vitality of Native oral literature. <span class="req">*</span></label>
-          <textarea required placeholder="Analyze how linear timelines affect our understanding of oral traditions..."></textarea>
+          <label>2. Compare a key element of Native oral creation stories with another literary epoch on our timeline. <span class="req">*</span></label>
+          <textarea placeholder="Focus on archetypes, creation themes, or narrative tone..." required></textarea>
         </div>
       </div>
 
-      <div class="standard-sec">
-        <h3>Part 3: Application of the O.T.I.S. Framework</h3>
-        <div class="form-group">
-          <label>4. Apply 'Objectivity' and 'Stewardship': How does evaluating Indigenous cosmogonies through O.T.I.S. prevent a reader from imposing Eurocentric biases onto the story? <span class="req">*</span></label>
-          <textarea required placeholder="Explain how the O.T.I.S. framework ensures ethical scholarly critique..."></textarea>
-        </div>
-      </div>
-
-      <div class="form-group" style="margin-top: 25px;">
-        <label>Student Digital Signature (Type Legal Full Name) <span class="req">*</span></label>
-        <input type="text" placeholder="Type full name to sign" required style="font-family: 'Courier New', monospace; font-size: 1.1em; font-weight: bold; color: #1e40af;" />
-      </div>
-
-      <button type="submit" class="submit-btn">Submit Completed Analysis & Print Record</button>
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn">Submit Discussion Notes</button>
     </form>
   </div>
-
-  <!-- VIEW 3: Course Resource Hub View -->
-  <div id="resources-view" class="form-card view-content">
-    <h2 style="margin-top:0; color:#0f172a;">Course Resource Hub & Meet Otis</h2>
-    <p style="color: #64748b; font-size: 0.9em;">Access your required primary literature PDFs and review our analytical standard framework.</p>
-
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-      <!-- Required PDFs list -->
-      <div style="display: flex; flex-direction: column; gap: 15px;">
-        <div class="resource-card">
-          <a href="3._Manabozho_and_the_Muskrat.pdf" target="_blank" class="resource-link">📄 Primary Text: Manabozho and the Muskrat (PDF)</a>
-          <p style="margin: 0; color: #475569; font-size: 0.88em;">Required Week 1 reading. Anishinaabe Earth-Diver creation story and sacred oral narrative.</p>
-        </div>
-
-        <div class="resource-card">
-          <a href="Literary+Time+Periods.pdf" target="_blank" class="resource-link">🗺️ Reference Guide: American Literary Time Periods (PDF)</a>
-          <p style="margin: 0; color: #475569; font-size: 0.88em;">Comprehensive anchor chart outlining American literary epochs from Pre-Colonial Orality to Postmodernism.</p>
-        </div>
-
-        <div class="resource-card">
-          <a href="Day1.pdf" target="_blank" class="resource-link">📋 Course Overview & Day 1 Document (PDF)</a>
-          <p style="margin: 0; color: #475569; font-size: 0.88em;">Official syllabus insert, grading rubrics, and discussion guidelines for American Literature.</p>
-        </div>
-      </div>
-
-      <!-- Mascot & Framework Card -->
-      <div style="background: #f8fafc; border: 1px solid #cbd5e1; padding: 20px; border-radius: 8px; text-align: center;">
-        <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Station Mascot Otis" style="width: 100%; height: 210px; object-fit: cover; border-radius: 6px; margin-bottom: 12px; border: 1px solid #cbd5e1;" />
-        <h3 style="margin: 0; color: #0f172a;">Meet Otis the Beagle!</h3>
-        <p style="color: #475569; font-size: 0.88em; margin-top: 8px; line-height: 1.5; text-align: left;">
-          Otis inspires our core analytical method:
-        </p>
-        <ul style="text-align: left; color: #334155; font-size: 0.85em; padding-left: 20px; margin-top: 5px;">
-          <li><strong>O</strong>bjectivity: Ground claims in verifiable text.</li>
-          <li><strong>T</strong>ruthfulness: Seek authorial and cultural context.</li>
-          <li><strong>I</strong>ntegirty: Execute precise scholar citations.</li>
-          <li><strong>S</strong>tewardship: Honor diverse literary voices.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
 </div>
 
 <script>
   let currentSlide = 0;
   const slides = document.querySelectorAll('.slide');
-
-  const literaturePrompts = [
-    '"How does an oral origin myth establish an eco-centric ethic compared to an anthropocentric Eurocentric narrative?"',
-    '"In what ways does the physical performance of an Ojibwe storyteller alter text interpretation compared to reading a printed page?"',
-    '"Identify how modern digital media relies on traditional Earth-Diver or Trickster archetypes to persuade audiences."',
-    '"How do early colonial journals balance empirical observation with ideological/theological bias?"',
-    '"Why is the sacrificial dive of the humble Muskrat central to understanding Anishinaabe communal ethics?"'
-  ];
-
-  function generatePrompt() {
-    const randomIdx = Math.floor(Math.random() * literaturePrompts.length);
-    document.getElementById('prompt-display').innerText = literaturePrompts[randomIdx];
-  }
 
   function updateSlideDisplay() {
     slides.forEach((slide, index) => {
@@ -579,12 +260,10 @@
 
   function switchTab(tab) {
     document.getElementById('deck-tab').classList.toggle('active', tab === 'deck');
-    document.getElementById('worksheet-tab').classList.toggle('active', tab === 'worksheet');
-    document.getElementById('resources-tab').classList.toggle('active', tab === 'resources');
+    document.getElementById('form-tab').classList.toggle('active', tab === 'form');
 
     document.getElementById('deck-view').classList.toggle('active', tab === 'deck');
-    document.getElementById('worksheet-view').classList.toggle('active', tab === 'worksheet');
-    document.getElementById('resources-view').classList.toggle('active', tab === 'resources');
+    document.getElementById('form-view').classList.toggle('active', tab === 'form');
   }
 </script>
 
