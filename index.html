@@ -3,245 +3,457 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 1: The Genesis of American Letters | English 11</title>
+  <title>Day 1: Genesis of American Letters | Chisholm High School</title>
   <style>
     :root {
-      --primary: #1e3a8a;
-      --primary-light: #eff6ff;
-      --accent: #2563eb;
-      --text: #1f2937;
-      --bg: #f8fafc;
+      --chisholm-blue: #002855;
+      --chisholm-gold: #d4af37;
+      --bg-light: #f4f6f9;
       --card-bg: #ffffff;
-      --border: #e2e8f0;
+      --text: #212529;
+      --border: #dee2e6;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       line-height: 1.6;
       color: var(--text);
-      background-color: var(--bg);
+      background-color: var(--bg-light);
       margin: 0;
       padding: 0;
     }
 
+    /* HEADER & BRANDING */
     header {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      background: var(--chisholm-blue);
       color: white;
-      padding: 3rem 2rem 2rem;
-      text-align: center;
+      padding: 2rem 1.5rem;
+      border-bottom: 5px solid var(--chisholm-gold);
     }
 
-    header h1 { margin: 0 0 0.5rem 0; font-size: 2.25rem; }
-    header p { margin: 0; font-size: 1.1rem; opacity: 0.9; }
+    .header-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
 
-    .badge {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.25rem 0.75rem;
-      border-radius: 999px;
+    .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .logo-placeholder {
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid var(--chisholm-gold);
+      overflow: hidden;
+    }
+
+    .logo-placeholder img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .header-titles h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #ffffff;
+    }
+
+    .header-titles p {
+      margin: 0.2rem 0 0 0;
+      color: var(--chisholm-gold);
+      font-weight: 600;
+    }
+
+    /* TEACHER STAMP & CREDENTIALS */
+    .teacher-stamp {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px dashed var(--chisholm-gold);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
       font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      text-align: right;
     }
 
-    container {
-      max-width: 1000px;
-      margin: -2rem auto 3rem;
-      padding: 0 1rem;
+    .teacher-stamp strong {
+      display: block;
+      color: #ffffff;
+      font-size: 0.95rem;
+    }
+
+    /* MAIN CONTENT */
+    .container {
+      max-width: 1100px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
+      border-radius: 10px;
       padding: 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       border: 1px solid var(--border);
     }
 
-    h2 { color: var(--primary); border-bottom: 2px solid var(--primary-light); padding-bottom: 0.5rem; margin-top: 0; }
+    h2 {
+      color: var(--chisholm-blue);
+      border-bottom: 2px solid var(--chisholm-gold);
+      padding-bottom: 0.5rem;
+      margin-top: 0;
+    }
 
-    /* Lesson Objectives Grid */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-    .grid-box { background: var(--primary-light); padding: 1.25rem; border-radius: 8px; border-left: 4px solid var(--accent); }
-    .grid-box h3 { margin: 0 0 0.5rem 0; font-size: 1.05rem; color: var(--primary); }
-    .grid-box p { margin: 0; font-size: 0.95rem; }
+    /* OTIS CLASSROOM COMPANION SPOTLIGHT */
+    .otis-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: #fffbeb;
+      border: 2px solid var(--chisholm-gold);
+      padding: 1.25rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
 
-    /* Interactive Discussion Section */
-    .interactive-box {
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      border-radius: 8px;
+    .otis-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      border: 3px solid var(--chisholm-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .otis-info h3 {
+      margin: 0 0 0.25rem 0;
+      color: var(--chisholm-blue);
+    }
+
+    .otis-info p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* OTIS SLOW-LOOKING FRAMEWORK */
+    .framework-box {
+      background: #f8f9fa;
+      border-left: 5px solid var(--chisholm-gold);
       padding: 1.5rem;
+      border-radius: 6px;
       margin: 1.5rem 0;
     }
-    .interactive-box h3 { color: #166534; margin-top: 0; }
 
-    /* Agenda Timeline */
-    .agenda-list { list-style: none; padding: 0; }
-    .agenda-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
+    .framework-attribution {
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
     }
-    .agenda-time { font-weight: bold; color: var(--accent); min-width: 80px; }
 
-    /* Buttons */
+    .otis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .otis-step {
+      background: #ffffff;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .otis-letter {
+      display: inline-block;
+      background: var(--chisholm-blue);
+      color: var(--chisholm-gold);
+      font-weight: bold;
+      font-size: 1.2rem;
+      width: 36px;
+      height: 36px;
+      text-align: center;
+      line-height: 36px;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+    }
+
+    /* SLIDE PRESENTATION CONTAINER (14 SLIDES) */
+    .slide-embed-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 Aspect Ratio */
+      background: #1a1a1a;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1.5rem 0;
+    }
+
+    .slide-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      text-align: center;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    /* BUTTONS */
     .btn {
       display: inline-block;
-      background: var(--accent);
+      background: var(--chisholm-blue);
       color: white;
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      transition: background 0.2s;
+      border: 1px solid var(--chisholm-gold);
+      transition: all 0.2s;
     }
-    .btn:hover { background: var(--primary); }
 
-    /* Tabs/Accordion for Reading List */
-    details { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin-top: 1rem; }
-    summary { font-weight: bold; cursor: pointer; color: var(--primary); outline: none; }
-    
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem; }
-    th, td { border: 1px solid var(--border); padding: 0.6rem; text-align: left; }
-    th { background: #f1f5f9; }
+    .btn:hover {
+      background: var(--chisholm-gold);
+      color: var(--chisholm-blue);
+    }
+
+    /* ACCORDION TABLE FOR READING LIST */
+    details {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--chisholm-blue);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.65rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--chisholm-blue);
+      color: white;
+    }
   </style>
 </head>
 <body>
 
+  <!-- HEADER WITH CHISHOLM LOGO & TEACHER CREDENTIALS -->
   <header>
-    <span class="badge">Week 1 • Day 1 (Sept 1)</span>
-    <h1>The Genesis of American Letters</h1>
-    <p>English 11: American Literature & Cultural Analysis</p>
+    <div class="header-container">
+      <div class="brand-section">
+        <div class="logo-placeholder">
+          <!-- Replace image source with your actual logo file in assets/images/ -->
+          <img src="assets/images/chisholm-logo.png" alt="Chisholm Logo" onerror="this.style.display='none'; this.parentNode.innerText='CHS';">
+        </div>
+        <div class="header-titles">
+          <h1>English 11 & Journalism Crossover</h1>
+          <p>Chisholm High School • Day One Master Lesson</p>
+        </div>
+      </div>
+
+      <!-- TEACHER STAMP & CREDENTIALS -->
+      <div class="teacher-stamp">
+        <strong>M.A. in Teaching / English Education</strong>
+        <span>Calvin University Pedagogy Influence</span><br>
+        <small>Journalism & Literary Analysis Lens</small>
+      </div>
+    </div>
   </header>
 
-  <container>
-    
-    <!-- LESSON OVERVIEW -->
+  <div class="container">
+
+    <!-- OTIS CLASSROOM COMPANION SPOTLIGHT -->
+    <div class="otis-card">
+      <div class="otis-avatar">
+        <!-- Optional: Replace emoji with <img src="assets/images/otis.jpg" alt="Otis"> -->
+        🐶
+      </div>
+      <div class="otis-info">
+        <h3>Meet Otis!</h3>
+        <p>Our official classroom mascot and Chief Morale Officer. Otis reminds us to stay patient, remain curious, and take our time when approaching complex ideas and texts.</p>
+      </div>
+    </div>
+
+    <!-- DAY 1 LESSON OVERVIEW -->
     <div class="card">
-      <h2>Lesson Focus & Objectives</h2>
-      <p>Welcome to English 11! Today we begin our journey into American literary history by examining indigenous oral narratives and exploring how origin stories shape communal identities.</p>
+      <h2>Day 1: The Genesis of American Letters (Sept 1)</h2>
+      <p>Welcome to English 11! Today we merge journalistic observation with literary analysis to deconstruct how origin narratives construct cultural identity and collective memory[cite: 5].</p>
       
-      <div class="grid">
-        <div class="grid-box">
-          <h3>Primary Focus</h3>
-          <p>Constructing a conceptual framework for "American Identity" through primitive indigenous oral narratives.</p>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+        <div style="flex: 1; min-width: 250px; background: #eef2f7; padding: 1rem; border-radius: 6px;">
+          <strong>Primary Focus:</strong> Constructing a conceptual framework for "American Identity" through indigenous oral narratives[cite: 5].
         </div>
-        <div class="grid-box">
-          <h3>Core Objective</h3>
-          <p>Evaluating cosmogonic myths to extract underlying communal principles, ecological ties, and societal ethics.</p>
+        <div style="flex: 1; min-width: 250px; background: #eef2f7; padding: 1rem; border-radius: 6px;">
+          <strong>Core Objective:</strong> Evaluating cosmogonic myths to extract communal ethics using a critical journalistic eye[cite: 5].
         </div>
       </div>
     </div>
 
-    <!-- CLASS AGENDA -->
+    <!-- THE OTIS SLOW-LOOKING FRAMEWORK -->
     <div class="card">
-      <h2>Day One Class Agenda</h2>
-      <div class="agenda-list">
-        <div class="agenda-item">
-          <span class="agenda-time">10 Mins</span>
-          <div>
-            <strong>Course Orientation & Framework:</strong> Defining "American Identity" and introducing our inquiry framework for the semester.
-          </div>
-        </div>
-        <div class="agenda-item">
-          <span class="agenda-time">20 Mins</span>
-          <div>
-            <strong>Interactive Discussion:</strong> What is a Cosmogonic Myth? Deconstructing cultural origin stories.
-          </div>
-        </div>
-        <div class="agenda-item">
-          <span class="agenda-time">15 Mins</span>
-          <div>
-            <strong>Textual Close Reading:</strong> Introduction to Ojibwe & Iroquois oral storytelling traditions.
-          </div>
-        </div>
-      </div>
+      <h2>The OTIS Slow-Looking Framework</h2>
+      <p class="framework-attribution">Named in honor of our classroom mascot, Otis • Adapted from Dr. Jennifer Holberg's (Calvin University) slow-looking pedagogy.</p>
 
-      <!-- INTERACTIVE PROMPT -->
-      <div class="interactive-box">
-        <h3>💬 Day 1 Reflection Prompt</h3>
-        <p><em>"How do origin stories reflect a culture's relationship with nature and authority?"</em></p>
-        <p><small>Be prepared to share one takeaway during our opening seminar tomorrow.</small></p>
+      <div class="framework-box">
+        <p>Before jumping to quick conclusions, we use the <strong>OTIS Framework</strong> to slow down, resist snap judgments, and thoroughly examine literary and visual media through a journalistic lens.</p>
+
+        <div class="otis-grid">
+          <div class="otis-step">
+            <span class="otis-letter">O</span>
+            <strong>Observe</strong>
+            <p><em>Paws & Pause:</em> What textual, structural, or visual details do you notice first before making assumptions?</p>
+          </div>
+          <div class="otis-step">
+            <span class="otis-letter">T</span>
+            <strong>Trace</strong>
+            <p><em>Sniff Out Context:</em> Who created this piece? What historical, cultural, or journalistic framing surrounds it?</p>
+          </div>
+          <div class="otis-step">
+            <span class="otis-letter">I</span>
+            <strong>Interpret</strong>
+            <p><em>Dig Deeper:</em> How do specific word choices, motifs, or narrative structures reveal underlying meaning?</p>
+          </div>
+          <div class="otis-step">
+            <span class="otis-letter">S</span>
+            <strong>Synthesize</strong>
+            <p><em>Fetch the Big Picture:</em> How does this work shape our understanding of "American Identity" and culture?</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- RESOURCES & READING LIST INTEGRATION -->
+    <!-- 14-SLIDE PRESENTATION EMBED -->
     <div class="card">
-      <h2>Course Resources & Reading List</h2>
-      <p>Access your complete 11th-grade reading curriculum below. You can download the full PDF syllabus or preview the upcoming unit readings.</p>
+      <h2>Day 1 Interactive Slide Deck (14 Slides)</h2>
+      <p>Use the viewer below to follow along with today's introductory lecture and media analysis breakdown.</p>
       
-      <!-- PDF Download Link -->
-      <p>
+      <div class="slide-embed-container">
+        <!-- REPLACE THIS FRAME WITH YOUR GOOGLE SLIDES OR CANVA EMBED CODE -->
+        <div class="slide-placeholder">
+          <h3>📊 Day 1 Slide Presentation (14 Slides)</h3>
+          <p><em>[Slide Embed Area]</em></p>
+          <small>Insert your Canva or Google Slides <code>&lt;iframe&gt;</code> code inside this frame in <code>index.html</code>.</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSE READING LIST & ASSET DOWNLOAD -->
+    <div class="card">
+      <h2>Course Reading List & Syllabus Alignment</h2>
+      <p>Access your complete reading curriculum mapped to our 38-week syllabus[cite: 4, 5]. You can download the full PDF below for your records[cite: 4].</p>
+
+      <p style="margin: 1.5rem 0;">
         <a href="assets/pdf/11th-grade-reading-list.pdf" class="btn" download>
-          📄 Download Full Reading List (PDF)
+          📄 Download Full 11th Grade Reading List (PDF)
         </a>
       </p>
 
-      <!-- Expandable Reading List -->
       <details>
-        <summary>🔍 Click to Expand Full Course Reading List Alignment</summary>
+        <summary>🔍 Click to Expand Reading List & Course Alignment Table</summary>
         <table>
           <thead>
             <tr>
               <th>Work / Author</th>
               <th>Genre</th>
-              <th>Syllabus Unit</th>
+              <th>Published</th>
+              <th>Syllabus Mapping</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Ojibwe & Iroquois Oral Narratives</strong></td>
-              <td>Myth / Tradition</td>
-              <td>Week 1: Genesis of American Letters</td>
+              <td><strong>Ojibwe:</strong> "Manabozho and the Muskrat"[cite: 4]</td>
+              <td>Myth[cite: 4]</td>
+              <td>1000s (Pub. 1999)[cite: 4]</td>
+              <td>Week 1: Cosmogonic Myths[cite: 5]</td>
             </tr>
             <tr>
-              <td><strong>Christopher Columbus / Chief Powhatan</strong></td>
-              <td>Historical Non-Fiction</td>
-              <td>Week 2: Exploration & Contact</td>
+              <td><strong>Iroquois:</strong> "The World on the Turtle’s Back"[cite: 4]</td>
+              <td>Myth[cite: 4]</td>
+              <td>1000s (Pub. 1827)[cite: 4]</td>
+              <td>Week 1: Native Traditions[cite: 5]</td>
             </tr>
             <tr>
-              <td><strong>Anne Bradstreet / Jonathan Edwards</strong></td>
-              <td>Poetry / Sermon</td>
-              <td>Week 3: Faith & Theology</td>
+              <td><strong>Navajo:</strong> "The Navajo Creation Story: Hajíínéí"[cite: 4]</td>
+              <td>Myth[cite: 4]</td>
+              <td>1000s (Pub. 1997)[cite: 4]</td>
+              <td>Week 1: Cosmic Harmony[cite: 5]</td>
             </tr>
             <tr>
-              <td><strong>Arthur Miller:</strong> <em>The Crucible</em></td>
-              <td>Drama</td>
-              <td>Weeks 3–4: Ethical Confrontation</td>
+              <td><strong>Columbus / Powhatan / Smith / Cabeza de Vaca</strong>[cite: 4]</td>
+              <td>Historical Non-Fiction[cite: 4]</td>
+              <td>1493–1624[cite: 4]</td>
+              <td>Weeks 2 & 34: Exploration & Contact[cite: 5]</td>
             </tr>
             <tr>
-              <td><strong>Benjamin Franklin / U.S. Founders</strong></td>
-              <td>Public Document / Memoir</td>
-              <td>Week 5: Enlightenment & Revolution</td>
+              <td><strong>Arthur Miller:</strong> <em>The Crucible</em>[cite: 4]</td>
+              <td>Drama[cite: 4]</td>
+              <td>1952[cite: 4]</td>
+              <td>Weeks 3–4: Ethical Confrontation[cite: 5]</td>
             </tr>
             <tr>
-              <td><strong>John Steinbeck:</strong> <em>Of Mice and Men</em></td>
-              <td>Historical Fiction</td>
-              <td>Weeks 8 & 28: Migrant Experience</td>
+              <td><strong>John Steinbeck:</strong> <em>Of Mice and Men</em>[cite: 4]</td>
+              <td>Historical Fiction[cite: 4]</td>
+              <td>1937[cite: 4]</td>
+              <td>Weeks 8 & 28: Migrant Experience[cite: 5]</td>
             </tr>
             <tr>
-              <td><strong>Lorraine Hansberry:</strong> <em>A Raisin in the Sun</em></td>
-              <td>Play / Drama</td>
-              <td>Weeks 10–11 & 31: Great Migration</td>
+              <td><strong>Lorraine Hansberry:</strong> <em>A Raisin in the Sun</em>[cite: 4]</td>
+              <td>Drama[cite: 4]</td>
+              <td>1959[cite: 4]</td>
+              <td>Weeks 10–11: Great Migration[cite: 5]</td>
+            </tr>
+            <tr>
+              <td><strong>Maya Angelou / MLK Jr. / Wheatley</strong>[cite: 4]</td>
+              <td>Poetry / Speech[cite: 4]</td>
+              <td>1773–1983[cite: 4]</td>
+              <td>Weeks 11 & 31: Civil Rights & Witness[cite: 5]</td>
             </tr>
           </tbody>
         </table>
       </details>
     </div>
 
-    <!-- NEXT STEPS -->
-    <div class="card">
-      <h2>Next Steps for Tomorrow (Sept 2)</h2>
-      <ul>
-        <li>Review <em>"Manabozho and the Muskrat"</em> and <em>"The World on the Turtle’s Back"</em>.</li>
-        <li>Prepare 2 observations regarding ecological relationships in oral storytelling.</li>
-      </ul>
-    </div>
-
-  </container>
+  </div>
 
 </body>
 </html>
