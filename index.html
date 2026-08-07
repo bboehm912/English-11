@@ -3,473 +3,630 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>English 11: American Literature | Chisholm High School</title>
+  <title>English 11: American Literature - Day 1</title>
   <style>
     :root {
-      --chisholm-blue: #002855;
-      --chisholm-gold: #d4af37;
-      --bg-light: #f4f6f9;
+      --primary-green: #1b4332;
+      --accent-green: #2d6a4f;
+      --light-green: #d8f3dc;
+      --gold-accent: #d4af37;
+      --dark-text: #212529;
+      --light-bg: #f8f9fa;
       --card-bg: #ffffff;
-      --text: #1a202c;
-      --border: #e2e8f0;
+      --border-color: #e9ecef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--light-bg);
+      color: var(--dark-text);
       line-height: 1.6;
-      color: var(--text);
-      background-color: var(--bg-light);
-      margin: 0;
-      padding: 0;
+      padding-bottom: 3rem;
     }
 
-    /* HEADER */
-    header {
-      background: var(--chisholm-blue);
+    /* --- Header Styles --- */
+    .site-header {
+      background-color: var(--primary-green);
       color: white;
-      padding: 1.5rem;
-      border-bottom: 5px solid var(--chisholm-gold);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .header-container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1.5rem;
     }
 
-    .logo-frame {
-      width: 70px;
-      height: 70px;
-      background: #ffffff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px solid var(--chisholm-gold);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .logo-frame img {
-      width: 100%;
-      height: 100%;
+    .header-logo img {
+      height: 75px;
+      width: auto;
       object-fit: contain;
     }
 
-    .header-titles h1 {
-      margin: 0;
-      font-size: 1.75rem;
+    .header-title-group {
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .header-title-group h1 {
+      font-size: 1.8rem;
+      letter-spacing: 0.5px;
       color: #ffffff;
     }
 
-    .header-titles p {
-      margin: 0.2rem 0 0 0;
-      color: var(--chisholm-gold);
-      font-weight: 600;
+    .header-subtitle {
       font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      color: var(--light-green);
+      margin-top: 0.25rem;
+      font-weight: 300;
     }
 
-    /* CONTAINER */
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
+    /* Stamp Styling */
+    .header-stamp {
+      position: relative;
+      width: 90px;
+      height: 90px;
     }
 
-    /* TOP PROFILE CARD (PHOTOS & STAMP) */
-    .top-profile-card {
-      background: #ffffff;
-      border: 2px solid var(--chisholm-gold);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 1.75rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      flex-wrap: wrap;
-    }
-
-    .media-group {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-
-    .photo-frame {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      border: 3px solid var(--chisholm-blue);
-      overflow: hidden;
-      background: #cbd5e1;
-    }
-
-    .photo-frame img {
+    .stamp-circle {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-    }
-
-    .stamp-frame {
-      width: 100px;
-      height: 100px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      border: 2px dashed var(--gold-accent);
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    .stamp-frame img {
+    .stamp-photo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #ffffff;
+      z-index: 2;
+    }
+
+    .stamp-text {
+      position: absolute;
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      animation: rotate 20s linear infinite;
     }
 
-    .profile-info {
-      flex: 1;
-      min-width: 280px;
+    .stamp-text text {
+      font-size: 8.5px;
+      fill: #ffffff;
+      font-weight: bold;
+      letter-spacing: 1px;
     }
 
-    .profile-info h2 {
-      margin: 0 0 0.5rem 0;
-      color: var(--chisholm-blue);
-      font-size: 1.35rem;
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* --- Main Layout --- */
+    .main-container {
+      max-width: 1000px;
+      margin: 2rem auto 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 1.5rem;
+    }
+
+    /* --- Inspiration Corner --- */
+    .inspiration-corner {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #f4f9f5 100%);
+      border-left: 5px solid var(--accent-green);
+    }
+
+    .avatar-container img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-green);
+    }
+
+    .inspiration-content blockquote {
+      font-style: italic;
+      color: #495057;
+      font-size: 1rem;
+    }
+
+    .inspiration-content cite {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: normal;
+      font-weight: bold;
+      color: var(--primary-green);
+      font-size: 0.85rem;
+    }
+
+    /* --- Resource Hub --- */
+    .resource-hub h2 {
+      color: var(--primary-green);
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .resource-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
       border: none;
-      padding: 0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background-color 0.2s;
     }
 
-    .profile-info p {
-      margin: 0;
-      font-size: 0.95rem;
-      color: #334155;
+    .btn-primary {
+      background-color: var(--accent-green);
+      color: white;
     }
 
-    /* INTERACTIVE SLIDE DECK */
-    .slide-deck-container {
-      background: #ffffff;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    .btn-primary:hover {
+      background-color: var(--primary-green);
+    }
+
+    .btn-secondary {
+      background-color: #e9ecef;
+      color: var(--dark-text);
+    }
+
+    .btn-secondary:hover {
+      background-color: #dee2e6;
+    }
+
+    .pdf-viewer-container {
+      margin-top: 1rem;
+      display: none;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
       overflow: hidden;
-      margin-bottom: 2rem;
+    }
+
+    .pdf-viewer-container.active {
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+    }
+
+    /* --- Slide Player --- */
+    .slide-container {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
 
     .slide-header {
-      background: var(--chisholm-blue);
+      background-color: var(--primary-green);
       color: white;
       padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .slide-header h3 {
-      margin: 0;
-      font-size: 1.1rem;
-      color: var(--chisholm-gold);
+      font-weight: 600;
     }
 
     .slide-counter {
-      background: rgba(255,255,255,0.15);
+      background: rgba(255, 255, 255, 0.2);
       padding: 0.25rem 0.75rem;
-      border-radius: 20px;
+      border-radius: 12px;
       font-size: 0.85rem;
-      font-weight: 600;
     }
 
     .slide-body {
       padding: 2rem;
-      min-height: 380px;
+      min-height: 320px;
     }
 
-    .slide {
+    .slide-content {
       display: none;
     }
 
-    .slide.active {
+    .slide-content.active {
       display: block;
     }
 
-    .slide h2 {
-      color: var(--chisholm-blue);
-      border-bottom: 2px solid var(--chisholm-gold);
+    .slide-content h3 {
+      color: var(--primary-green);
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--light-green);
       padding-bottom: 0.5rem;
-      margin-top: 0;
     }
 
-    /* SLIDE CONTROLS */
-    .slide-controls {
-      background: #f8fafc;
-      border-top: 1px solid var(--border);
+    .slide-content ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .slide-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Tables in slides */
+    .slide-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .slide-table th, .slide-table td {
+      border: 1px solid var(--border-color);
+      padding: 0.6rem;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .slide-table th {
+      background-color: var(--light-green);
+      color: var(--primary-green);
+    }
+
+    .slide-footer {
+      background-color: #f8f9fa;
+      border-top: 1px solid var(--border-color);
       padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .btn-slide {
-      background: var(--chisholm-blue);
-      color: white;
-      border: 1px solid var(--chisholm-gold);
-      padding: 0.6rem 1.25rem;
-      border-radius: 6px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-slide:hover:not(:disabled) {
-      background: var(--chisholm-gold);
-      color: var(--chisholm-blue);
-    }
-
-    .btn-slide:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      border-color: #cbd5e1;
-    }
-
-    /* CONTENT SPECIFICS INSIDE SLIDES */
-    .otis-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .otis-step {
-      background: #f8fafc;
-      padding: 1.25rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-    }
-
-    .otis-letter {
-      display: inline-block;
-      background: var(--chisholm-blue);
-      color: var(--chisholm-gold);
-      font-weight: bold;
-      font-size: 1.2rem;
-      width: 36px;
-      height: 36px;
-      text-align: center;
-      line-height: 36px;
-      border-radius: 50%;
-      margin-bottom: 0.5rem;
-    }
-
-    .poem-card {
-      background: #fdfbf7;
-      border: 1px solid #e7e5e4;
-      border-left: 4px solid var(--chisholm-gold);
-      padding: 1.5rem;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
-
-    .poem-text {
-      font-family: 'Georgia', serif;
-      line-height: 1.8;
-      font-size: 1.05rem;
-      color: #262626;
-      white-space: pre-line;
-    }
-
-    .definition-box {
-      background: #eef2f7;
-      border-left: 4px solid var(--chisholm-blue);
-      padding: 1rem;
-      border-radius: 4px;
-      margin: 1rem 0;
-    }
-
-    .prompt-box {
-      background: #fffdf5;
-      border: 1px solid var(--chisholm-gold);
-      padding: 1rem 1.25rem;
-      border-radius: 6px;
-      margin-top: 1rem;
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .header-stamp {
+        display: none; /* Hide decorative stamp on small mobile screens */
+      }
+      .inspiration-corner {
+        flex-direction: column;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
+  <!-- 1. Top Header -->
+  <header class="site-header">
     <div class="header-container">
-      <div class="logo-frame">
-        <img src="Chisholmlogo.png" alt="Chisholm High School Logo">
+      <div class="header-logo">
+        <img src="https://via.placeholder.com/120x75/1b4332/FFFFFF?text=CHS+Lightning" alt="Chisholm High School Logo">
       </div>
-      <div class="header-titles">
+
+      <div class="header-title-group">
         <h1>English 11: American Literature</h1>
-        <p>Chisholm High School • Master Lesson Portal</p>
+        <p class="header-subtitle">Day 1 Foundations: The Genesis of American Letters & Indigenous Oral Traditions</p>
+      </div>
+
+      <div class="header-stamp">
+        <div class="stamp-circle">
+          <img src="https://via.placeholder.com/50x50/2d6a4f/FFFFFF?text=Mr.+B" alt="Mr. Boehm Profile" class="stamp-photo">
+          <svg class="stamp-text" viewBox="0 0 100 100">
+            <path id="textPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"/>
+            <text><textPath href="#textPath">• THE BOEHM CLASSROOM • CHISHOLM HIGH SCHOOL</textPath></text>
+          </svg>
+        </div>
       </div>
     </div>
   </header>
 
-  <div class="container">
+  <!-- Main Content Container -->
+  <main class="main-container">
 
-    <!-- TOP PROFILE CARD (PHOTOS & STAMP TOGETHER) -->
-    <div class="top-profile-card">
-      <div class="media-group">
-        <div class="photo-frame">
-          <img src="otis-and-boehm.jpg" alt="Mr. Boehm and Otis">
-        </div>
-        <div class="stamp-frame">
-          <img src="boehm-stamp.svg" alt="Boehm Classroom Verified Stamp">
-        </div>
+    <!-- 2. Inspiration Corner -->
+    <section class="card inspiration-corner">
+      <div class="avatar-container">
+        <img src="https://via.placeholder.com/70x70/2d6a4f/FFFFFF?text=OTIS" alt="OTIS Framework Mascot">
       </div>
-      <div class="profile-info">
-        <h2>Inspiration Corner: Meet Otis!</h2>
-        <p>Otis is my dog at home. While he won't be walking our hallways, his calm, focused, and deliberate posture inspired our classroom approach to reading complex texts: <strong>The OTIS Framework</strong>. Before we rush to judgment, we slow down, look carefully, and gather evidence.</p>
+      <div class="inspiration-content">
+        <blockquote>
+          "A people's lore is not merely standard myth; it is their living constitution, mapping out how they interact with each other and the Earth."
+        </blockquote>
+        <cite>— OTIS & The English 11 Curriculum Team</cite>
       </div>
-    </div>
+    </section>
 
-    <!-- INTERACTIVE HTML SLIDE PRESENTATION -->
-    <div class="slide-deck-container">
+    <!-- 3. Classroom Resource Hub -->
+    <section class="card resource-hub">
+      <h2>📄 Classroom Resource & Reference Hub</h2>
+      <p><strong>Featured Reference:</strong> <em>Mr. Boehm's Handy Handout: The English Language's Literary Time Periods Across Continents</em></p>
+      <p style="font-size: 0.9rem; color: #6c757d; margin-top: 0.25rem;">
+        A complete chronological guide mapping date ranges and eras across British and American Literature.
+      </p>
+      
+      <div class="resource-actions">
+        <button class="btn btn-primary" onclick="togglePdfViewer()">👁️ Toggle Embedded PDF</button>
+        <a href="Literary_Time_Periods.pdf" download class="btn btn-secondary">⬇️ Download PDF Guide</a>
+      </div>
+
+      <div id="pdfViewer" class="pdf-viewer-container">
+        <iframe src="https://via.placeholder.com/800x450/f8f9fa/1b4332?text=Embedded+PDF+Viewer:+Literary_Time_Periods.pdf" title="Literary Time Periods PDF"></iframe>
+      </div>
+    </section>
+
+    <!-- 4. Interactive Slide Player -->
+    <section class="slide-container">
       <div class="slide-header">
-        <h3>Interactive Lesson Slides • Day 1</h3>
-        <span class="slide-counter" id="slideCounter">Slide 1 of 5</span>
+        <span>Interactive Lesson Slides • Day 1</span>
+        <span class="slide-counter" id="slideCounter">Slide 1 of 14</span>
       </div>
 
       <div class="slide-body">
         
-        <!-- SLIDE 1 -->
-        <div class="slide active">
-          <h2>Slide 1: Welcome to American Literature</h2>
-          <p>Welcome to Grade 11 English! This year, we will explore how stories shape our understanding of culture, identity, and history.</p>
-          
-          <div class="definition-box">
-            <strong>Essential Questions for Day 1:</strong>
-            <ul>
-              <li>How do we observe a text carefully before making assumptions?</li>
-              <li>What details often get overlooked when we read too quickly?</li>
-            </ul>
-          </div>
-          <p>Today, we practice slowing down our reading process using a structured observational method.</p>
+        <!-- Slide 1 -->
+        <div class="slide-content active">
+          <h3>Slide 1: Welcome & Day 1 Scope</h3>
+          <p>Welcome to English 11! Today, we begin constructing our conceptual framework for "American Identity" by examining indigenous oral narratives and foundational cosmogonic myths.</p>
+          <br>
+          <p><strong>Core Objective:</strong> Evaluate creation accounts to extract underlying communal principles and societal ethics.</p>
         </div>
 
-        <!-- SLIDE 2 -->
-        <div class="slide">
-          <h2>Slide 2: The OTIS Analytical Framework</h2>
-          <p>To analyze literature effectively, we use four clear steps to guide our thinking:</p>
-
-          <div class="otis-grid">
-            <div class="otis-step">
-              <span class="otis-letter">O</span>
-              <strong>Observe</strong>
-              <p>Look at the raw evidence. What specific words, imagery, or details stand out on the page?</p>
-            </div>
-            <div class="otis-step">
-              <span class="otis-letter">T</span>
-              <strong>Trace</strong>
-              <p>Consider the context. Who wrote or spoke this? What background situation surrounds it?</p>
-            </div>
-            <div class="otis-step">
-              <span class="otis-letter">I</span>
-              <strong>Interpret</strong>
-              <p>Uncover deeper meaning. What message or theme is the author conveying beneath the surface?</p>
-            </div>
-            <div class="otis-step">
-              <span class="otis-letter">S</span>
-              <strong>Synthesize</strong>
-              <p>Connect it all. How does this passage connect to our bigger questions about American Literature?</p>
-            </div>
-          </div>
+        <!-- Slide 2 -->
+        <div class="slide-content">
+          <h3>Slide 2: The OTIS Framework</h3>
+          <p>Reading complex texts requires an intentional strategy. Use OTIS to guide your analysis:</p>
+          <br>
+          <ul>
+            <li><strong>O — Observe:</strong> Slow down and look closely at textual details without pre-judging.</li>
+            <li><strong>T — Think:</strong> Ask critical questions about patterns, word choice, and structure.</li>
+            <li><strong>I — Interpret:</strong> Connect evidence to broader cultural themes and intentions.</li>
+            <li><strong>S — Synthesize:</strong> Combine insights to form grounded, evidence-based conclusions.</li>
+          </ul>
         </div>
 
-        <!-- SLIDE 3 -->
-        <div class="slide">
-          <h2>Slide 3: Warm-Up Exercise — Close Reading</h2>
-          <p>Let's practice the <strong>Observe</strong> and <strong>Trace</strong> steps with this poem:</p>
-
-          <div class="poem-card">
-            <h3 style="margin-top:0; color: var(--chisholm-blue);">Cause I Ain't Got a Pencil</h3>
-            <p style="margin-top:-0.5rem; font-size:0.9rem; color:#64748b;">by Joshua T. Dickerson</p>
-            <div class="poem-text">I woke myself up
-Because we ain't got an alarm clock
-Dug in the dirty clothes basket,
-Cause ain't nobody washed my uniform
-Brushed my hair and teeth in the dark,
-Cause the lights ain't on
-Even got my baby sister ready,
-Cause my mama wasn't home.
-Got us both to school on time,
-To eat us a good breakfast.
-Then when I got to class the teacher fussed
-Cause I ain't got a pencil.</div>
-          </div>
-
-          <div class="prompt-box">
-            <strong>OTIS Activity Prompt:</strong>
-            <p style="margin: 0.5rem 0 0 0;">List 3 specific details from the speaker's morning routine. How does the final line change our understanding of why the student didn't have a pencil?</p>
-          </div>
+        <!-- Slide 3 -->
+        <div class="slide-content">
+          <h3>Slide 3: Literary Context & Chronology</h3>
+          <p>Literature does not exist in a vacuum. Before diving into texts, we use <strong>Mr. Boehm's Handy Handout</strong> on <em>Literary Time Periods</em> to locate where our readings sit historically.</p>
+          <br>
+          <p><strong>Key Concept:</strong> Note how readings published outside their historical eras can still align with the themes and values of past movements.</p>
         </div>
 
-        <!-- SLIDE 4 -->
-        <div class="slide">
-          <h2>Slide 4: Origin Stories & Oral Traditions</h2>
-          <p>American Literature begins long before printed books, rooted in rich Indigenous oral traditions.</p>
-
-          <div class="definition-box">
-            <strong>Key Concept: Cosmogonic Myth</strong>
-            <p style="margin: 0.25rem 0 0 0;"><em>Cosmogonic Myth</em> (noun) — A traditional narrative explaining how the world, nature, and human society were created.</p>
-          </div>
-
-          <p>In our next reading, <strong>"Manabozho and the Muskrat"</strong> (Ojibwe Tradition), we will observe how different cultures celebrate bravery, humility, and community cooperation through storytelling.</p>
+        <!-- Slide 4 -->
+        <div class="slide-content">
+          <h3>Slide 4: Era Focus — Native Era vs. Colonial Era</h3>
+          <ul>
+            <li><strong>The Native Era (Before 1620 CE):</strong> Rich oral traditions, cosmogonic myths, deep ecological relationships, and communal governance.</li>
+            <li><strong>The Puritan / Colonial Era (1620–1750 CE):</strong> Written records, theological prose, ascetic aesthetics, and frontier narratives.</li>
+          </ul>
+          <br>
+          <p><strong>Discussion Anchor:</strong> How does transitioning from oral storytelling to written typography alter the way history and culture are preserved?</p>
         </div>
 
-        <!-- SLIDE 5 -->
-        <div class="slide">
-          <h2>Slide 5: Day 1 Synthesis & Exit Ticket</h2>
-          <p>Great work today! Before class ends, complete your quick-write reflection:</p>
+        <!-- Slide 5 -->
+        <div class="slide-content">
+          <h3>Slide 5: The Power of Oral Tradition</h3>
+          <p>Oral narratives are active, evolving safeguards of cultural heritage. They establish:</p>
+          <br>
+          <ul>
+            <li>Origin motifs and human origins.</li>
+            <li>Ecological harmony and environmental stewardship.</li>
+            <li>Communal ethics and societal governance.</li>
+          </ul>
+        </div>
 
-          <div class="prompt-box">
-            <strong>Exit Ticket Prompt:</strong>
-            <p style="margin:0.5rem 0 0 0;">In 3–4 sentences, explain how slowing down to <strong>Observe</strong> details in a text (like the poem in Slide 3) prevents us from making unfair assumptions about characters or real people.</p>
-          </div>
+        <!-- Slide 6 -->
+        <div class="slide-content">
+          <h3>Slide 6: Case Study 1 — Iroquois Cosmology</h3>
+          <p><strong>Text Focus:</strong> <em>"The World on the Turtle’s Back"</em></p>
+          <br>
+          <ul>
+            <li><strong>Key Motif:</strong> Balance between opposing forces (the right-handed and left-handed twins).</li>
+            <li><strong>OTIS Observation Goal:</strong> Notice how creation involves collaboration between celestial beings and earthly animals.</li>
+            <li><strong>Textual Focus:</strong> How does the text establish accountability to the natural world?</li>
+          </ul>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide-content">
+          <h3>Slide 7: Case Study 2 — Ojibwe Lore</h3>
+          <p><strong>Text Focus:</strong> <em>"Manabozho and the Muskrat"</em></p>
+          <br>
+          <ul>
+            <li><strong>Key Motif:</strong> Persistence, humility, and sacrifice for the greater community.</li>
+            <li><strong>Comparative Question:</strong> How does the small muskrat's role challenge traditional European definitions of heroism?</li>
+          </ul>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide-content">
+          <h3>Slide 8: Case Study 3 — Diné Emergence</h3>
+          <p><strong>Text Focus:</strong> <em>Hajíínéí: The Navajo Account of Ascent</em></p>
+          <br>
+          <ul>
+            <li><strong>Key Motif:</strong> Sequential progression through distinct worlds to achieve cosmic harmony.</li>
+            <li><strong>Structural Focus:</strong> Reviewing the phased journey from lower realms to spiritual and physical completion.</li>
+          </ul>
+        </div>
+
+        <!-- Slide 9 -->
+        <div class="slide-content">
+          <h3>Slide 9: Comparative Analysis Matrix</h3>
+          <table class="slide-table">
+            <thead>
+              <tr>
+                <th>Dimension</th>
+                <th>Iroquois Tradition</th>
+                <th>Ojibwe Tradition</th>
+                <th>Diné Emergence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cosmic Order</strong></td>
+                <td>Dualistic Balance</td>
+                <td>Renewal & Humility</td>
+                <td>Sequential Ascent</td>
+              </tr>
+              <tr>
+                <td><strong>Human Role</strong></td>
+                <td>Steward & Participant</td>
+                <td>Dependent Recipient</td>
+                <td>Harmony Seeker</td>
+              </tr>
+              <tr>
+                <td><strong>Nature's Status</strong></td>
+                <td>Co-Creator / Sacred</td>
+                <td>Sacred Partner</td>
+                <td>Living Environment</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Slide 10 -->
+        <div class="slide-content">
+          <h3>Slide 10: Close Reading & Textual Evidence Gathering</h3>
+          <p><strong>Group Task:</strong> In small groups, select a passage from today's assigned creation reading.</p>
+          <br>
+          <p><strong>Prompt:</strong> Identify 2 specific line details (<em>Observe</em>) that demonstrate the community's relationship with the environment (<em>Interpret</em>).</p>
+        </div>
+
+        <!-- Slide 11 -->
+        <div class="slide-content">
+          <h3>Slide 11: Connecting Time Periods</h3>
+          <p>As we transition from the <strong>Native Era (pre-1620)</strong> to early trans-Atlantic contact in the <strong>Colonial Era</strong>, notice how perspectives shift from communal harmony to ownership and exploration logs.</p>
+          <br>
+          <p>Re-check your <em>Literary Time Periods</em> handout to trace this timeline shift.</p>
+        </div>
+
+        <!-- Slide 12 -->
+        <div class="slide-content">
+          <h3>Slide 12: Group Discourse & Socratic Prompts</h3>
+          <p><strong>Seminar Discussion Questions:</strong></p>
+          <br>
+          <ul>
+            <li>1. Why is oral tradition an effective mechanism for safeguarding societal values?</li>
+            <li>2. How do indigenous creation myths differ from European Enlightenment perspectives on human dominion over nature?</li>
+          </ul>
+        </div>
+
+        <!-- Slide 13 -->
+        <div class="slide-content">
+          <h3>Slide 13: Lesson Synthesis</h3>
+          <ul>
+            <li>American literature begins long before European colonization with diverse indigenous oral traditions.</li>
+            <li>Cosmogonic myths serve as foundational texts that define societal ethics, governance, and ecological stewardship.</li>
+            <li>Using frameworks like <strong>OTIS</strong> prevents us from making rushed or biased assumptions about unfamiliar cultural texts.</li>
+          </ul>
+        </div>
+
+        <!-- Slide 14 -->
+        <div class="slide-content">
+          <h3>Slide 14: Day 1 Reflection & Quick-Write</h3>
+          <p><strong>Exit Ticket Prompt:</strong></p>
+          <br>
+          <blockquote style="background: var(--light-bg); padding: 1rem; border-left: 3px solid var(--accent-green);">
+            In 3–4 sentences, explain how slowing down to <strong>Observe</strong> specific details in an oral origin narrative (like <em>"The World on the Turtle's Back"</em>) prevents us from imposing unfair cultural assumptions onto the text.
+          </blockquote>
+          <br>
+          <p><em>Submission: Complete on your index card or submit via the online portal before class ends!</em></p>
         </div>
 
       </div>
 
-      <!-- NAVIGATION BUTTONS -->
-      <div class="slide-controls">
-        <button class="btn-slide" id="prevBtn" onclick="changeSlide(-1)" disabled>← Previous Slide</button>
-        <button class="btn-slide" id="nextBtn" onclick="changeSlide(1)">Next Slide →</button>
+      <div class="slide-footer">
+        <button class="btn btn-secondary" id="prevBtn" onclick="changeSlide(-1)">Previous</button>
+        <button class="btn btn-primary" id="nextBtn" onclick="changeSlide(1)">Next Slide</button>
       </div>
-    </div>
+    </section>
 
-  </div>
+  </main>
 
-  <!-- SIMPLE SLIDE DECK SCRIPT -->
+  <!-- JavaScript for Interactive Controls -->
   <script>
     let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
+    const slides = document.querySelectorAll('.slide-content');
+    const slideCounter = document.getElementById('slideCounter');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updateSlide() {
+      slides.forEach((slide, index) => {
+        slide.classList.toggle('active', index === currentSlide);
+      });
+      slideCounter.textContent = `Slide ${currentSlide + 1} of ${slides.length}`;
+      
+      prevBtn.disabled = currentSlide === 0;
+      prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+      
+      if (currentSlide === slides.length - 1) {
+        nextBtn.textContent = 'Finish Lesson';
+      } else {
+        nextBtn.textContent = 'Next Slide';
+      }
+    }
 
     function changeSlide(direction) {
-      slides[currentSlide].classList.remove('active');
       currentSlide += direction;
-
       if (currentSlide < 0) currentSlide = 0;
-      if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
-
-      slides[currentSlide].classList.add('active');
-
-      // Update UI elements
-      document.getElementById('slideCounter').textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
-      document.getElementById('prevBtn').disabled = (currentSlide === 0);
-      document.getElementById('nextBtn').disabled = (currentSlide === totalSlides - 1);
+      if (currentSlide >= slides.length) currentSlide = slides.length - 1;
+      updateSlide();
     }
+
+    function togglePdfViewer() {
+      const viewer = document.getElementById('pdfViewer');
+      viewer.classList.toggle('active');
+    }
+
+    // Keyboard Navigation support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') changeSlide(1);
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+    });
+
+    // Initialize
+    updateSlide();
   </script>
-
-</body>
-</html>
-
 </body>
 </html>
